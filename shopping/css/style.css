@@ -2891,14 +2891,14 @@ ul.tabs li.active {
     border-top: none;
     clear: both;
     float: left;
-    width: 95%;
+    width: 1279px;
     height: 25em;
     background: #FFFFFF;
 }
 .tab_content {
     padding: 5px;
     font-size: 14px;
-    width: 100%;
+    width: 1272px;
     height: 400px;
     overflow-y: scroll;
 }
@@ -2937,30 +2937,29 @@ ul.tabs li.active {
 }
 
 .type09 {
-	width: 100%;
+  width: 1243px;
 	border : 1px solid black;
     border-collapse: collapse;
     text-align: left;
     line-height: 1.5;
-    table-layout: fixed;
 }
 .type09 thead{
     padding: 10px;
     font-weight: bold;
-    display : table;
+    display: table;
+    width: 1243px;
     vertical-align: top;
     color: #369;
     border-bottom: 3px solid #036;
 }
-.type09 thead th {
-	width: 150px;
+.type09 thead tr th {
+	  width: 150px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
     color: #369;
-    border-bottom: 3px solid #036;
 }
-.type09 tbody th {
+.type09 tbody tr th {
     width: 150px;
     padding: 10px;
     font-weight: bold;
@@ -2969,7 +2968,7 @@ ul.tabs li.active {
     background: #f3f6f7;
 }
 
-.type09 tfoot th {
+.type09 tfoot tr th {
     width: 150px;
     padding: 10px;
     font-weight: bold;
@@ -2978,7 +2977,7 @@ ul.tabs li.active {
     background: #f3f6f7;
 }
 .type09 td {
-    width: 350px;
+    width: 150px;
     padding: 10px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
