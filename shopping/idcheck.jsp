@@ -3,16 +3,22 @@
 <%@ page import = "java.sql.*"%>
 <%@ page import = "java.io.PrintWriter"%>
 <%
-    Class.forName("com.mysql.jdbc.Driver");
+  String mysqlDriver = "com.mysql.jdbc.Driver";
+  String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
+  String mysqlroot = "root";
+  String mysqlPW = "LNiaMelo561248^*";
+
+  Class.forName(mysqlDriver);
 	Connection myconn=null;
-	myconn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall","root","LNiaMelo561248^*");
-	
+	myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
+%>
+<%
 	String ID = request.getParameter("ID");
-	
+
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	boolean result = false;
-	
+
 	try{
 		String sql = "select * from User where ID = ?";
 		pstmt = myconn.prepareStatement(sql);
@@ -30,7 +36,7 @@
 		pstmt.close();
 		myconn.close();
 	}
-	
+
 	response.setContentType("text/xml;charset=UTF-8");
 	PrintWriter pw = response.getWriter();
 	pw.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -38,5 +44,5 @@
 	pw.println("<result>"+result+"</rewult>");
 	pw.println("</data>");
 	pw.close();
-	
+
 %>

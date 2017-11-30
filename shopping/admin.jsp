@@ -62,14 +62,20 @@ $(function(){ //전체선택 체크박스 클릭
 
 <body>
 <%
+  String mysqlDriver = "com.mysql.jdbc.Driver";
+  String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
+  String mysqlroot = "root";
+  String mysqlPW = "LNiaMelo561248^*";
+
+  Class.forName(mysqlDriver);
+  Connection myconn=null;
+  myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
+  String name = "select * from administrator where ID =?";
+
+
 	String sessionid = "";
 	sessionid = (String)session.getAttribute("sessionid");
 	request.setCharacterEncoding("euc-kr");
-
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection myconn=null;
-	myconn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall","root","ks01");
-	String name = "select * from administrator where ID =?";
 
 	PreparedStatement pst=myconn.prepareStatement(name);
 	pst.setString(1, sessionid);

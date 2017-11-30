@@ -41,6 +41,16 @@
 <script src = "js/findaddress.js" language = "javascript">openDaumPostcode();</script>
 
 <body>
+  <%
+    String mysqlDriver = "com.mysql.jdbc.Driver";
+    String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
+    String mysqlroot = "root";
+    String mysqlPW = "LNiaMelo561248^*";
+
+    Class.forName(mysqlDriver);
+  	Connection myconn=null;
+  	myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
+  %>
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers" style="padding: 2px;">
@@ -212,10 +222,6 @@ String Postnum = request.getParameter("post1") + request.getParameter("post2");
 String addr1=request.getParameter("addr1");
 String addr2=request.getParameter("addr2");
 String addr3=request.getParameter("addr3");
-
-Class.forName("com.mysql.jdbc.Driver");
-Connection myconn=null;
-myconn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall","root","ks01");
 
 //String q1="insert into info values('"+code+"','"+irum+"','"+cellphone+"')";
 

@@ -9,14 +9,20 @@
 </head>
 <body>
 <%
+	  String mysqlDriver = "com.mysql.jdbc.Driver";
+	  String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
+	  String mysqlroot = "root";
+	  String mysqlPW = "LNiaMelo561248^*";
+
+	  Class.forName(mysqlDriver);
+		Connection myconn=null;
+		myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
+%>
+<%
 String LoginUsername=request.getParameter("LoginUsername");
 String LoginPassword=request.getParameter("LoginPassword");
 
 request.setCharacterEncoding("euc-kr");
-
-Class.forName("com.mysql.jdbc.Driver");
-Connection myconn=null;
-myconn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/shoppingmall","root","ks01");
 
 
 String name = "select * from administrator where ID =? && Password=?";
