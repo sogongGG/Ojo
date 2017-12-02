@@ -2941,6 +2941,8 @@ ul.tabs li.active {
     border-collapse: collapse;
     text-align: left;
     line-height: 1.5;
+    table-layout: fixed;
+    display:table;
 }
 .type09 thead{
     padding: 10px;
@@ -2952,7 +2954,6 @@ ul.tabs li.active {
     border-bottom: 3px solid #036;
 }
 .type09 thead tr th {
-	  width: 150px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
