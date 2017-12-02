@@ -1,11 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+    
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
