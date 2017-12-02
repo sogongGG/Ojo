@@ -246,25 +246,42 @@ $(function(){ //전체선택 체크박스 클릭
 	$(document).ready(function() {
     	$(".tab_content").hide();
     	$(".tab_content:first").show();
+      $(".adminbuttonset").hide();
+      $(".adminbuttonset:first").show();
 
     	$("ul.tabs li").click(
     	function (){
         	$("ul.tabs li").removeClass("active").css("color", "#333");
         	$(this).addClass("active").css("color", "darkred");
         	$(".tab_content").hide();
+          $(".adminbuttonset").hide();
        		var activeTab = $(this).attr("rel");
-        	$("#" + activeTab).fadeIn()
+          var activebuttonset = $(this).attr("but");
+        	$("#" + activeTab).fadeIn();
+          $("#" + activebuttonset).fadeIn();
     	});
 	});
 </script>
-			<div class = "adminbuttonset1">
-            <button type="submit" class="snip1535">불러오기</button>
-			<button type="submit" class="snip1535" onclick="add_row()">추가</button>
-			<button type="submit" class="snip1535">수정</button>
-			<button type="submit" class="snip1535" onclick="delete_row()">삭제</button>
-			</div>
+<div id = "adminbuttonset1" class = "adminbuttonset">
+      <button type="submit" class="snip1535">불러오기</button>
+<button type="submit" class="snip1535" onclick="add_row1()">추가</button>
+<button type="submit" class="snip1535">수정</button>
+<button type="submit" class="snip1535" onclick="delete_row1()">삭제</button>
+</div>
+<div id = "adminbuttonset2" class = "adminbuttonset">
+      <button type="submit" class="snip1535">불러오기</button>
+<button type="submit" class="snip1535" onclick="add_row2()">추가</button>
+<button type="submit" class="snip1535">수정</button>
+<button type="submit" class="snip1535" onclick="delete_row2()">삭제</button>
+</div>
+<div  id = "adminbuttonset3" class = "adminbuttonset">
+      <button type="submit" class="snip1535">불러오기</button>
+<button type="submit" class="snip1535" onclick="add_row3()">추가</button>
+<button type="submit" class="snip1535">수정</button>
+<button type="submit" class="snip1535" onclick="delete_row3()">삭제</button>
+</div>
 		<script>
-		function add_row() {
+		function add_row1() {
 				var table = document.getElementById('tab1_tbody');
     			var row = table.insertRow( table.rows.length ); // 하단에 추가
     			var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox"/>'
@@ -275,20 +292,58 @@ $(function(){ //전체선택 체크박스 클릭
     			var cell6 = row.insertCell(5);
     			var cell7 = row.insertCell(6);
   		}
- 		function delete_row() {
+ 		function delete_row1() {
     		var table = document.getElementById('tab1_tbody');
     		if (table.rows.length < 1) return;
     		table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
   		}
 		</script>
+
+  <script>
+  function add_row2() {
+      var table = document.getElementById('tab2_tbody');
+        var row = table.insertRow( table.rows.length ); // 하단에 추가
+        var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox"/>'
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+    }
+  function delete_row2() {
+      var table = document.getElementById('tab2_tbody');
+      if (table.rows.length < 1) return;
+      table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
+    }
+  </script>
+
+<script>
+function add_row3() {
+    var table = document.getElementById('tab3_tbody');
+      var row = table.insertRow( table.rows.length ); // 하단에 추가
+      var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox"/>'
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
+      var cell7 = row.insertCell(6);
+  }
+function delete_row3() {
+    var table = document.getElementById('tab3_tbody');
+    if (table.rows.length < 1) return;
+    table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
+  }
+</script>
     		<ul class="tabs">
-        	<li class="active" rel="tab1">요리</li>
-        	<li rel="tab2">재료</li>
-        	<li rel="tab3">마트</li>
+        	<li class="active" but="adminbuttonset1" rel="tab1">요리</li>
+        	<li but = "adminbuttonset2" rel="tab2">재료</li>
+        	<li but = "adminbuttonset3" rel="tab3">마트</li>
    			</ul>
     			<div class="tab_container">
         			<div id="tab1" class="tab_content">
-            			<table class = "type09">
+            			<table class = "type09_head">
             				<thead>
             				<tr>
             					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
@@ -299,7 +354,9 @@ $(function(){ //전체선택 체크박스 클릭
             					<th>보관법</th>
             					<th>손질</th>
             				</tr>
-            				</thead>
+                  </thead>
+                </table>
+                <table class = "type09">
             				<tbody id = "tab1_tbody">
             				<tr>
             					<td> <input type="checkbox"/> </td>
@@ -315,7 +372,7 @@ $(function(){ //전체선택 체크박스 클릭
         			</div>
         <!-- #tab1 -->
         			<div id="tab2" class="tab_content">
-        			<table class = "type09">
+        			<table class = "type09_head">
             				<thead>
             				<tr>
             					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
@@ -327,6 +384,8 @@ $(function(){ //전체선택 체크박스 클릭
             					<th></th>
             				</tr>
             				</thead>
+                  </table>
+                  <table class = "type09">
             				<tbody  id = "tab2_tbody">
             				<tr>
             					<td> <input type="checkbox"/> </td>
@@ -339,10 +398,11 @@ $(function(){ //전체선택 체크박스 클릭
             				</tr>
             				</tbody>
             			</table>
+
         			</div>
         			<!-- tab3 -->
         			<div id="tab3" class="tab_content">
-        			<table class = "type09">
+        			<table class = "type09_head">
             				<thead>
             				<tr>
             					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
@@ -354,6 +414,8 @@ $(function(){ //전체선택 체크박스 클릭
             					<th></th>
             				</tr>
             				</thead>
+                  </table>
+                  <table class = "type09">
             				<tbody  id = "tab3_tbody">
             				<tr>
             					<td> <input type="checkbox"/> </td>

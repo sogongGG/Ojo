@@ -1,4 +1,4 @@
-
+﻿
 html, body{
     font-size: 100%;
 	font-family: 'Open Sans', sans-serif;
@@ -2937,6 +2937,7 @@ ul.tabs li.active {
 
 .type09 {
   width: 1243px;
+  margin-top : 45px;
 	border : 1px solid black;
     border-collapse: collapse;
     text-align: left;
@@ -2944,23 +2945,41 @@ ul.tabs li.active {
     table-layout: fixed;
     display:table;
 }
-.type09 thead{
+.type09_head {
+  width: 1242px;
+	border : 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    table-layout: fixed;
+    display:table;
+}
+.type09_head thead{
     padding: 10px;
     font-weight: bold;
     display: table;
-    width: 1243px;
+    width: 1242px;
     vertical-align: top;
     color: #369;
+    background-color : aliceblue;
     border-bottom: 3px solid #036;
+    border-left : 1px solid black;
+    border-right: 1px solid black;
+    position:absolute;
 }
-.type09 thead tr th {
+.type09_head thead tr th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
     color: #369;
 }
-.type09 tbody tr th {
+.type09_head td {
     width: 150px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+.type09 tbody tr th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -2969,7 +2988,6 @@ ul.tabs li.active {
 }
 
 .type09 tfoot tr th {
-    width: 150px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
