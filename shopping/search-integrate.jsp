@@ -42,6 +42,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </script>
 <!-- start-smoth-scrolling -->
 </head>
+<%!
+String Search_String;
+String get_search_string_jsp;
+%>
+<%
+request.setCharacterEncoding("euc-kr");
+Search_String = request.getParameter("Product");
+get_search_string_jsp = get_search_string();
+String mysqlDriver = "com.mysql.jdbc.Driver";
+String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
+String mysqlroot = "root";
+String mysqlPW = "ks01";
+Class.forName(mysqlDriver);
+Connection myconn=null;
+myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
+%>
+<%!
+public String get_search_string()
+{
+  return Search_String;
+}
+%>
+<%
+  /*  Search 창에 적은 값 get 하는 법 !
+  JSP 함수 - get_search_string()
+  JSP 변수 - get_search_string_jsp
+  JavaScript 변수 = get_search_string_js
+  */
+%>
+
+<script>
+alert(get_search_string_js);
+</script>
+
+
 <%
 //Class.forName("com.mysql.jdbc.Driver");
 //String searchKey = "testing";
@@ -62,12 +97,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body>
 <!-- header -->
+
 <div class="agileits_header">
   <div class="w3l_offers" style="margin-top: 8px;">
     <a href="products.jsp">5조 쇼핑몰</a>
   </div>
   <div class="w3l_search" style="margin-top: 10px;">
-    <form action="#" method="post">
+    <form action="search-integrate.jsp" method="post">
       <input type="text" name="Product" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
       <input type="submit" value=" ">
     </form>
