@@ -198,9 +198,7 @@ $(document).ready(function() {
           });
         }
       </script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key="+google_apikey+"&callback=initMap">
-      </script>
+
 
       <!-- -->
       <ul class="phone_email">
@@ -404,7 +402,7 @@ $(document).ready(function() {
             </script>
 
             <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key="+google_apikey+"&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
             </script>
             </div>
 
