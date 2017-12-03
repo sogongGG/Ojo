@@ -43,13 +43,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- start-smoth-scrolling -->
 </head>
 <%!
-String Search_String;
+String search_String;
 String get_search_string_jsp;
 %>
 <%
 request.setCharacterEncoding("euc-kr");
-Search_String = request.getParameter("Product");
-get_search_string_jsp = get_search_string();
+search_String = request.getParameter("Product");
+get_search_string_jsp = Get_search_string();
 String mysqlDriver = "com.mysql.jdbc.Driver";
 String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
 String mysqlroot = "root";
@@ -59,22 +59,22 @@ Connection myconn=null;
 myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
 %>
 <%!
-public String get_search_string()
+public String Get_search_string()
 {
-  return Search_String;
+  return search_String;
 }
 %>
+<script>
+ var get_search_string_js ="<%=get_search_string_jsp%>";
+</script>
 <%
-  /*  Search 창에 적은 값 get 하는 법 !
-  JSP 함수 - get_search_string()
+  /* search 값 get 하는 방법 !  // search_String 직접 access ㄴㄴ
+  JSP 함수 - Get_search_string()
   JSP 변수 - get_search_string_jsp
   JavaScript 변수 = get_search_string_js
   */
 %>
 
-<script>
-alert(get_search_string_js);
-</script>
 
 
 <%
