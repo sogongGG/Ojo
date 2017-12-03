@@ -37,7 +37,7 @@
 </script>
 <!-- start-smoth-scrolling -->
 </head>
-
+<script type="text/javascript"> var google_apikey="AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo"></script>
 <script src = "http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src = "js/findaddress.js" language = "javascript">openDaumPostcode();</script>
 <script type = "text/javascript">
@@ -199,7 +199,7 @@ function getResult(){
           }
         </script>
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoJWfF7bE_v8AWgcksE52yTbQFoJ6jBPI&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key="+google_apikey+"&callback=initMap">
         </script>
 
         <!-- -->
