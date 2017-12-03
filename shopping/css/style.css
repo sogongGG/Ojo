@@ -2895,7 +2895,7 @@ ul.tabs li.active {
     background: #FFFFFF;
 }
 .tab_content {
-    padding: 5px;
+    padding-left: 5px;
     font-size: 14px;
     width: 1272px;
     height: 400px;
@@ -2935,16 +2935,7 @@ ul.tabs li.active {
 	margin: 0 0 0 70%;
 }
 
-.type09 {
-  width: 1243px;
-  margin-top : 45px;
-	border : 1px solid black;
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
-    table-layout: fixed;
-    display:table;
-}
+
 .type09_head {
   width: 1242px;
 	border : 1px solid black;
@@ -2979,15 +2970,29 @@ ul.tabs li.active {
     vertical-align: top;
     border-bottom: 1px solid #ccc;
 }
-.type09 tbody tr th {
-    padding: 10px;
+.type09 {
+  counter-reset: rowNumber;
+  width: 1243px;
+  margin-top : 45px;
+	border : 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    table-layout: fixed;
+    display:table;
+}
+.type09 tbody tr{
+  counter-increment: rowNumber;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.type09 tbody tr td:first-child::before{
+    content: counter(rowNumber);
     font-weight: bold;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    background: #f3f6f7;
 }
 
-.type09 tfoot tr th {
+.type09 tfoot tr td {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;

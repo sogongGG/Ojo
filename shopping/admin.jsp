@@ -1,15 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="UTF-8"%>
-    <%@ page import = "java.sql.*" %>
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page import = "java.sql.*" %>
+
 <html>
-
-
 <head>
 <title>소공 5조-강산,치종,정훈</title>
 <!-- for-mobile-apps -->
@@ -263,20 +255,20 @@ $(function(){ //전체선택 체크박스 클릭
 	});
 </script>
 <div id = "adminbuttonset1" class = "adminbuttonset">
-      <button type="submit" class="snip1535">불러오기</button>
-<button type="submit" class="snip1535" onclick="add_row1()">추가</button>
+<button type="submit" class="snip1535" onclick >불러오기</button></form>
+<button type="submit" class="snip1535" onclick="add_row1(), window.open('\\adminbutton\\ingreAdd.jsp','ingreAdd','width=700,height=350,location=no,status=no,scrollbars=yes')" >추가</button>
 <button type="submit" class="snip1535">수정</button>
 <button type="submit" class="snip1535" onclick="delete_row1()">삭제</button>
 </div>
 <div id = "adminbuttonset2" class = "adminbuttonset">
-      <button type="submit" class="snip1535">불러오기</button>
-<button type="submit" class="snip1535" onclick="add_row2()">추가</button>
+<button type="submit" class="snip1535">불러오기</button>
+<button type="submit" class="snip1535" onclick="add_row2() , window.open('\\adminbutton\\foodAdd.jsp','foodAdd','width=700,height=350,location=no,status=no,scrollbars=yes')">추가</button>
 <button type="submit" class="snip1535">수정</button>
 <button type="submit" class="snip1535" onclick="delete_row2()">삭제</button>
 </div>
 <div  id = "adminbuttonset3" class = "adminbuttonset">
-      <button type="submit" class="snip1535">불러오기</button>
-<button type="submit" class="snip1535" onclick="add_row3()">추가</button>
+<button type="submit" class="snip1535">불러오기</button>
+<button type="submit" class="snip1535" onclick="add_row3(), window.open('\\adminbutton\\marketAdd.jsp','marketAdd','width=700,height=350,location=no,status=no,scrollbars=yes')">추가</button>
 <button type="submit" class="snip1535">수정</button>
 <button type="submit" class="snip1535" onclick="delete_row3()">삭제</button>
 </div>
@@ -284,13 +276,13 @@ $(function(){ //전체선택 체크박스 클릭
 		function add_row1() {
 				var table = document.getElementById('tab1_tbody');
     			var row = table.insertRow( table.rows.length ); // 하단에 추가
-    			var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox"/>'
-    			var cell2 = row.insertCell(1);
-    			var cell3 = row.insertCell(2);
-   			 	var cell4 = row.insertCell(3);
-    			var cell5 = row.insertCell(4);
-    			var cell6 = row.insertCell(5);
-    			var cell7 = row.insertCell(6);
+    			var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox" name="ingre_checkBox"/>';
+    			var cell2 = row.insertCell(1); cell2.innerHTML='<input name = "Ingredientname" type="text" size = "10">';
+    			var cell3 = row.insertCell(2); cell3.innerHTML='<input name = "Genre" type="text" size = "10">';
+   			 	var cell4 = row.insertCell(3); cell4.innerHTML='<input name = "ingrepicture" type = "text" size = "10">';
+    			var cell5 = row.insertCell(4); cell5.innerHTML='<input name = "Prise" type = "text" size = "10">';
+    			var cell6 = row.insertCell(5); cell6.innerHTML='<input name = "Method_storage" type="text" size = "10">';
+    			var cell7 = row.insertCell(6); cell7.innerHTML='<input name = "Method_cook" type = "text" size = "10">';
   		}
  		function delete_row1() {
     		var table = document.getElementById('tab1_tbody');
@@ -337,8 +329,8 @@ function delete_row3() {
   }
 </script>
     		<ul class="tabs">
-        	<li class="active" but="adminbuttonset1" rel="tab1">요리</li>
-        	<li but = "adminbuttonset2" rel="tab2">재료</li>
+        	<li class="active" but="adminbuttonset1" rel="tab1">재료</li>
+        	<li but = "adminbuttonset2" rel="tab2">요리</li>
         	<li but = "adminbuttonset3" rel="tab3">마트</li>
    			</ul>
     			<div class="tab_container">
@@ -347,26 +339,17 @@ function delete_row3() {
             				<thead>
             				<tr>
             					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>사진 링크</th>
-            					<th>Name</th>
-            					<th>필요 재료</th>
-            					<th>평균 가격</th>
-            					<th>보관법</th>
-            					<th>손질</th>
+            					<th>재료이름</th>
+                      <th>장르</th>
+            					<th>사진링크</th>
+            					<th>평균가격 </th>
+            					<th>보관 방법</th>
+            					<th>손질 방법</th>
             				</tr>
                   </thead>
                 </table>
                 <table class = "type09">
-            				<tbody id = "tab1_tbody">
-            				<tr>
-            					<td> <input type="checkbox"/> </td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            				</tr>
+            				<tbody id = "tab1_tbody"
             				</tbody>
             			</table>
         			</div>
@@ -376,26 +359,17 @@ function delete_row3() {
             				<thead>
             				<tr>
             					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>요리 사진 링크</th>
             					<th>요리 이름</th>
-            					<th>평점</th>
-            					<th>요리 설명</th>
+            					<th>장르</th>
+            					<th>요리 사진 링크</th>
+                      <th>요리 설명</th>
             					<th>필요한 재료 리스트</th>
-            					<th></th>
+            					<th>평점</th>
             				</tr>
             				</thead>
                   </table>
                   <table class = "type09">
             				<tbody  id = "tab2_tbody">
-            				<tr>
-            					<td> <input type="checkbox"/> </td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            				</tr>
             				</tbody>
             			</table>
 
@@ -406,26 +380,17 @@ function delete_row3() {
             				<thead>
             				<tr>
             					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
+                      <th>마트 이름</th>
             					<th>마트 사진 링크</th>
             					<th>마트 전화번호</th>
             					<th>마트 주소</th>
-            					<th>마트에서 구입한 리스트</th>
-            					<th>세일 중인 리스트</th>
-            					<th></th>
+            					<th>마트 좌표</th>
+            					<th>마트 재료</th>
             				</tr>
             				</thead>
                   </table>
                   <table class = "type09">
             				<tbody  id = "tab3_tbody">
-            				<tr>
-            					<td> <input type="checkbox"/> </td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            					<td></td>
-            				</tr>
             				</tbody>
             			</table>
         			</div>
