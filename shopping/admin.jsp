@@ -25,7 +25,11 @@
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- start-smoth-scrolling -->
+<<<<<<< HEAD
 
+=======
+<script type="text/javascript"> var google_apikey="AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo"</script>
+>>>>>>> eefeb77df31fdcfe77b7236fb640d5762f567249
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 
@@ -144,7 +148,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
   String mysqlDriver = "com.mysql.jdbc.Driver";
   String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
   String mysqlroot = "root";
-  String mysqlPW = "LNiaMelo561248^*";
+  String mysqlPW = "ks01";
 
   Class.forName(mysqlDriver);
   Connection myconn=null;
@@ -292,7 +296,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
           }
         </script>
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoJWfF7bE_v8AWgcksE52yTbQFoJ6jBPI&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
         </script>
 
         <!-- -->

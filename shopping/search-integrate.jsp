@@ -29,6 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- start-smoth-scrolling -->
+<script type="text/javascript"> var google_apikey="AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo"</script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
@@ -41,6 +42,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </script>
 <!-- start-smoth-scrolling -->
 </head>
+<%!
+String search_String;
+String get_search_string_jsp;
+%>
+<%
+request.setCharacterEncoding("euc-kr");
+search_String = request.getParameter("Product");
+get_search_string_jsp = Get_search_string();
+String mysqlDriver = "com.mysql.jdbc.Driver";
+String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
+String mysqlroot = "root";
+String mysqlPW = "ks01";
+Class.forName(mysqlDriver);
+Connection myconn=null;
+myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
+%>
+<%!
+public String Get_search_string()
+{
+  return search_String;
+}
+%>
+<script>
+ var get_search_string_js ="<%=get_search_string_jsp%>";
+</script>
+<%
+  /* search 값 get 하는 방법 !  // search_String 직접 access ㄴㄴ
+  JSP 함수 - Get_search_string()
+  JSP 변수 - get_search_string_jsp
+  JavaScript 변수 = get_search_string_js
+  */
+%>
+
+
+
 <%
 //Class.forName("com.mysql.jdbc.Driver");
 //String searchKey = "testing";
@@ -61,13 +97,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body>
 <!-- header -->
+
 <div class="agileits_header">
   <div class="w3l_offers" style="margin-top: 8px;">
     <a href="products.jsp">5조 쇼핑몰</a>
   </div>
   <div class="w3l_search" style="margin-top: 10px;">
-    <form action="#" method="post">
+    <form action="search-integrate.jsp" method="post">
       <input type="text" name="Product" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+      <input type="hidden" name="latitude_post" value=now_address_lat>
+      <input type="hidden" name="longitude_post" value=now_address_lng>
       <input type="submit" value=" ">
     </form>
   </div>
@@ -197,9 +236,7 @@ $(document).ready(function() {
           });
         }
       </script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoJWfF7bE_v8AWgcksE52yTbQFoJ6jBPI&callback=initMap">
-      </script>
+
 
       <!-- -->
       <ul class="phone_email">
@@ -330,8 +367,39 @@ $(document).ready(function() {
             </a>
             <div id="map" style="width: 120%; height:350px; background-color: grey;"> </div>
 
+            <%/*
+            //    <input type="hidden" name="latitude_post" value=now_address_lat>
+            PreparedStatement pstmt = null;
+          	ResultSet rs = null;
+          	boolean result = false;
+            String now_lat=request.getParameter("latitude_post");
+            String now_lng=request.getParameter("longitude_post");
+          	try{
+          		String sql = "select * from Market where (latitude between =? AND =?) AND (longitude between =? AND =?)";
+          		pstmt = myconn.prepareStatement(sql);
+          		pstmt.setString(1,now_lat-0.001);
+              pstmt.setString(2,now_lat+0.001);
+              pstmt.setString(3,now_lng-0.001);
+              pstmt.setString(4,now_lng+0.001);
+          		rs = pstmt.executeQuery();
+          		if(rs.next()){
+          			result = true;
+          		}
+          	}
+          	catch(SQLException se){
+          		System.out.println(se.getMessage());
+          	}
+          	finally{
+          		rs.close();
+          		pstmt.close();
+          		myconn.close();
+          	}*/
+            %>
+
             <!-- address에 검색값 input !!!!-->
             <script>
+            var now_address_lat;
+            var now_address_lng;
 
             function initMap() {
              var map = new google.maps.Map(document.getElementById('map'), {
@@ -340,7 +408,7 @@ $(document).ready(function() {
              });
              var geocoder = new google.maps.Geocoder();
             ////////////address에 검색값 input!!!!
-             var address ="명동";
+             var address =get_search_string_js;
              geocodeAddress(address,geocoder, map);
             }
 
@@ -349,14 +417,17 @@ $(document).ready(function() {
                  if (status === 'OK') {
                    resultsMap.setCenter(results[0].geometry.location);
                  var input_content = '<p>'+results[0].formatted_address+'</p>';
-                 makemarker("검색위치","./images/cheering_minions.gif",input_content,resultsMap,
+                 now_address_lat  = results[0].geometry.location.lat();
+                  now_address_lng =  results[0].geometry.location.lng();
+                  makemarker("검색위치","./images/cheering_minions.gif",input_content,resultsMap,
                   results[0].geometry.location.lat(), results[0].geometry.location.lng())
 
                    //  qurry( resultsMap,lat(),lng()) -> makemarker
-
                  } else {
                  //  alert('위치검색이 안되서 "동국대"로 보여드릴게요!');
                    resultsMap.setCenter({lat:37.5575367,lng:127.0007751});
+                   now_address_lat  = 37.5575367;
+                    now_address_lng =  127.0007751;
                    input_content =  '<p>학생들의 건강을 고려해 언덕에 지어졌죠.<br>'+
                                    '컴공과 학생들이 가끔 아픈건 안 비밀</p>'+
                                    'ps.아..컴공과는 엘레베이터타고 다니죠..';
@@ -385,10 +456,11 @@ $(document).ready(function() {
 
              function getLocation() {
                navigator.geolocation.getCurrentPosition(
-                 function initMap(position) {
+                function initMap(position) {
                    var lat = position.coords.latitude + ","+position.coords.longitude;
                    var address2 = lat;
                 //   var geocoder = new google.maps.Geocoder();
+
                    var map2 = new google.maps.Map(document.getElementById('map'), {
                      zoom:15,
                      center: {lat:37.5575367,lng:127.0007751}
@@ -399,11 +471,10 @@ $(document).ready(function() {
                );
              }
 
-
             </script>
 
             <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoJWfF7bE_v8AWgcksE52yTbQFoJ6jBPI&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
             </script>
             </div>
 

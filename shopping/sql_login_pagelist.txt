@@ -1,0 +1,19 @@
+
+
+ROOT file
+
+ verify.jsp
+
+ register.jsp
+ 
+ idcheck.jsp 
+ 
+ admin.jsp
+
+adminbutton file
+
+  foodAddsubmit.jsp
+ 
+  ingreAddsubmit.jsp
+  
+  marketAddsubmit.jsp

@@ -45,7 +45,7 @@
     String mysqlDriver = "com.mysql.jdbc.Driver";
     String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
     String mysqlroot = "root";
-    String mysqlPW = "LNiaMelo561248^*";
+    String mysqlPW = "ks01";
 
     Class.forName(mysqlDriver);
   	Connection myconn=null;
