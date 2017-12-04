@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
-
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
@@ -18,19 +17,51 @@
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 <!-- //js -->
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- start-smoth-scrolling -->
+
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
+
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){
 			event.preventDefault();
 			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 		});
+	});
+</script>
+
+<script>
+			$("snip1535.hover").mouseleave(function() {
+   				 $(this).removeClass("hover");
+  					}
+			);
+</script>
+<script>
+	$(document).ready(function() {
+    	$(".tab_content").hide();
+    	$(".tab_content:first").show();
+      $(".adminbuttonset").hide();
+      $(".adminbuttonset:first").show();
+
+    	$("ul.tabs li").click(
+    	function (){
+        	$("ul.tabs li").removeClass("active").css("color", "#333");
+        	$(this).addClass("active").css("color", "darkred");
+        	$(".tab_content").hide();
+          $(".adminbuttonset").hide();
+       		var activeTab = $(this).attr("rel");
+          var activebuttonset = $(this).attr("but");
+        	$("#" + activeTab).fadeIn();
+          $("#" + activebuttonset).fadeIn();
+    	});
 	});
 </script>
 
@@ -44,14 +75,70 @@ $(function(){ //전체선택 체크박스 클릭
 		else{ //해당화면에 모든 checkbox들의 체크를해제시킨다.
 			$("input[type=checkbox]").prop("checked",false);
 		}
-	})
-})
+	});
+});
 </script>
 <!-- start-smoth-scrolling -->
 </head>
 
-<script src = "http://code.jquery.com/jquery-1.10.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.1.js"></script>
 
+<script>
+function add_row1() {
+    var table = document.getElementById('tab1_tbody');
+      var row = table.insertRow( table.rows.length ); // 하단에 추가
+      var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox" name="ingre_checkBox"/>';
+      var cell2 = row.insertCell(1); cell2.innerHTML='<input name = "Ingredientname" type="text" size = "10">';
+      var cell3 = row.insertCell(2); cell3.innerHTML='<input name = "Genre" type="text" size = "10">';
+      var cell4 = row.insertCell(3); cell4.innerHTML='<input name = "ingrepicture" type = "text" size = "10">';
+      var cell5 = row.insertCell(4); cell5.innerHTML='<input name = "Prise" type = "text" size = "10">';
+      var cell6 = row.insertCell(5); cell6.innerHTML='<input name = "Method_storage" type="text" size = "10">';
+      var cell7 = row.insertCell(6); cell7.innerHTML='<input name = "Method_cook" type = "text" size = "10">';
+  }
+function delete_row1() {
+    var table = document.getElementById('tab1_tbody');
+    if (table.rows.length < 1) return;
+    table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
+  }
+</script>
+
+<script>
+function add_row2() {
+  var table = document.getElementById('tab2_tbody');
+    var row = table.insertRow( table.rows.length ); // 하단에 추가
+    var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox"/>'
+    var cell2 = row.insertCell(1); cell2.innerHTML='<input name = "Foodname" type="text" size = "10">';
+    var cell3 = row.insertCell(2); cell3.innerHTML='<input name = "Genre" type="text" size = "10">';
+    var cell4 = row.insertCell(3); cell4.innerHTML='<input name = "foodpicture" type="text" size = "10">';
+    var cell5 = row.insertCell(4); cell5.innerHTML='<input name = "Explanation" type="text" size = "10">';
+    var cell6 = row.insertCell(5); cell6.innerHTML='<input name = "Needingredients" type="text" size = "10">';
+    var cell7 = row.insertCell(6); cell7.innerHTML='<input name = "Point" type="text" size = "10">';
+}
+function delete_row2() {
+  var table = document.getElementById('tab2_tbody');
+  if (table.rows.length < 1) return;
+  table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
+}
+</script>
+
+<script>
+function add_row3() {
+var table = document.getElementById('tab3_tbody');
+  var row = table.insertRow( table.rows.length ); // 하단에 추가
+  var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox"/>'
+  var cell2 = row.insertCell(1); cell2.innerHTML='<input name = "Marketname" type="text" size = "10">';
+  var cell3 = row.insertCell(2); cell3.innerHTML='<input name = "marketpicture" type="text" size = "10">';
+  var cell4 = row.insertCell(3); cell4.innerHTML='<input name = "Marketphone" type="text" size = "10">';
+  var cell5 = row.insertCell(4); cell5.innerHTML='<input name = "Marketaddress" type="text" size = "10">';
+  var cell6 = row.insertCell(5); cell6.innerHTML='<input name = "Marketcoordinate" type="text" size = "10">';
+  var cell7 = row.insertCell(6); cell7.innerHTML='<input name = "Market_ingredient" type="text" size = "10">';
+}
+function delete_row3() {
+var table = document.getElementById('tab3_tbody');
+if (table.rows.length < 1) return;
+table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
+}
+</script>
 <body>
 <%
   String mysqlDriver = "com.mysql.jdbc.Driver";
@@ -227,36 +314,45 @@ $(function(){ //전체선택 체크박스 클릭
 	<div class="administrator">
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
-
-			<script>
-			$("snip1535.hover").mouseleave(function() {
-   				 $(this).removeClass("hover");
-  					}
-			);
-			</script>
-			<script>
-	$(document).ready(function() {
-    	$(".tab_content").hide();
-    	$(".tab_content:first").show();
-      $(".adminbuttonset").hide();
-      $(".adminbuttonset:first").show();
-
-    	$("ul.tabs li").click(
-    	function (){
-        	$("ul.tabs li").removeClass("active").css("color", "#333");
-        	$(this).addClass("active").css("color", "darkred");
-        	$(".tab_content").hide();
-          $(".adminbuttonset").hide();
-       		var activeTab = $(this).attr("rel");
-          var activebuttonset = $(this).attr("but");
-        	$("#" + activeTab).fadeIn();
-          $("#" + activebuttonset).fadeIn();
-    	});
-	});
+<script>
+function call_row1(){
+  var i = 0;;
+  for(i=0; i<5; i++){
+    var table = document.getElementById('tab1_tbody');
+      var row = table.insertRow( table.rows.length ); // 하단에 추가
+      var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox" name="ingre_checkBox"/>';
+      var cell2 = row.insertCell(1); cell2.innerHTML='<input name = "Ingredientname" type="text" size = "10">';
+      var cell3 = row.insertCell(2); cell3.innerHTML='<input name = "Genre" type="text" size = "10">';
+      var cell4 = row.insertCell(3); cell4.innerHTML='<input name = "ingrepicture" type = "text" size = "10">';
+      var cell5 = row.insertCell(4); cell5.innerHTML='<input name = "Prise" type = "text" size = "10">';
+      var cell6 = row.insertCell(5); cell6.innerHTML='<input name = "Method_storage" type="text" size = "10">';
+      var cell7 = row.insertCell(6); cell7.innerHTML='<input name = "Method_cook" type = "text" size = "10">';
+  }
+}
 </script>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+  $("#callrow1id").click(function(){
+    alert("데이터요청");
+    $.ajax({
+      type:"POST",
+      url:"adminbutton\\call_row1.jsp",
+      success: function(t){
+          alert("연결성공");
+          alert($(t).text());
+          //$("<h1></h1>").text($(t).text()).appendTo("body");
+        },
+        error: function(){
+          alert("연결실패");
+        }
+      });
+    });
+  });
+</script>
+
 <div id = "adminbuttonset1" class = "adminbuttonset">
-<button type="submit" class="snip1535" onclick >불러오기</button></form>
-<button type="submit" class="snip1535" onclick="add_row1(), window.open('\\adminbutton\\ingreAdd.jsp','ingreAdd','width=700,height=350,location=no,status=no,scrollbars=yes')" >추가</button>
+<button id="callrow1id" type="submit"  class="snip1535" onclick="call_row1()">불러오기</button></form>
+<button type="submit" class="snip1535" onclick="add_row1(), window.open('\\adminbutton\\ingreAdd.jsp','ingreAdd','width=700,height=350,location=no,status=no,scrollbars=yes')">추가</button>
 <button type="submit" class="snip1535">수정</button>
 <button type="submit" class="snip1535" onclick="delete_row1()">삭제</button>
 </div>
@@ -272,62 +368,6 @@ $(function(){ //전체선택 체크박스 클릭
 <button type="submit" class="snip1535">수정</button>
 <button type="submit" class="snip1535" onclick="delete_row3()">삭제</button>
 </div>
-		<script>
-		function add_row1() {
-				var table = document.getElementById('tab1_tbody');
-    			var row = table.insertRow( table.rows.length ); // 하단에 추가
-    			var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox" name="ingre_checkBox"/>';
-    			var cell2 = row.insertCell(1); cell2.innerHTML='<input name = "Ingredientname" type="text" size = "10">';
-    			var cell3 = row.insertCell(2); cell3.innerHTML='<input name = "Genre" type="text" size = "10">';
-   			 	var cell4 = row.insertCell(3); cell4.innerHTML='<input name = "ingrepicture" type = "text" size = "10">';
-    			var cell5 = row.insertCell(4); cell5.innerHTML='<input name = "Prise" type = "text" size = "10">';
-    			var cell6 = row.insertCell(5); cell6.innerHTML='<input name = "Method_storage" type="text" size = "10">';
-    			var cell7 = row.insertCell(6); cell7.innerHTML='<input name = "Method_cook" type = "text" size = "10">';
-  		}
- 		function delete_row1() {
-    		var table = document.getElementById('tab1_tbody');
-    		if (table.rows.length < 1) return;
-    		table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
-  		}
-		</script>
-
-  <script>
-  function add_row2() {
-      var table = document.getElementById('tab2_tbody');
-        var row = table.insertRow( table.rows.length ); // 하단에 추가
-        var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox"/>'
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        var cell6 = row.insertCell(5);
-        var cell7 = row.insertCell(6);
-    }
-  function delete_row2() {
-      var table = document.getElementById('tab2_tbody');
-      if (table.rows.length < 1) return;
-      table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
-    }
-  </script>
-
-<script>
-function add_row3() {
-    var table = document.getElementById('tab3_tbody');
-      var row = table.insertRow( table.rows.length ); // 하단에 추가
-      var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox"/>'
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
-      var cell6 = row.insertCell(5);
-      var cell7 = row.insertCell(6);
-  }
-function delete_row3() {
-    var table = document.getElementById('tab3_tbody');
-    if (table.rows.length < 1) return;
-    table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
-  }
-</script>
     		<ul class="tabs">
         	<li class="active" but="adminbuttonset1" rel="tab1">재료</li>
         	<li but = "adminbuttonset2" rel="tab2">요리</li>
