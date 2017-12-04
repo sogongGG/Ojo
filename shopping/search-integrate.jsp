@@ -105,6 +105,8 @@ public String Get_search_string()
   <div class="w3l_search" style="margin-top: 10px;">
     <form action="search-integrate.jsp" method="post">
       <input type="text" name="Product" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+      <input type="hidden" name="latitude_post" value=now_address_lat>
+      <input type="hidden" name="longitude_post" value=now_address_lng>
       <input type="submit" value=" ">
     </form>
   </div>
@@ -365,8 +367,39 @@ $(document).ready(function() {
             </a>
             <div id="map" style="width: 120%; height:350px; background-color: grey;"> </div>
 
+            <%/*
+            //    <input type="hidden" name="latitude_post" value=now_address_lat>
+            PreparedStatement pstmt = null;
+          	ResultSet rs = null;
+          	boolean result = false;
+            String now_lat=request.getParameter("latitude_post");
+            String now_lng=request.getParameter("longitude_post");
+          	try{
+          		String sql = "select * from Market where (latitude between =? AND =?) AND (longitude between =? AND =?)";
+          		pstmt = myconn.prepareStatement(sql);
+          		pstmt.setString(1,now_lat-0.001);
+              pstmt.setString(2,now_lat+0.001);
+              pstmt.setString(3,now_lng-0.001);
+              pstmt.setString(4,now_lng+0.001);
+          		rs = pstmt.executeQuery();
+          		if(rs.next()){
+          			result = true;
+          		}
+          	}
+          	catch(SQLException se){
+          		System.out.println(se.getMessage());
+          	}
+          	finally{
+          		rs.close();
+          		pstmt.close();
+          		myconn.close();
+          	}*/
+            %>
+
             <!-- address에 검색값 input !!!!-->
             <script>
+            var now_address_lat;
+            var now_address_lng;
 
             function initMap() {
              var map = new google.maps.Map(document.getElementById('map'), {
@@ -375,7 +408,7 @@ $(document).ready(function() {
              });
              var geocoder = new google.maps.Geocoder();
             ////////////address에 검색값 input!!!!
-             var address ="명동";
+             var address =get_search_string_js;
              geocodeAddress(address,geocoder, map);
             }
 
@@ -384,14 +417,17 @@ $(document).ready(function() {
                  if (status === 'OK') {
                    resultsMap.setCenter(results[0].geometry.location);
                  var input_content = '<p>'+results[0].formatted_address+'</p>';
-                 makemarker("검색위치","./images/cheering_minions.gif",input_content,resultsMap,
+                 now_address_lat  = results[0].geometry.location.lat();
+                  now_address_lng =  results[0].geometry.location.lng();
+                  makemarker("검색위치","./images/cheering_minions.gif",input_content,resultsMap,
                   results[0].geometry.location.lat(), results[0].geometry.location.lng())
 
                    //  qurry( resultsMap,lat(),lng()) -> makemarker
-
                  } else {
                  //  alert('위치검색이 안되서 "동국대"로 보여드릴게요!');
                    resultsMap.setCenter({lat:37.5575367,lng:127.0007751});
+                   now_address_lat  = 37.5575367;
+                    now_address_lng =  127.0007751;
                    input_content =  '<p>학생들의 건강을 고려해 언덕에 지어졌죠.<br>'+
                                    '컴공과 학생들이 가끔 아픈건 안 비밀</p>'+
                                    'ps.아..컴공과는 엘레베이터타고 다니죠..';
