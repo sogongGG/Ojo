@@ -20,13 +20,14 @@
 <%
 request.setCharacterEncoding("euc-kr");
 String food_ingrearr[] = new String[100];
+
 String Foodname=request.getParameter("Foodname");
 String Genre=request.getParameter("Genre");
 String foodpicture=request.getParameter("foodpicture");
 String Explanation=request.getParameter("Explanation");
 String Expectedtime=request.getParameter("Expectedtime");
-String Needingredients=request.getParameter("Needingredients");
 
+String Needingredients=request.getParameter("Needingredients");
 int Point=Integer.parseInt((String)request.getParameter("Point"));
 
 
@@ -41,7 +42,6 @@ pst.setString(2, Genre);
 pst.setString(3, foodpicture);
 pst.setString(4, Explanation);
 pst.setString(5, Expectedtime);
-
 
 
 pst.executeUpdate();
