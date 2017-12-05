@@ -80,17 +80,10 @@ public String Get_search_string()
 
 
 <%
-Class.forName("com.mysql.jdbc.Driver");
 String searchKey = request.getParameter("searchKey");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall", "root", "admin");
 Statement stmt = conn.createStatement();
 String search = "select * from food where Foodname ='"+searchKey+"';";
-String searchIngredient = "select * from ingredient where Ingredientname ='"+searchKey+"';";
-String searchIngredientFood = "select * from ingredient_food where Foodname = '"+searchKey+"';";
 ResultSet rs = stmt.executeQuery(search);
-//<li><a href="services.jsp">마트</a></li>
-String testingst = "<li><a href=" + '"' + "services.jsp"+ '"' + ">Hi</a></li>";
-String test = "<li style=" + '"' + "display: inline;" + '"' + ">Hello</li>";
 String[] sArray1 = new String[4]; //food info
 String[] sArray2 = new String[10]; //ingredient_food (name only) info
 String[] sArray3 = new String[80]; //ingredient info
