@@ -80,7 +80,7 @@ public String Get_search_string()
 
 
 <%
-String searchKey = new String(request.getParameter("searchKey").getBytes("8859_1"),"euc-kr");
+String searchKey = request.getParameter("searchKey");
 Statement stmt = myconn.createStatement();
 String search = "select * from food where Foodname ='"+searchKey+"';";
 ResultSet rs = stmt.executeQuery(search);
@@ -149,7 +149,7 @@ function keyword_check(){
 </script>
 <div class="agileits_header">
   <div class="w3l_offers" style="margin-top: 8px;">
-    <a href="products.jsp">5조 쇼핑몰</a>
+    <a href="index.jsp">5조 쇼핑몰</a>
   </div>
   <div class="w3l_search" style="margin-top: 10px;">
     <form action="#" method="post" onsubmit="return keyword_check()">
@@ -287,7 +287,7 @@ $(document).ready(function() {
       <ul class="phone_email">
         <a class="btn" href="#">
         <li><i class="fa fa-map-marker" aria-hidden="true" id="now_location" onclick="getLocation2()">&nbsp;&nbsp;&nbsp;현재위치 확인</i></li></a>
-        <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+        <li><a href="https://cse.dongguk.edu/">문의하기</a></li>
       </ul>
     </div>
     <div class="clearfix"> </div>
@@ -377,7 +377,7 @@ $(document).ready(function() {
 													<input type="hidden" name="item_name" value="pepper salami">
 													<input type="hidden" name="amount" value="10.00">
 													<input type="hidden" name="discount_amount" value="1.00">
-													<input type="hidden" name="currency_code" value="USD">
+													<input type="hidden" name="currency_code" value="KRW">
 													<input type="hidden" name="return" value=" ">
 													<input type="hidden" name="cancel_return" value=" ">
 													<input type="submit" name="submit" value="Add to cart" class="button">
@@ -827,7 +827,7 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.js"></script>
+<script src="js/minicart.js?version=1" charset="utf-8"></script>
 <script>
 		paypal.minicart.render();
 		paypal.minicart.cart.on('checkout', function (evt) {

@@ -556,7 +556,7 @@ ul.dropdown-menu.drp-mnu li a i {
 .snipcart-details input.button {
     font-size: 14px;
     color: #fff;
-    background: #86B404;
+    background: #f6de4d;
     text-decoration: none;
     position: relative;
     border: none;
@@ -567,7 +567,7 @@ ul.dropdown-menu.drp-mnu li a i {
     outline: none;
 }
 .agile_top_brand_left_grid:hover .snipcart-details input.button,.snipcart-details input.button:hover{
-    background: #84C639;
+    background: #393ac6;
 }
 .product_list_header input.button {
     color: #fff;
@@ -618,14 +618,14 @@ ul.dropdown-menu.drp-mnu li a i {
     color: #999;
 }
 #PPMiniCart .minicart-remove {
-    background: #86B404 !important;
-    border: 1px solid #86B404 !important;
+    background: #ff0000 !important;
+    border: 1px solid #ff0000 !important;
 	opacity: 1 !important;
 	outline:none;
 }
 #PPMiniCart .minicart-submit:hover{
-	background:#84C639 !important;
-	border-color: #5b951a !important;
+	background:#ff0000 !important;
+	border-color: #ff0000 !important;
 }
 #PPMiniCart .minicart-subtotal {
     padding-left: 25px !important;
@@ -650,8 +650,8 @@ ul.dropdown-menu.drp-mnu li a i {
     height: 33px;
     margin-right:6px;
     padding: 0 9px;
-    border: 1px solid #84c639!important;
-	background:#84c639!important;
+    border: 1px solid #e5f56a!important;
+	background:#e5f56a!important;
 	position: absolute;
     border-radius: 0px!important;
     color: #000;
