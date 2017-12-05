@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
+<%@ include file = "sqllogininfo.jsp" %>
 <!--
 author: W3layouts
 author URL: http://w3layouts.com
@@ -50,13 +51,6 @@ String get_search_string_jsp;
 request.setCharacterEncoding("euc-kr");
 search_String = request.getParameter("searchKey");
 get_search_string_jsp = Get_search_string();
-String mysqlDriver = "com.mysql.jdbc.Driver";
-String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
-String mysqlroot = "root";
-String mysqlPW = "admin";
-Class.forName(mysqlDriver);
-Connection myconn=null;
-myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
 %>
 <%!
 public String Get_search_string()
