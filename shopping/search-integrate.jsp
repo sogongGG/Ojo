@@ -81,7 +81,7 @@ public String Get_search_string()
 
 <%
 String searchKey = request.getParameter("searchKey");
-Statement stmt = conn.createStatement();
+Statement stmt = myconn.createStatement();
 String search = "select * from food where Foodname ='"+searchKey+"';";
 ResultSet rs = stmt.executeQuery(search);
 String[] sArray1 = new String[4]; //food info
@@ -610,7 +610,7 @@ $(document).ready(function() {
 
                   <form action="#" method="post">
                     <fieldset>
-                      <% for (int i = 0; sArray2[i] != null; i++) {%>
+
                       <input type="hidden" name="cmd" value="_cart">
                       <input type="hidden" name="add" value="1">
                       <input type="hidden" name="business" value=" ">
@@ -620,7 +620,7 @@ $(document).ready(function() {
                       <input type="hidden" name="currency_code" value="USD">
                       <input type="hidden" name="return" value=" ">
                       <input type="hidden" name="cancel_return" value=" ">
-                      <%}%>
+
                       <input type="submit" name="submit" value="장바구니 일괄담기" class="button">
                     </fieldset>
                   </form>
