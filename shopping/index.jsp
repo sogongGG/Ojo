@@ -38,14 +38,19 @@
 </head>
 
 <body>
+  <script type = "text/javascript">
+  function keyword_check(){
+    return true;
+  }
+  </script>
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers" style="margin-top: 8px;">
 			<a href="products.jsp">5조 쇼핑몰</a>
 		</div>
 		<div class="w3l_search" style="margin-top: 10px;">
-			<form action="#" method="post">
-				<input type="text" name="Product" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+			<form action="search-integrate.jsp" method="post" onsubmit="return keyword_check()">
+				<input type="text" name="searchKey" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '물품 검색';}" required="">
 				<input type="submit" value=" ">
 			</form>
 		</div>
