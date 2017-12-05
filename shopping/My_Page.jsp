@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 
 <html>
@@ -190,58 +190,19 @@
 	</div>
 <!-- //header -->
 <!-- banner -->
-	<div class="banner" style="height: 500px;">
-		<div class="w3l_banner_nav_center">
-			<section class="slider">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div class="w3l_banner_nav_right_banner">
-								<h3>직접 요리하시는건<span>어떠신가요?</span></h3>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<!-- flexSlider -->
-				<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
-				<script defer src="js/jquery.flexslider.js"></script>
-				<script type="text/javascript">
-				$(window).load(function(){
-				  $('.flexslider').flexslider({
-					animation: "slide",
-					start: function(slider){
-					  $('body').removeClass('loading');
-					}
-				  });
-				});
-			  </script>
-			<!-- //flexSlider -->
-		</div>
-		<div class="clearfix"></div>
-	</div>
 <!-- banner -->
-	<div class="agileits_team_grids" style="padding-bottom: 1em; padding-top: 50px; background: #7e7e7eb3; margin-top:0px;">
-		<h4> 5조 구성원 </h4>
-		<div class="col-md-4 agileits_team_grid">
-					<img src="images/32.jpg" alt=" " class="img-responsive">
-					<h4>김강산</h4>
-					<p>팀장</p>
-
-				</div>
-				<div class="col-md-4 agileits_team_grid">
-					<img src="images/33.jpg" alt=" " class="img-responsive">
-					<h4>이치종</h4>
-					<p>팀원1</p>
-
-				</div>
-				<div class="col-md-4 agileits_team_grid">
-					<img src="images/34.jpg" alt=" " class="img-responsive">
-					<h4>박정훈</h4>
-					<p>팀원2</p>
-
-				</div>
-			<div class="clearfix"> </div>
+	<div class="grid_mypage" style="padding-bottom: 10px; margin-top:0px;">
+		<p class = "title"> 나의 페이지 <p>
+    <div class="mypagebacksquare">
+      <div class="myinfo">
+        <p class="myinfop">나의 정보</p>
+      </div>
+      <div class="mypagemain">
+        <div class="textbackbox">
+          <input type = "text"/>
+        </div>
+      </div>
+    </div>
 	</div>
 
   <script>
