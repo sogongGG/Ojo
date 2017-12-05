@@ -232,10 +232,10 @@ $(document).ready(function() {
     </div>
     <div class="w3ls_logo_products_left1">
       <ul class="special_items">
-        <li><a href="events.jsp">모든 상품</a><i>/</i></li>
-        <li><a href="about.jsp">요리</a><i>/</i></li>
-        <li><a href="products.jsp">재료</a><i>/</i></li>
-        <li><a href="services.jsp">마트</a></li>
+        <li><a href="search-integrate.jsp">모든 상품</a><i>/</i></li>
+        <li><a href="search-integrate.jsp">요리</a><i>/</i></li>
+        <li><a href="search-integrate.jsp">재료</a><i>/</i></li>
+        <li><a href="search-integrate.jsp">마트</a></li>
       </ul>
     </div>
     <div class="w3ls_logo_products_left1">
@@ -374,9 +374,9 @@ $(document).ready(function() {
 													<input type="hidden" name="cmd" value="_cart">
 													<input type="hidden" name="add" value="1">
 													<input type="hidden" name="business" value=" ">
-													<input type="hidden" name="item_name" value="pepper salami">
-													<input type="hidden" name="amount" value="10.00">
-													<input type="hidden" name="discount_amount" value="1.00">
+													<input type="hidden" name="item_name" value=<%=sArray2[0] %>>
+													<input type="hidden" name="amount" value=<%=sArray3[5] %>>
+													<input type="hidden" name="discount_amount" value=<%=sArray3[6] %>>
 													<input type="hidden" name="currency_code" value="KRW">
 													<input type="hidden" name="return" value=" ">
 													<input type="hidden" name="cancel_return" value=" ">
@@ -623,10 +623,10 @@ $(document).ready(function() {
    													<input type="hidden" name="cmd" value="_cart">
    													<input type="hidden" name="add" value="1">
    													<input type="hidden" name="business" value=" ">
-   													<input type="hidden" name="item_name" value="pepper salami">
-   													<input type="hidden" name="amount" value="10.00">
-   													<input type="hidden" name="discount_amount" value="1.00">
-   													<input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="item_name" value=<%=sArray2[0] %>>
+    												<input type="hidden" name="amount" value=<%=sArray3[5] %>>
+    												<input type="hidden" name="discount_amount" value=<%=sArray3[6] %>>
+    												<input type="hidden" name="currency_code" value="KRW">
    													<input type="hidden" name="return" value=" ">
    													<input type="hidden" name="cancel_return" value=" ">
    													<input type="submit" name="submit" value="Add to cart" class="button">
@@ -743,7 +743,7 @@ $(document).ready(function() {
                              <input type="hidden" name="item_name" value=<%=sArray2[i] %>>
                              <input type="hidden" name="amount" value=<%=sArray3[5 + (i*8)] %>>
                              <input type="hidden" name="discount_amount" value=<%=sArray3[6 + (i*8)] %>>
-                             <input type="hidden" name="currency_code" value="WON">
+                             <input type="hidden" name="currency_code" value="KRW">
                              <input type="hidden" name="return" value=" ">
                              <input type="hidden" name="cancel_return" value=" ">
                              <input type="submit" name="submit" value="Add to cart" class="button">
