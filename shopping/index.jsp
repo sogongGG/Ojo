@@ -41,7 +41,7 @@
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers" style="margin-top: 8px;">
-			<a href="products.jsp">5조 쇼핑몰</a>
+			<a href="index.jsp">5조 쇼핑몰</a>
 		</div>
 		<div class="w3l_search" style="margin-top: 10px;">
       <form action="search-integrate.jsp" method="post" onsubmit="return initMap2()">
@@ -56,7 +56,7 @@
                 <fieldset>
                   <input type="hidden" name="cmd" value="_cart" />
                   <input type="hidden" name="display" value="1" />
-                    <input type="submit" name="submit" value="장바구니 보기" class="button" />
+                  <input type="submit" name="submit" value="장바구니 보기" class="button" />
                 </fieldset>
             </form>
 		</div>
@@ -182,7 +182,7 @@
 				<ul class="phone_email">
           <a class="btn" href="#">
 					<li><i class="fa fa-map-marker" aria-hidden="true" id="now_location" onclick="getLocation()">&nbsp;&nbsp;&nbsp;현재위치 확인</i></li></a>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><a href="https://cse.dongguk.edu/">문의하기</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -245,14 +245,14 @@
 	</div>
 
   <script>
-  document.getElementsByName("latitude_post")[0].value = 37.5575367;
-  document.getElementsByName("longitude_post")[0].value = 127.0007751;
+    document.getElementsByName("latitude_post")[0].value = 37.5575367;
+    document.getElementsByName("longitude_post")[0].value = 127.0007751;
 
-  </script>
+    </script>
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
-  </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
+    </script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>

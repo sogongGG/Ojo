@@ -75,21 +75,23 @@ function getResult(){
 <body>
 <!-- header -->
 	<div class="agileits_header">
-		<div class="w3l_offers" style="margin-top: 8px;">
-			<a href="products.html">5조 쇼핑몰</a>
+    <div class="w3l_offers" style="padding: 8px;">
+			<a href="index.jsp">5조 쇼핑몰</a>
 		</div>
-		<div class="w3l_search" style="padding: 2px;">
-			<form action="#" method="post">
-				<input type="text" name="Product" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
-				<input type="submit" value=" ">
+		<div class="w3l_search" style="margin-top: 10px;">
+			<form action="#" method="post" onsubmit="return keyword_check()">
+        <input type="text" name="searchKey" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '물품 검색';}" required="">
+        <input type="hidden" name="latitude_post" >
+        <input type="hidden" name="longitude_post">
+        <input type="submit" value=" ">
 			</form>
 		</div>
-		<div class="product_list_header" style="padding-right: 2em;">
-			<form action="#" method="post" class="last">
+    <div class="product_list_header" style="padding: 6px, 2em, 6px 4px; margin-top: 10px;">
+      <form action="#" method="post" class="last">
                 <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
-                    <input type="submit" name="submit" value="장바구니 보기" class="button" />
+                  <input type="hidden" name="cmd" value="_cart" />
+                  <input type="hidden" name="display" value="1" />
+                  <input type="submit" name="submit" value="장바구니 보기" class="button" />
                 </fieldset>
             </form>
 		</div>
@@ -203,7 +205,7 @@ function getResult(){
 				<ul class="phone_email">
           <a class="btn" href="#">
 					<li><i class="fa fa-map-marker" aria-hidden="true" id="now_location" onclick="getLocation()">&nbsp;&nbsp;&nbsp;현재위치 확인</i></li></a>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><a href="https://cse.dongguk.edu/">문의사항</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -331,7 +333,7 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.js"></script>
+<script src="js/minicart.js?version=1" charset="utf-8"></script>
 <script>
 		paypal.minicart.render();
 

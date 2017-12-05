@@ -87,6 +87,7 @@ ResultSet rs = stmt.executeQuery(search);
 String[] sArray1 = new String[4]; //food info
 String[] sArray2 = new String[10]; //ingredient_food (name only) info
 String[] sArray3 = new String[80]; //ingredient info
+String[] sArrayMart = new String[20]; //market info
 
 if(rs.next()) {
   for (int i = 0; i < sArray1.length; i++){
@@ -123,16 +124,20 @@ while(count < tmp){
   }
   count++;
 }
-/*searchKey = sArray2[1];
-search = "select * from ingredient where Ingredientname = '"+searchKey+"';";
-rs = stmt.executeQuery(search);
-if (rs.next()){
-  for (int i = 0; i < 8; i++){
-    sArray3[i+8] = rs.getString(i+1);
-    out.println(sArray3[i+8]);
-  }
-}*/
-
+/*request.setCharacterEncoding("utf-8");
+String searchKey_test ="";
+PreparedStatement pstmt_test = null;
+searchKey_test = "레몬마트";
+search = "select * from market where Marketname = ? ";
+pstmt_test = myconn.prepareStatement(search);
+pstmt_test.setString(1,searchKey_test);
+rs = pstmt_test.executeQuery(search);
+while(rs.next()){
+  int i = 0;
+  sArrayMart[i] = rs.getString(0);
+  out.println(sArrayMart[i]);
+}
+out.println(sArrayMart[0]);*/
 %>
 
 <body>
@@ -144,7 +149,7 @@ function keyword_check(){
 </script>
 <div class="agileits_header">
   <div class="w3l_offers" style="margin-top: 8px;">
-    <a href="products.jsp">5조 쇼핑몰</a>
+    <a href="index.jsp">5조 쇼핑몰</a>
   </div>
   <div class="w3l_search" style="margin-top: 10px;">
     <form action="#" method="post" onsubmit="return keyword_check()">
@@ -282,7 +287,7 @@ $(document).ready(function() {
       <ul class="phone_email">
         <a class="btn" href="#">
         <li><i class="fa fa-map-marker" aria-hidden="true" id="now_location" onclick="getLocation2()">&nbsp;&nbsp;&nbsp;현재위치 확인</i></li></a>
-        <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+        <li><a href="https://cse.dongguk.edu/">문의하기</a></li>
       </ul>
     </div>
     <div class="clearfix"> </div>
@@ -372,7 +377,7 @@ $(document).ready(function() {
 													<input type="hidden" name="item_name" value="pepper salami">
 													<input type="hidden" name="amount" value="10.00">
 													<input type="hidden" name="discount_amount" value="1.00">
-													<input type="hidden" name="currency_code" value="USD">
+													<input type="hidden" name="currency_code" value="KRW">
 													<input type="hidden" name="return" value=" ">
 													<input type="hidden" name="cancel_return" value=" ">
 													<input type="submit" name="submit" value="Add to cart" class="button">
@@ -710,6 +715,7 @@ $(document).ready(function() {
 					</a>
 				  </h4>
 				</div>
+
 				<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix" aria-expanded="false" style="height: 0px;">
 				   <div class="panel-body panel_text">
              <% for (int i = 0; sArray2[i] != null; i++) {%>
@@ -734,10 +740,10 @@ $(document).ready(function() {
                              <input type="hidden" name="cmd" value="_cart">
                              <input type="hidden" name="add" value="1">
                              <input type="hidden" name="business" value=" ">
-                             <input type="hidden" name="item_name" value="pepper salami">
-                             <input type="hidden" name="amount" value="10.00">
-                             <input type="hidden" name="discount_amount" value="1.00">
-                             <input type="hidden" name="currency_code" value="USD">
+                             <input type="hidden" name="item_name" value=<%=sArray2[i] %>>
+                             <input type="hidden" name="amount" value=<%=sArray3[5 + (i*8)] %>>
+                             <input type="hidden" name="discount_amount" value=<%=sArray3[6 + (i*8)] %>>
+                             <input type="hidden" name="currency_code" value="WON">
                              <input type="hidden" name="return" value=" ">
                              <input type="hidden" name="cancel_return" value=" ">
                              <input type="submit" name="submit" value="Add to cart" class="button">
@@ -755,7 +761,35 @@ $(document).ready(function() {
 				</div>
 			  </div>
 
+        <div class="panel panel-default">
+       <div class="panel-heading" role="tab" id="headingSeven">
+         <h4 class="panel-title asd">
+         <a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>마트검색 결과
+         </a>
+         </h4>
+       </div>
+       <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven" aria-expanded="false" style="height: 0px;">
+          <div class="panel-body panel_text">
 
+            <div class="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left" style="padding-left: 0px; padding-right: 0px;">
+              <div class="hover14 column"></div>
+                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                <div class="agile_top_brand_left_grid1">
+                  <figure>
+                    <div class="snipcart-item block">
+                      <div class="snipcart-thumb">
+                        <a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
+                        <p> hello </p>
+                        <h4>가격 :
+
+                       </h4>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+            </div>
 
 
 		</div>
@@ -793,7 +827,7 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.js"></script>
+<script src="js/minicart.js?version=1" charset="utf-8"></script>
 <script>
 		paypal.minicart.render();
 		paypal.minicart.cart.on('checkout', function (evt) {
