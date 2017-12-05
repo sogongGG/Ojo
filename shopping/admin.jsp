@@ -74,8 +74,6 @@ $(document).ready(function($){
   });
 </script>
 
-<script src="http://code.jquery.com/jquery-1.12.1.js"></script>
-
 <script>
 			$("snip1535.hover").mouseleave(function() {
    				 $(this).removeClass("hover");
@@ -201,7 +199,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers" style="margin-top: 8px;">
-			<a href="products.jsp">5조 쇼핑몰</a>
+			<a href="index.jsp">5조 쇼핑몰</a>
 		</div>
 		<div class="w3l_search" style="margin-top: 10px;">
 			<form action="#" method="post">

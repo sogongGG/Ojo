@@ -2086,7 +2086,6 @@ p.animi{
 .agileits_team_grids{
 	margin:3em 0 0;
 }
-
 .agileits_team_grid h4{
 	margin: 1em 0 .2em;
     color: #84C639;
@@ -3071,4 +3070,45 @@ ul.tabs li.active {
   background-color: #212121;
   padding: 50px 0;
   text-align: center;
+}
+.mypagebacksquare{
+  margin-left:auto;
+  margin-right:auto;
+  border-width:thick;
+  border-color:black;
+  border-style:solid;
+  background-image:url("../images/mypagebackground.jpg");
+  width: 60em;
+  height: 30em;
+}
+.grid_mypage{
+  background-image: url("../images/dorma.jpg");
+  background-size:contain;
+}
+.grid_mypage .title{
+  text-align:center;
+  font-size: 40px;
+  margin-left:auto;
+  margin-right:auto;
+  width: 400px;
+  color : black;
+  font-family:sans-serif;
+  background-image: url("../images/panza.jpg");
+  background-size: auto;
+  font-style:normal;
+  border-style:double;
+}
+.myinfo{
+  text-align:left;
+}
+.myinfop{
+  margin: 10px,10px,10px,10px;
+  padding: 10px 10px 10px 10px;
+  text-align:left;
+  font-size:20px;
+  font-weight: bold;
+}
+.textbackbox{
+  margin: 10px,10px,10px,10px;
+  
 }
