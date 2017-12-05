@@ -376,7 +376,7 @@ $(document).ready(function() {
 													<input type="hidden" name="business" value=" ">
 													<input type="hidden" name="item_name" value=<%=sArray2[0] %>>
 													<input type="hidden" name="amount" value=<%=sArray3[5] %>>
-													<input type="hidden" name="discount_amount" value=<%=sArray3[6] %>>
+													<input type="hidden" name="discount_rate" value=<%=sArray3[6] %>>
 													<input type="hidden" name="currency_code" value="KRW">
 													<input type="hidden" name="return" value=" ">
 													<input type="hidden" name="cancel_return" value=" ">
@@ -625,7 +625,7 @@ $(document).ready(function() {
    													<input type="hidden" name="business" value=" ">
                             <input type="hidden" name="item_name" value=<%=sArray2[0] %>>
     												<input type="hidden" name="amount" value=<%=sArray3[5] %>>
-    												<input type="hidden" name="discount_amount" value=<%=sArray3[6] %>>
+    												<input type="hidden" name="discount_rate" value=<%=sArray3[6] %>>
     												<input type="hidden" name="currency_code" value="KRW">
    													<input type="hidden" name="return" value=" ">
    													<input type="hidden" name="cancel_return" value=" ">
@@ -682,7 +682,7 @@ $(document).ready(function() {
                       <input type="hidden" name="business" value=" ">
                       <input type="hidden" name="item_name" value=<%=sArray2[1] %>>
                       <input type="hidden" name="amount" value="10.00">
-                      <input type="hidden" name="discount_amount" value="1.00">
+                      <input type="hidden" name="discount_rate" value="1.00">
                       <input type="hidden" name="currency_code" value="USD">
                       <input type="hidden" name="return" value=" ">
                       <input type="hidden" name="cancel_return" value=" ">
@@ -742,7 +742,7 @@ $(document).ready(function() {
                              <input type="hidden" name="business" value=" ">
                              <input type="hidden" name="item_name" value=<%=sArray2[i] %>>
                              <input type="hidden" name="amount" value=<%=sArray3[5 + (i*8)] %>>
-                             <input type="hidden" name="discount_amount" value=<%=sArray3[6 + (i*8)] %>>
+                             <input type="hidden" name="discount_rate" value=<%=sArray3[6 + (i*8)] %>>
                              <input type="hidden" name="currency_code" value="KRW">
                              <input type="hidden" name="return" value=" ">
                              <input type="hidden" name="cancel_return" value=" ">
