@@ -48,12 +48,12 @@ String get_search_string_jsp;
 %>
 <%
 request.setCharacterEncoding("euc-kr");
-search_String = request.getParameter("Product");
+search_String = request.getParameter("searchKey");
 get_search_string_jsp = Get_search_string();
 String mysqlDriver = "com.mysql.jdbc.Driver";
 String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
 String mysqlroot = "root";
-String mysqlPW = "ks01";
+String mysqlPW = "admin";
 Class.forName(mysqlDriver);
 Connection myconn=null;
 myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
@@ -78,33 +78,41 @@ public String Get_search_string()
 
 
 <%
-//Class.forName("com.mysql.jdbc.Driver");
-//String searchKey = "testing";
-//Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall", "root", "ks01");
-//Statement stmt = conn.createStatement();
-//String search = "select * from food where Genre ='"+searchKey+"';";
-//ResultSet rs = stmt.executeQuery(search);
+Class.forName("com.mysql.jdbc.Driver");
+String searchKey = request.getParameter("searchKey");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall", "root", "admin");
+Statement stmt = conn.createStatement();
+String search = "select * from food where Genre ='"+searchKey+"';";
+ResultSet rs = stmt.executeQuery(search);
 //<li><a href="services.jsp">마트</a></li>
-//String testingst = "<li><a href=" + '"' + "services.jsp"+ '"' + ">Hi</a></li>";
-//String test = "<li style=" + '"' + "display: inline;" + '"' + ">Hello</li>";
-%>
+String testingst = "<li><a href=" + '"' + "services.jsp"+ '"' + ">Hi</a></li>";
+String test = "<li style=" + '"' + "display: inline;" + '"' + ">Hello</li>";
 
-<%
-//if(rs.next()){
-//  int i = 1;
-//}
+if(rs.next()){
+}
+else{
+  searchKey = "Recommended";
+  search = "select * from food where Foodname ='"+searchKey+"';";
+  rs = stmt.executeQuery(search);
+  rs.next();
+}
+
 %>
 
 <body>
 <!-- header -->
-
+<script type = "text/javascript">
+function keyword_check(){
+  return true;
+}
+</script>
 <div class="agileits_header">
   <div class="w3l_offers" style="margin-top: 8px;">
     <a href="products.jsp">5조 쇼핑몰</a>
   </div>
   <div class="w3l_search" style="margin-top: 10px;">
-    <form action="search-integrate.jsp" method="post">
-      <input type="text" name="Product" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+    <form action="#" method="post" onsubmit="return keyword_check()">
+      <input type="text" name="searchKey" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '물품 검색';}" required="">
       <input type="hidden" name="latitude_post" value=now_address_lat>
       <input type="hidden" name="longitude_post" value=now_address_lng>
       <input type="submit" value=" ">
@@ -121,10 +129,9 @@ public String Get_search_string()
   <!--  복붙할 구간 *************************************************************************************** -->
 
   <%
-//    String sessionid = "";
-//    sessionid = (String)session.getAttribute("sessionid");
-//    if(sessionid == null || sessionid.equals("")){
-%>
+    String sessionid = "";
+    sessionid = (String)session.getAttribute("sessionid");
+    if(sessionid == null || sessionid.equals("")){%>
     <div class="form">
       <fieldset>
       <form action='#' method="post">
@@ -134,16 +141,12 @@ public String Get_search_string()
         </fieldset>
   </div>
   <%
-  //}else{
-  %>
+  }else{%>
   <div></div>
   <form action = "logout.jsp" method = "post">
   <div style="padding-top: 20px;">
     <ul>
-      <li style="display: inline-block; padding-right: 25px; padding-left: 25px;"><%
-      //=sessionid
-       %>
-      님 환영합니다.</li>
+      <li style="display: inline-block; padding-right: 25px;  padding-left: 25px;"><%=sessionid %>님 환영합니다.</li>
       <li style="display: inline-block; padding-right: 25px;">
         <i class="fa fa-user" aria-hidden="true"> </i>
         <a href="#">MyPage</a>
@@ -153,8 +156,7 @@ public String Get_search_string()
       </li>
   </div>
   </form>
-<%//}
-%>
+<%}%>
   <!--  복붙할 구간 *************************************************************************************** -->
 
 
@@ -297,9 +299,7 @@ $(document).ready(function() {
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
 											<a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
-											<p> <%
-                      //=rs.getString(1)
-                      %> </p>
+											<p> <%=rs.getString(1)%> </p>
 											<h4>$10.0</h4>
 										</div>
 										<div class="snipcart-details">
@@ -327,20 +327,11 @@ $(document).ready(function() {
             <div class="agile_top_brand_left_grid1" style="backgroud: white;">
           	   <h3 class=title style="font-size: small;"> 요리설명 </h3>
                <p style="width: -webkit-fill-available; height: 170px; overflow: scroll;">
-                 <%//=rs.getString(3)
+                 <%=rs.getString(3)
                  %>
                </p>
                <h3 class=title style="font-size: small;"> 필요재료 </h3>
-
-               <%
-                //     String[] sArray1 = rs.getString(3).split(",");
-                //     for (int i = 0; i < 5; i++){
-                      // String plzs1 = "<li>" + sArray1[i] + "</li>";
-                //       String plz = "<li style=" + '"' + "display: inline;" + '"' + ">" + sArray1[i] + "</li>";
-                       //String plzs = "<li>" + sArray1[i] + "</li>";
-                //       out.println(plz);
-                //     }
-               %>
+                <%=rs.getString(5)%>
           	</div>
           </div>
           <div class="col-md-3 w3ls_w31_banner_left_reviews" style="width: 20%">
@@ -500,7 +491,7 @@ $(document).ready(function() {
    									<div class="snipcart-item block">
    										<div class="snipcart-thumb">
    											<a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
-   											<p>pepper salami (250 gm)</p>
+   											<p><%=rs.getString(1)%></p>
    											<h4>$10.0</h4>
    										</div>
    										<div class="snipcart-details">
@@ -528,7 +519,7 @@ $(document).ready(function() {
               <div class="agile_top_brand_left_grid1" style="backgroud: white;">
             	   <h3 class=title style="font-size: small;"> 요리설명 </h3>
                  <p style="width: -webkit-fill-available; height: 170px; overflow: scroll;">
-                   "한국 요리(韓國料理, 문화어: 조선 료리)는 한국의 음식을 뜻한다. 복잡한 궁중 요리에서부터 지방의 특색 요리와 현대의 퓨전 요리에 이르기까지 재료와 조리법이 매우 다양하다. 전통적인 한국 정식은 밥, 국, 김치와 함께 나오는 많은 반찬들로 이루어진다. 한국 요리는 주로 쌀을 기반으로. 일반적으로 사용되는 성분 포함 참기름, 된장, 간장, 소금, 마늘, 생강, 다시마국물그리고 고추장 등으로 맛을 낸다. 김치는 거의 항상 모든 음식에서 제공된다. 식단은 계절별로 다양한데, 전통적으로 겨울 동안에는 마당에 구멍을 파고 땅 속에 묻어 놓은 장독에 저장된 김치와 그 밖에 절인 채소들에 많이 의존했다. 그러나 현재는 계절에 상관없이 대부분의 식단을 맛볼 수 있다."
+                   <%=rs.getString(3) %>
                  </p>
             	</div>
             </div>
@@ -536,10 +527,15 @@ $(document).ready(function() {
               <div class="hover14 column"></div>
               <div class="agile_top_brand_left_grid1" style="background: white;">
                 <h3 class=title style="font-size: small;"> 필요재료 </h3>
-                <li> 재료1 </li>
-                <li> 재료2 </li>
-                <li> 재료3 </li>
-                <li> 아주긴재료이름름름4 </li>
+                <%=rs.getString(5)
+                  //    String[] sArray1 = rs.getString(5).split(",");
+                      //for (int i = 0; i < 5; i++){
+                      //  String plzs1 = "<li>" + sArray1[i] + "</li>";
+                      //  String plz = "<li style=" + '"' + "display: inline;" + '"' + ">" + sArray1[i] + "</li>";
+                      //  String plzs = "<li>" + sArray1[i] + "</li>";
+                      //  out.println(plz);
+                      //}
+                %>
                 <div class="snipcart-details">
                   <form action="#" method="post">
                     <fieldset>
