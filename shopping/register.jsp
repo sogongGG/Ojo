@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
+<%@ include file = "sqllogininfo.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,16 +42,6 @@
 <script src = "js/findaddress.js" language = "javascript">openDaumPostcode();</script>
 
 <body>
-  <%
-    String mysqlDriver = "com.mysql.jdbc.Driver";
-    String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
-    String mysqlroot = "root";
-    String mysqlPW = "ks01";
-
-    Class.forName(mysqlDriver);
-  	Connection myconn=null;
-  	myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
-  %>
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers" style="padding: 2px;">

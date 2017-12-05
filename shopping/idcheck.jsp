@@ -2,16 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import = "java.sql.*"%>
 <%@ page import = "java.io.PrintWriter"%>
-<%
-  String mysqlDriver = "com.mysql.jdbc.Driver";
-  String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
-  String mysqlroot = "root";
-  String mysqlPW = "ks01";
-
-  Class.forName(mysqlDriver);
-	Connection myconn=null;
-	myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
-%>
+<%@ include file = "sqllogininfo.jsp" %>
 <%
 	String ID = request.getParameter("ID");
 

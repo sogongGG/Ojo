@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
+<%@ include file = "sqllogininfo.jsp" %>
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
@@ -169,21 +170,11 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 </script>
 <body>
 <%
-  String mysqlDriver = "com.mysql.jdbc.Driver";
-  String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
-  String mysqlroot = "root";
-  String mysqlPW = "LNiaMelo561248^*";
-
-  Class.forName(mysqlDriver);
-  Connection myconn=null;
-  myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
-  String name = "select * from administrator where ID =?";
-
-
 	String sessionid = "";
 	sessionid = (String)session.getAttribute("sessionid");
 	request.setCharacterEncoding("euc-kr");
 
+  String name = "select * from administrator where ID =?";
 	PreparedStatement pst=myconn.prepareStatement(name);
 	pst.setString(1, sessionid);
 	ResultSet rs=pst.executeQuery();
