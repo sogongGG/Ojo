@@ -44,14 +44,18 @@
 			<a href="products.jsp">5조 쇼핑몰</a>
 		</div>
 		<div class="w3l_search" style="margin-top: 10px;">
-			<form action="#" method="post">
-				<input type="text" name="Product" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
-				<input type="submit" value=" ">
+      <form action="search-integrate.jsp" method="post" onsubmit="return initMap2()">
+        <input type="text" name="searchKey" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '물품 검색';}" required="">
+        <input type="hidden" name="latitude_post" >
+        <input type="hidden" name="longitude_post" >
+        <input type="submit" value=" ">
 			</form>
 		</div>
 		<div class="product_list_header" style="padding: 6px, 2em, 6px 4px; margin-top: 10px;">
 			<form action="#" method="post" class="last">
                 <fieldset>
+                  <input type="hidden" name="cmd" value="_cart" />
+                  <input type="hidden" name="display" value="1" />
                     <input type="submit" name="submit" value="장바구니 보기" class="button" />
                 </fieldset>
             </form>
@@ -240,6 +244,15 @@
 			<div class="clearfix"> </div>
 	</div>
 
+  <script>
+  document.getElementsByName("latitude_post")[0].value = 37.5575367;
+  document.getElementsByName("longitude_post")[0].value = 127.0007751;
+
+  </script>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
+  </script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>
