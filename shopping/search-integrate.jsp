@@ -452,11 +452,7 @@ $(document).ready(function() {
             catch(SQLException se){
               System.out.println(se.getMessage());
             }
-            finally{
-              rs1.close();
-              pstmt.close();
-              myconn.close();
-              }
+
             }
             else{
             }
@@ -464,6 +460,8 @@ $(document).ready(function() {
 
             <!-- address에 검색값 input !!!!-->
             <script>
+            document.getElementsByName("latitude_post")[0].value = 37.5575367;
+            document.getElementsByName("longitude_post")[0].value = 127.0007751;
             var now_address_lat;
             var now_address_lng;
 
@@ -495,36 +493,28 @@ $(document).ready(function() {
                   now_address_lng =  results[0].geometry.location.lng();
                   makemarker("검색위치","./images/cheering_minions.gif",input_content,resultsMap,
                   results[0].geometry.location.lat(), results[0].geometry.location.lng())
-                  document.getElementsByName("latitude_post")[0].value = now_address_lat;
-                  document.getElementsByName("longitude_post")[0].value = now_address_lng;
+
 
                   makemarker("<%=martname1[0]%>","./images/cheering_minions.gif",
                   "<p>테스트0</p>",resultsMap,<%=martlat[0]%>, <%=martlng[0]%>);
-                  alert("<%=martname1[0]%>" + " " +"<%=martlat[0]%>" +" <%=martlng[0]%> ");
 
                   makemarker("<%=martname1[1]%>","./images/cheering_minions.gif",
                   "<p>테스트1</p>",resultsMap,<%=martlat[1]%>, <%=martlng[1]%>);
-                  alert("<%=martname1[1]%>" +" " + "<%=martlat[1]%>" +" <%=martlng[1]%> ");
 
                   makemarker("<%=martname1[2]%>","./images/cheering_minions.gif",
                   "<p>테스트2</p>",resultsMap,<%=martlat[2]%>, <%=martlng[2]%>);
-                  alert("<%=martname1[2]%>" + " " +"<%=martlat[2]%>" +" <%=martlng[2]%> ");
 
                   makemarker("<%=martname1[3]%>","./images/cheering_minions.gif",
                   "<p>테스트3</p>",resultsMap,<%=martlat[3]%>, <%=martlng[3]%>);
-                  alert("<%=martname1[3]%>" + " " +"<%=martlat[3]%>" +" <%=martlng[3]%> ");
 
                   makemarker("<%=martname1[4]%>","./images/cheering_minions.gif",
                   "<p>테스트4</p>",resultsMap,<%=martlat[4]%>, <%=martlng[4]%>);
-                  alert("<%=martname1[4]%>"  + " "+ "<%=martlat[4]%>" +" <%=martlng[4]%> ");
 
                   makemarker("<%=martname1[5]%>","./images/cheering_minions.gif",
                   "<p>테스트5</p>",resultsMap,<%=martlat[5]%>, <%=martlng[5]%>);
-                  alert("<%=martname1[5]%>"  + " "+ "<%=martlat[5]%>" +" <%=martlng[5]%> ");
 
                   makemarker("<%=martname1[6]%>","./images/cheering_minions.gif",
                   "<p>테스트6</p>",resultsMap,<%=martlat[6]%>, <%=martlng[6]%>);
-                  alert("<%=martname1[6]%>"  + " "+ "<%=martlat[6]%>" +" <%=martlng[6]%> ");
 
                    //  qurry( resultsMap,lat(),lng()) -> makemarker
                  } else {
@@ -532,8 +522,6 @@ $(document).ready(function() {
                    resultsMap.setCenter({lat:37.5575367,lng:127.0007751});
                    now_address_lat  = 37.5575367;
                     now_address_lng =  127.0007751;
-                    document.getElementsByName("latitude_post")[0].value = now_address_lat;
-                    document.getElementsByName("longitude_post")[0].value = now_address_lng;
                    input_content =  '<p>학생들의 건강을 고려해 언덕에 지어졌죠.<br>'+
                                    '컴공과 학생들이 가끔 아픈건 안 비밀</p>'+
                                    'ps.아..컴공과는 엘레베이터타고 다니죠..';
@@ -854,5 +842,59 @@ $(document).ready(function(){
       <h3> jbSplit[i] </h3>
     }
   </script>
+
+  <%
+
+  PreparedStatement pstmt_1 = null;
+  ResultSet rs_1 = null;
+  boolean result_1 = false;
+  String test_post_1 = search_String +"%";
+  String martname1_1[] = new String[100];
+  String martname2_1[] = new String[100];
+  Double martlat_1[]  = new Double[100];
+  Double martlng_1[]  = new Double[100];
+  int count_i_1 = 0;
+  if(request.getParameter("latitude_post")!=null){
+    try{
+    String sql_1 = "select * from market where Marketname like ?";
+      pstmt_1 = myconn.prepareStatement(sql_1);
+      pstmt_1.setString(1, test_post_1);
+      rs_1 = pstmt_1.executeQuery();
+      count_i_1=0;
+    while(rs_1.next() && count_i_1 < 3 ){
+      martname1_1[count_i_1] = rs_1.getString("Marketname");
+      martname2_1[count_i_1] = rs_1.getString("Marketbranch");
+      martlat_1[count_i_1] = rs_1.getDouble("latitude");
+      martlng_1[count_i_1] = rs_1.getDouble("longitude");
+      count_i_1++;
+    }
+  }
+  catch(SQLException se){
+    System.out.println(se.getMessage());
+  }
+  finally{
+    //정훈
+    stmt.close();
+    rs.close();
+    //강산 - gps
+      rs1.close();
+      pstmt.close();
+    //강산 - 마지막꺼
+    rs_1.close();
+    pstmt_1.close();
+    myconn.close();
+    }
+  }
+  else{
+
+  }
+  for(int i_1=0; i_1<count_i_1 ;i_1++){
+  out.println(martname1_1[i_1]);
+  out.println(martname2_1[i_1]);
+  out.println(martlat_1[i_1]);
+  out.println(martlng_1[i_1]);
+  }
+
+  %>
 </body>
 </html>
