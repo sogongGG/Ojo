@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
-<%@ include file = "sqllogininfo.jsp" %>
 <!--
 author: W3layouts
 author URL: http://w3layouts.com
@@ -51,6 +50,13 @@ String get_search_string_jsp;
 request.setCharacterEncoding("euc-kr");
 search_String = request.getParameter("searchKey");
 get_search_string_jsp = Get_search_string();
+String mysqlDriver = "com.mysql.jdbc.Driver";
+String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
+String mysqlroot = "root";
+String mysqlPW = "admin";
+Class.forName(mysqlDriver);
+Connection myconn=null;
+myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
 %>
 <%!
 public String Get_search_string()
@@ -72,25 +78,67 @@ public String Get_search_string()
 
 
 <%
-/*Class.forName("com.mysql.jdbc.Driver");
+Class.forName("com.mysql.jdbc.Driver");
 String searchKey = request.getParameter("searchKey");
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall", "root", "admin");
 Statement stmt = conn.createStatement();
-String search = "select * from food where Genre ='"+searchKey+"';";
+String search = "select * from food where Foodname ='"+searchKey+"';";
+String searchIngredient = "select * from ingredient where Ingredientname ='"+searchKey+"';";
+String searchIngredientFood = "select * from ingredient_food where Foodname = '"+searchKey+"';";
 ResultSet rs = stmt.executeQuery(search);
 //<li><a href="services.jsp">마트</a></li>
 String testingst = "<li><a href=" + '"' + "services.jsp"+ '"' + ">Hi</a></li>";
 String test = "<li style=" + '"' + "display: inline;" + '"' + ">Hello</li>";
+String[] sArray1 = new String[4]; //food info
 
-if(rs.next()){
+String[] sArray2 = new String[10]; //ingredient_food (name only) info
+String[] sArray3 = new String[80]; //ingredient info
+
+if(rs.next()) {
+  for (int i = 0; i < sArray1.length; i++){
+    sArray1[i] = rs.getString(i+1);
+  }
 }
 else{
   searchKey = "Recommended";
   search = "select * from food where Foodname ='"+searchKey+"';";
   rs = stmt.executeQuery(search);
-  rs.next();
+  if(rs.next()){
+    for (int i = 0; i < sArray1.length; i++){
+      sArray1[i] = rs.getString(i+1);
+    }
+  }
 }
-*/
+search = "select * from ingredient_food where Foodname = '"+searchKey+"';";
+rs = stmt.executeQuery(search);
+int tmp = 0;
+while (rs.next()){
+  sArray2[tmp++] = rs.getString(2);
+}
+
+int count = 0;
+int tmp2 = 0;
+while(count < tmp){
+  searchKey = sArray2[count];
+  search = "select * from ingredient where Ingredientname = '"+searchKey+"';";
+  rs = stmt.executeQuery(search);
+  if (rs.next()){
+    for (int i = 0; i < 8; i++){
+      sArray3[tmp2++] = rs.getString(i+1);
+    }
+  }
+  count++;
+}
+/*searchKey = sArray2[1];
+search = "select * from ingredient where Ingredientname = '"+searchKey+"';";
+rs = stmt.executeQuery(search);
+if (rs.next()){
+  for (int i = 0; i < 8; i++){
+    sArray3[i+8] = rs.getString(i+1);
+    out.println(sArray3[i+8]);
+  }
+}*/
+
 %>
 
 <body>
@@ -107,15 +155,17 @@ function keyword_check(){
   <div class="w3l_search" style="margin-top: 10px;">
     <form action="#" method="post" onsubmit="return keyword_check()">
       <input type="text" name="searchKey" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '물품 검색';}" required="">
-      <input type="hidden" name="latitude_post" >
-      <input type="hidden" name="longitude_post" >
+      <input type="hidden" name="latitude_post" value=now_address_lat>
+      <input type="hidden" name="longitude_post" value=now_address_lng>
       <input type="submit" value=" ">
     </form>
   </div>
   <div class="product_list_header" style="padding: 6px, 2em, 6px 4px; margin-top: 10px;">
     <form action="#" method="post" class="last">
               <fieldset>
-                  <input type="submit" name="submit" value="장바구니 보기" class="button" />
+                <input type="hidden" name="cmd" value="_cart" />
+                <input type="hidden" name="display" value="1" />
+                <input type="submit" name="submit" value="장바구니 보기" class="button" />
               </fieldset>
           </form>
   </div>
@@ -293,8 +343,31 @@ $(document).ready(function() {
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
 											<a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
+											<p> <% out.println(sArray1[0]);%> </p>
+                      <%
+                    //  searchKey = rs.getString(1);
+                    //  search = "select * from ingredient_food where Foodname = '"+searchKey+"';";
+                    //  searchKey = rs.getString(1);
+                    //  search = "select * from ingredient_food where"
+                    //  if(rs.next()){
 
-											<h4>$10.0</h4>
+                    /*  }
+                      else{
+                        searchKey = "Recommended";
+                        search = "select * from food where Foodname ='"+searchKey+"';";
+                        rs = stmt.executeQuery(search);
+                        rs.next();
+                      }*/
+                      %>
+											<h4>예상가격 :
+                        <%
+                          int sum = 0;
+                          for (int k = 0; sArray2[k] != null; k++){
+                              sum += Integer.parseInt(sArray3[5 + (k * 8)]);
+                            }
+                          out.println(sum);
+                        %>
+                      원</h4>
 										</div>
 										<div class="snipcart-details">
 											<form action="#" method="post">
@@ -321,23 +394,18 @@ $(document).ready(function() {
             <div class="agile_top_brand_left_grid1" style="backgroud: white;">
           	   <h3 class=title style="font-size: small;"> 요리설명 </h3>
                <p style="width: -webkit-fill-available; height: 170px; overflow: scroll;">
-
+                 <% out.println(sArray1[2]);
+                 %>
                </p>
                <h3 class=title style="font-size: small;"> 필요재료 </h3>
-
+                <%
+                  for (int i = 0; sArray2[i] != null; i++){
+                    out.println(sArray2[i]);
+                  }
+                %>
           	</div>
           </div>
-          <div class="col-md-3 w3ls_w31_banner_left_reviews" style="width: 20%">
-            <div class="agile_top_brand_left_grid1" style="background: white;">
-              <h3 class=title style="font-size: small;"> 네티즌 후기 </h3>
-              <div class="list-group list-group-alternate" style="margin-bottom: 0px;">
-
-              </div>
-					  </div>
-          </div>
-
-
-          <div class="col-md-3 w3ls_w3l_banner_left" style="padding-left: 0px;">
+          <div class="col-md-3 w3ls_w3l_banner_left" style="padding-left: 0px; width:40%;">
             <h3 class=title style="font-size: small;"> 인근마트 </h3>
             <a class="btn" href="#">
               <i class="fa fa-map-marker" aria-hidden="true"
@@ -345,54 +413,33 @@ $(document).ready(function() {
             </a>
             <div id="map" style="width: 120%; height:350px; background-color: grey;"> </div>
 
-            <%
+            <%/*
+            //    <input type="hidden" name="latitude_post" value=now_address_lat>
             PreparedStatement pstmt = null;
-            ResultSet rs1 = null;
-            boolean result = false;
-            Double now_lat,now_lat_low,now_lat_high;
-            Double now_lng,now_lng_low,now_lng_high;
-            String test_post;
-            String martname1[] = new String[100];
-            String martname2[] = new String[100];
-            Double martlat[]  = new Double[100];
-            Double martlng[]  = new Double[100];
-            int count_i = 0;
-            if(request.getParameter("latitude_post")!=null){
-              try{
-                now_lat = Double.valueOf(request.getParameter("latitude_post")).doubleValue();
-                now_lng = Double.valueOf(request.getParameter("longitude_post")).doubleValue();
-                now_lat_low = now_lat - 1;
-                now_lat_high = now_lat + 1;
-                now_lng_low = now_lng - 1;
-                now_lng_high = now_lng + 1;
-              String sql = "select * from market where (latitude between ? AND ?) AND (longitude between ? AND ?)";
-                pstmt = myconn.prepareStatement(sql);
-                pstmt.setDouble(1,now_lat_low);
-                pstmt.setDouble(2,now_lat_high);
-                pstmt.setDouble(3,now_lng_low);
-                pstmt.setDouble(4,now_lng_high);
-                rs1 = pstmt.executeQuery();
-                count_i =0;
-              while(rs1.next() && count_i < 90){
-                martname1[count_i] = rs1.getString(1);
-                martname2[count_i] = rs1.getString(2);
-                martlat[count_i] = rs1.getDouble(3);
-                martlng[count_i] = rs1.getDouble(4);
-                count_i++;
-              }
-
-            }
-            catch(SQLException se){
-              System.out.println(se.getMessage());
-            }
-            finally{
-              rs1.close();
-              pstmt.close();
-              myconn.close();
-              }
-            }
-            else{
-            }
+          	ResultSet rs = null;
+          	boolean result = false;
+            String now_lat=request.getParameter("latitude_post");
+            String now_lng=request.getParameter("longitude_post");
+          	try{
+          		String sql = "select * from Market where (latitude between =? AND =?) AND (longitude between =? AND =?)";
+          		pstmt = myconn.prepareStatement(sql);
+          		pstmt.setString(1,now_lat-0.001);
+              pstmt.setString(2,now_lat+0.001);
+              pstmt.setString(3,now_lng-0.001);
+              pstmt.setString(4,now_lng+0.001);
+          		rs = pstmt.executeQuery();
+          		if(rs.next()){
+          			result = true;
+          		}
+          	}
+          	catch(SQLException se){
+          		System.out.println(se.getMessage());
+          	}
+          	finally{
+          		rs.close();
+          		pstmt.close();
+          		myconn.close();
+          	}*/
             %>
 
             <!-- address에 검색값 input !!!!-->
@@ -407,16 +454,8 @@ $(document).ready(function() {
              });
              var geocoder = new google.maps.Geocoder();
             ////////////address에 검색값 input!!!!
-             var address;
-             if(get_search_string_js=="null"){
-               alert("검색어를 넣어주세요")
-               address ="ㅃ";
-              geocodeAddress(address,geocoder, map);
-               }
-               else{
-                 address =get_search_string_js;
-                geocodeAddress(address,geocoder, map);
-               }
+             var address =get_search_string_js;
+             geocodeAddress(address,geocoder, map);
             }
 
              function geocodeAddress(address,geocoder, resultsMap) {
@@ -429,44 +468,12 @@ $(document).ready(function() {
                   makemarker("검색위치","./images/cheering_minions.gif",input_content,resultsMap,
                   results[0].geometry.location.lat(), results[0].geometry.location.lng())
 
-                  document.getElementsByName("latitude_post")[0].value = now_address_lat;
-                  document.getElementsByName("longitude_post")[0].value = now_address_lng;
-
-                  makemarker("<%=martname1[0]%>","./images/cheering_minions.gif",
-                  "<p>테스트0</p>",resultsMap,<%=martlat[0]%>, <%=martlng[0]%>);
-                  alert("<%=martname1[0]%>" + " " +"<%=martlat[0]%>" +" <%=martlng[0]%> ");
-
-                  makemarker("<%=martname1[1]%>","./images/cheering_minions.gif",
-                  "<p>테스트1</p>",resultsMap,<%=martlat[1]%>, <%=martlng[1]%>);
-                  alert("<%=martname1[1]%>" +" " + "<%=martlat[1]%>" +" <%=martlng[1]%> ");
-
-                  makemarker("<%=martname1[2]%>","./images/cheering_minions.gif",
-                  "<p>테스트2</p>",resultsMap,<%=martlat[2]%>, <%=martlng[2]%>);
-                  alert("<%=martname1[2]%>" + " " +"<%=martlat[2]%>" +" <%=martlng[2]%> ");
-
-                  makemarker("<%=martname1[3]%>","./images/cheering_minions.gif",
-                  "<p>테스트3</p>",resultsMap,<%=martlat[3]%>, <%=martlng[3]%>);
-                  alert("<%=martname1[3]%>" + " " +"<%=martlat[3]%>" +" <%=martlng[3]%> ");
-
-                  makemarker("<%=martname1[4]%>","./images/cheering_minions.gif",
-                  "<p>테스트4</p>",resultsMap,<%=martlat[4]%>, <%=martlng[4]%>);
-                  alert("<%=martname1[4]%>"  + " "+ "<%=martlat[4]%>" +" <%=martlng[4]%> ");
-
-                  makemarker("<%=martname1[5]%>","./images/cheering_minions.gif",
-                  "<p>테스트5</p>",resultsMap,<%=martlat[5]%>, <%=martlng[5]%>);
-                  alert("<%=martname1[5]%>"  + " "+ "<%=martlat[5]%>" +" <%=martlng[5]%> ");
-
-                  makemarker("<%=martname1[6]%>","./images/cheering_minions.gif",
-                  "<p>테스트6</p>",resultsMap,<%=martlat[6]%>, <%=martlng[6]%>);
-                  alert("<%=martname1[6]%>"  + " "+ "<%=martlat[6]%>" +" <%=martlng[6]%> ");
                    //  qurry( resultsMap,lat(),lng()) -> makemarker
                  } else {
                  //  alert('위치검색이 안되서 "동국대"로 보여드릴게요!');
                    resultsMap.setCenter({lat:37.5575367,lng:127.0007751});
                    now_address_lat  = 37.5575367;
                     now_address_lng =  127.0007751;
-                    document.getElementsByName("latitude_post")[0].value = now_address_lat;
-                    document.getElementsByName("longitude_post")[0].value = now_address_lng;
                    input_content =  '<p>학생들의 건강을 고려해 언덕에 지어졌죠.<br>'+
                                    '컴공과 학생들이 가끔 아픈건 안 비밀</p>'+
                                    'ps.아..컴공과는 엘레베이터타고 다니죠..';
@@ -539,8 +546,16 @@ $(document).ready(function() {
    									<div class="snipcart-item block">
    										<div class="snipcart-thumb">
    											<a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
-
-   											<h4>$10.0</h4>
+   											<p><% out.println(sArray1[0]);%></p>
+   											<h4>예상가격 :
+                          <%
+                            sum = 0;
+                            for (int k = 0; sArray2[k] != null; k++){
+                                sum += Integer.parseInt(sArray3[5 + (k * 8)]);
+                              }
+                            out.println(sum);
+                          %>
+                        원</h4>
    										</div>
    										<div class="snipcart-details">
    											<form action="#" method="post">
@@ -567,7 +582,9 @@ $(document).ready(function() {
               <div class="agile_top_brand_left_grid1" style="backgroud: white;">
             	   <h3 class=title style="font-size: small;"> 요리설명 </h3>
                  <p style="width: -webkit-fill-available; height: 170px; overflow: scroll;">
-
+                   <%
+                   out.println(sArray1[2]);
+                   %>
                  </p>
             	</div>
             </div>
@@ -575,47 +592,56 @@ $(document).ready(function() {
               <div class="hover14 column"></div>
               <div class="agile_top_brand_left_grid1" style="background: white;">
                 <h3 class=title style="font-size: small;"> 필요재료 </h3>
+                <%
+                    //  String[] sArray1 = rs.getString(5).split(",");
+                    //  for (int i = 0; i < sArray1.length; i++){
+                    //    String plzs1 = "<li>" + sArray1[i] + "</li>";
+                    //    String plz = "<li style=" + '"' + "display: inline;" + '"' + ">" + sArray1[i] + "</li>";
+                    //    String plzs = "<li>" + sArray1[i] + "</li>";
+                    //    out.println(plzs);
+                    //  }
+                    for (int i = 0; sArray2[i] != null; i++){
+                      String plz = "<li>" + sArray2[i]+ "\t" + sArray3[5 + (i * 8)] + "원" +"</li>";
+                      out.println(plz);
+                    }
+                %>
+                <script>
+                function aa(){
+                  document.getElementByID('item_name').value = sArray2[0];
 
-
+                  return true;
+                }
+                </script>
                 <div class="snipcart-details">
-                  <form action="#" method="post">
+                  <form action="#" method="post" onsubmit='return aa();'>
                     <fieldset>
                       <input type="hidden" name="cmd" value="_cart">
                       <input type="hidden" name="add" value="1">
                       <input type="hidden" name="business" value=" ">
-                      <input type="hidden" name="item_name" value="pepper salami">
+                      <input type="hidden" name="item_name" value="item">
                       <input type="hidden" name="amount" value="10.00">
                       <input type="hidden" name="discount_amount" value="1.00">
                       <input type="hidden" name="currency_code" value="USD">
                       <input type="hidden" name="return" value=" ">
                       <input type="hidden" name="cancel_return" value=" ">
-                      <input type="submit" name="submit" value="장바구니 일괄담기" class="button">
+                      <input type="submit" name="submit" value="장바구니 일괄담기" class="button" onclick="aa()">
                     </fieldset>
                   </form>
                 </div>
               </div>
             </div>
-            <div class="col-md-3 w3ls_w3l_banner_left" style="width: 25%;">
-              <div class="hover14 column"></div>
-              <div class="agile_top_brand_left_grid1" style="background: white;">
-              <h3 class="title" style="font-size: small;"> '요리이름'과 비슷한 요리 </h3>
-              <div class="list-group list-group-alternate" style="margin-bottom: 5px;">
-						   <a href="#" class="list-group-item"> '요리1이름' 간단한 설명~~ </a>
-						   <a href="#" class="list-group-item"> 요리2 </a>
-						   <a href="#" class="list-group-item"> 요리3 </a>
-              </div>
-              <h3 class="title" style="font-size: small;"> '요리이름'와 잘 어울려요~! </h3>
-              <div class="list-group list-group-alternate" style="margin-bottom: 0px;">
-               <a href="#" class="list-group-item"> 요리1 </a>
- 						   <a href="#" class="list-group-item"> 요리2 </a>
- 						   <a href="#" class="list-group-item"> 요리3 </a>
-              </div>
-					   </div>
-            </div>
 
 				   </div>
 				  </div>
 			   </div>
+
+         <%//searchKey = "garlic";
+          //search = "select * from ingredient where Ingredientname ='"+searchKey+"';";
+        //  rs = stmt.executeQuery(search);
+        //  rs.next();
+        //out.println(rs.getString(2));
+         %>
+
 
 			   <div class="panel panel-default">
 				<div class="panel-heading" role="tab" id="headingSix">
@@ -627,24 +653,52 @@ $(document).ready(function() {
 				</div>
 				<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix" aria-expanded="false" style="height: 0px;">
 				   <div class="panel-body panel_text">
-					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+             <% for (int i = 0; sArray2[i] != null; i++) {%>
+             <div class="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left" style="padding-left: 0px; padding-right: 0px;">
+               <div class="hover14 column"></div>
+                 <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                 <div class="agile_top_brand_left_grid1">
+                   <figure>
+                     <div class="snipcart-item block">
+                       <div class="snipcart-thumb">
+                         <a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
+                         <p><% out.println(sArray2[i]);%></p>
+                         <h4>가격 :
+                          <%
+                            out.println(sArray3[5 + (i * 8)]);
+                          %>
+                        원</h4>
+                       </div>
+                       <div class="snipcart-details">
+                         <form action="#" method="post">
+                           <fieldset>
+                             <input type="hidden" name="cmd" value="_cart">
+                             <input type="hidden" name="add" value="1">
+                             <input type="hidden" name="business" value=" ">
+                             <input type="hidden" name="item_name" value="pepper salami">
+                             <input type="hidden" name="amount" value="10.00">
+                             <input type="hidden" name="discount_amount" value="1.00">
+                             <input type="hidden" name="currency_code" value="USD">
+                             <input type="hidden" name="return" value=" ">
+                             <input type="hidden" name="cancel_return" value=" ">
+                             <input type="submit" name="submit" value="Add to cart" class="button">
+                           </fieldset>
+                         </form>
+                       </div>
+                     </div>
+                   </figure>
+                 </div>
+               </div>
+             </div>
+
+             <%}%>
 				  </div>
 				</div>
 			  </div>
-			   <div class="panel panel-default">
-				<div class="panel-heading" role="tab" id="headingSeven">
-				  <h4 class="panel-title asd">
-					<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>마트검색 결과
-					</a>
-				  </h4>
-				</div>
-				<div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven" aria-expanded="false">
-				   <div class="panel-body panel_text">
-					Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
-				  </div>
-				</div>
-			  </div>
+
+
+
+
 		</div>
   </div>
 </div>
