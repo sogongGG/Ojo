@@ -18,23 +18,47 @@
 <!-- //font-awesome icons -->
 <!-- js -->
 <script src="http://code.jquery.com/jquery-1.12.1.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 <!-- //js -->
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- start-smoth-scrolling -->
-<<<<<<< HEAD
 
-=======
 <script type="text/javascript"> var google_apikey="AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo"</script>
->>>>>>> eefeb77df31fdcfe77b7236fb640d5762f567249
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 
+
 <script type="text/javascript">
-	jQuery(document).ready(function($) {
+function call_row1(){
+  var i = 0;
+  add_row1();
+}
+</script>
+<script type="text/javascript">
+$(document).ready(function($){
+  $("#callrow1id").on('click',function(){
+    alert('데이터요청');
+    $.ajax({
+      type:"get",
+      url:"call_row1.jsp",
+      success: function(t){
+          alert('연결성공');
+          //alert($(t).text());
+          //$("<h1></h1>").text($(t).text()).appendTo("body");
+        },
+        error: function(){
+          alert('연결실패');
+        }
+      });
+    });
+  });
+</script>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function($) {
 		$(".scroll").click(function(event){
 			event.preventDefault();
 			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
@@ -48,7 +72,7 @@
   					}
 			);
 </script>
-<script>
+<script type="text/javascript">
 	$(document).ready(function() {
     	$(".tab_content").hide();
     	$(".tab_content:first").show();
@@ -148,7 +172,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
   String mysqlDriver = "com.mysql.jdbc.Driver";
   String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
   String mysqlroot = "root";
-  String mysqlPW = "ks01";
+  String mysqlPW = "LNiaMelo561248^*";
 
   Class.forName(mysqlDriver);
   Connection myconn=null;
@@ -167,7 +191,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	if(!rs.next()){%>
 		<script>
 		alert('권한이 없습니다.');
-		window.history.back();
+    location.href="login.jsp";
 		</script>
 	<%}
 	else{
@@ -220,7 +244,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		<div class="clearfix"> </div>
 	</div>
 <!-- script-for sticky-nav -->
-	<script>
+	<script type="text/javascript">
 	$(document).ready(function() {
 		 var navoffeset=$(".agileits_header").offset().top;
 		 $(window).scroll(function(){
@@ -318,45 +342,11 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	<div class="administrator">
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
-<script>
-function call_row1(){
-  var i = 0;;
-  for(i=0; i<5; i++){
-    var table = document.getElementById('tab1_tbody');
-      var row = table.insertRow( table.rows.length ); // 하단에 추가
-      var cell1 = row.insertCell(0); cell1.innerHTML='<input type="checkbox" name="ingre_checkBox"/>';
-      var cell2 = row.insertCell(1); cell2.innerHTML='<input name = "Ingredientname" type="text" size = "10">';
-      var cell3 = row.insertCell(2); cell3.innerHTML='<input name = "Genre" type="text" size = "10">';
-      var cell4 = row.insertCell(3); cell4.innerHTML='<input name = "ingrepicture" type = "text" size = "10">';
-      var cell5 = row.insertCell(4); cell5.innerHTML='<input name = "Prise" type = "text" size = "10">';
-      var cell6 = row.insertCell(5); cell6.innerHTML='<input name = "Method_storage" type="text" size = "10">';
-      var cell7 = row.insertCell(6); cell7.innerHTML='<input name = "Method_cook" type = "text" size = "10">';
-  }
-}
-</script>
-<script type="text/javascript">
-jQuery(document).ready(function($){
-  $("#callrow1id").click(function(){
-    alert("데이터요청");
-    $.ajax({
-      type:"POST",
-      url:"adminbutton\\call_row1.jsp",
-      success: function(t){
-          alert("연결성공");
-          alert($(t).text());
-          //$("<h1></h1>").text($(t).text()).appendTo("body");
-        },
-        error: function(){
-          alert("연결실패");
-        }
-      });
-    });
-  });
-</script>
+
 
 <div id = "adminbuttonset1" class = "adminbuttonset">
 <button id="callrow1id" type="submit"  class="snip1535" onclick="call_row1()">불러오기</button></form>
-<button type="submit" class="snip1535" onclick="add_row1(), window.open('\\adminbutton\\ingreAdd.jsp','ingreAdd','width=700,height=350,location=no,status=no,scrollbars=yes')">추가</button>
+<button type="submit" class="snip1535" onclick="window.open('\\adminbutton\\ingreAdd.jsp','ingreAdd','width=700,height=350,location=no,status=no,scrollbars=yes')">추가</button>
 <button type="submit" class="snip1535">수정</button>
 <button type="submit" class="snip1535" onclick="delete_row1()">삭제</button>
 </div>

@@ -93,9 +93,6 @@ function getResult(){
                 </fieldset>
             </form>
 		</div>
-
-
-
 		<%
 			String sessionid = "";
 			sessionid = (String)session.getAttribute("sessionid");

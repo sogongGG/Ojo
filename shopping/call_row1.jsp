@@ -18,8 +18,6 @@
 		myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
 %>
 <%
-    request.setCharacterEncoding("euc-kr");
-
     PreparedStatement pstmt = null;
     ResultSet rs = null;
     String callrow = "select Ingredientname, Genre, ingrepicture, Prise, Method_storage, Method_cook from ingredient";
@@ -29,12 +27,12 @@
       String Ingredientname = rs.getString("Ingredientname");
       String Genre = rs.getString("Genre");
       String ingrepicture = rs.getString("ingrepicture");
-      int Prise = rs.getInt("Prist");
+      int Prise = rs.getInt("Prise");
       String Method_storage = rs.getString("Method_storage");
       String Method_cook = rs.getString("Method_cook");
       out.write(Ingredientname+" "+Genre);
 		}
-    rs.clost();
+    rs.close();
     myconn.close();
     pstmt.close();
 %>
