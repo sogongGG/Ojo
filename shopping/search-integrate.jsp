@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
+<%@ include file = "sqllogininfo.jsp" %>
 <!--
 author: W3layouts
 author URL: http://w3layouts.com
@@ -50,13 +51,14 @@ String get_search_string_jsp;
 request.setCharacterEncoding("euc-kr");
 search_String = request.getParameter("searchKey");
 get_search_string_jsp = Get_search_string();
+/*
 String mysqlDriver = "com.mysql.jdbc.Driver";
 String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
 String mysqlroot = "root";
 String mysqlPW = "admin";
 Class.forName(mysqlDriver);
 Connection myconn=null;
-myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);
+myconn = DriverManager.getConnection(mysqlRoute, mysqlroot, mysqlPW);*/
 %>
 <%!
 public String Get_search_string()
@@ -90,7 +92,6 @@ ResultSet rs = stmt.executeQuery(search);
 String testingst = "<li><a href=" + '"' + "services.jsp"+ '"' + ">Hi</a></li>";
 String test = "<li style=" + '"' + "display: inline;" + '"' + ">Hello</li>";
 String[] sArray1 = new String[4]; //food info
-
 String[] sArray2 = new String[10]; //ingredient_food (name only) info
 String[] sArray3 = new String[80]; //ingredient info
 
@@ -613,20 +614,24 @@ $(document).ready(function() {
                 }
                 </script>
                 <div class="snipcart-details">
-                  <form action="#" method="post" onsubmit='return aa();'>
+
+                  <form action="#" method="post">
                     <fieldset>
+                      <% for (int i = 0; sArray2[i] != null; i++) {%>
                       <input type="hidden" name="cmd" value="_cart">
                       <input type="hidden" name="add" value="1">
                       <input type="hidden" name="business" value=" ">
-                      <input type="hidden" name="item_name" value="item">
+                      <input type="hidden" name="item_name" value=<%=sArray2[1] %>>
                       <input type="hidden" name="amount" value="10.00">
                       <input type="hidden" name="discount_amount" value="1.00">
                       <input type="hidden" name="currency_code" value="USD">
                       <input type="hidden" name="return" value=" ">
                       <input type="hidden" name="cancel_return" value=" ">
-                      <input type="submit" name="submit" value="장바구니 일괄담기" class="button" onclick="aa()">
+                      <%}%>
+                      <input type="submit" name="submit" value="장바구니 일괄담기" class="button">
                     </fieldset>
                   </form>
+
                 </div>
               </div>
             </div>
