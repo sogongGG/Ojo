@@ -58,7 +58,7 @@ $(function(){ //전체선택 체크박스 클릭
   String mysqlDriver = "com.mysql.jdbc.Driver";
   String mysqlRoute = "jdbc:mysql://localhost:3306/shoppingmall";
   String mysqlroot = "root";
-  String mysqlPW = "ks01";
+  String mysqlPW = "admin";
 
   Class.forName(mysqlDriver);
   Connection myconn=null;
