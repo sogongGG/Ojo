@@ -22,27 +22,25 @@ int Prise=Integer.parseInt((String)request.getParameter("Prise"));
 int Salespercent=Integer.parseInt((String)request.getParameter("Salespercent"));
 int Amount=Integer.parseInt((String)request.getParameter("amount"));
 
-
 request.setCharacterEncoding("euc-kr");
 
-String q1 = "insert into ingredient values(?,?,?,?,?,?,?,?,?)";
-
+String q1 = "update ingredient set ingrepicture=?, Genre=?, Method_storage=?, Method_cook=?, Prise=?, Salespercent=?, Amount=? where (Ingredientname=? && Manufacturer=?)";
 
 PreparedStatement pst=myconn.prepareStatement(q1);
-pst.setString(1, Ingredientname);
-pst.setString(2, Manufacturer);
-pst.setString(3, ingrepicture);
-pst.setString(4, Genre);
-pst.setString(5, Method_storage);
-pst.setString(6, Method_cook);
-pst.setInt(7, Prise);
-pst.setInt(8, Salespercent);
-pst.setInt(9, Amount);
+pst.setString(1, ingrepicture);
+pst.setString(2, Genre);
+pst.setString(3, Method_storage);
+pst.setString(4, Method_cook);
+pst.setInt(5, Prise);
+pst.setInt(6, Salespercent);
+pst.setInt(7, Amount);
+pst.setString(8, Ingredientname);
+pst.setString(9, Manufacturer);
 
 pst.executeUpdate();
 %>
 <script>
-alert('입력한 내용이 추가되었습니다');
+alert('입력한 내용이 수정되었습니다');
 location.href="../admin.jsp";
 </script>
 

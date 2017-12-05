@@ -24,10 +24,27 @@
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- start-smoth-scrolling -->
-
 <script type="text/javascript"> var google_apikey="AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo"</script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+</head>
+<script type="text/javascript">
+		function clearText(field){
+			if (field.defaultValue == field.value) field.value = '';
+			else if (field.value == '') field.value = field.defaultValue;
+		}
+</script>
+
 
 
 <script type="text/javascript">
@@ -36,6 +53,7 @@ function call_row1(){
   add_row1();
 }
 </script>
+
 <script type="text/javascript">
 $(document).ready(function($){
   $("#callrow1id").on('click',function(){
@@ -56,16 +74,7 @@ $(document).ready(function($){
   });
 </script>
 
-
-
-<script type="text/javascript">
-	$(document).ready(function($) {
-		$(".scroll").click(function(event){
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
-</script>
+<script src="http://code.jquery.com/jquery-1.12.1.js"></script>
 
 <script>
 			$("snip1535.hover").mouseleave(function() {
@@ -73,6 +82,7 @@ $(document).ready(function($){
   					}
 			);
 </script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
     	$(".tab_content").hide();
@@ -93,7 +103,6 @@ $(document).ready(function($){
     	});
 	});
 </script>
-
 <script type="text/javascript">
 $(function(){ //전체선택 체크박스 클릭
 	$("#allCheck").click(function(){ //만약 전체 선택 체크박스가 체크된상태일경우
@@ -107,10 +116,6 @@ $(function(){ //전체선택 체크박스 클릭
 	});
 });
 </script>
-<!-- start-smoth-scrolling -->
-</head>
-
-<script src="http://code.jquery.com/jquery-1.12.1.js"></script>
 
 <script>
 function add_row1() {
@@ -187,9 +192,9 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	<%}
 	else{
 		%>
-		<script>
+		<!--<script>
 		alert('관리자님 안녕하세요.');
-		</script>
+	</script>-->
 	<%
 	}
 %>
@@ -327,39 +332,73 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 <!-- //header -->
 <!-- banner -->
 
-
-
+<script language="javascript">
+	function btn_click(str){
+		if(str=="ingreAdd"){
+			adminbuttonform.action = "adminbutton\\ingreAdd.jsp";
+		}
+		else if(str == "ingreUpdate"){
+			adminbuttonform.action = "adminbutton\\ingreUpdate.jsp";
+		}
+		else if(str == "ingreDelete"){
+			adminbuttonform.action = "adminbutton\\ingreDelete.jsp";
+		}
+		else if(str == "foodAdd"){
+			adminbuttonform.action = "adminbutton\\foodAdd.jsp";
+		}
+		else if(str == "foodUpdate"){
+			adminbuttonform.action = "adminbutton\\foodUpdate.jsp";
+		}
+		else if(str == "foodDelete"){
+			adminbuttonform.action = "adminbutton\\foodDelete.jsp";
+		}
+		else if(str == "marketAdd"){
+			adminbuttonform.action = "adminbutton\\marketAdd.jsp";
+		}
+		else if(str == "marketUpdate"){
+			adminbuttonform.action = "adminbutton\\marketUpdate.jsp";
+		}
+		else if(str == "marketDelete"){
+			adminbuttonform.action = "adminbutton\\marketDelete.jsp";
+		}
+	}
+</script>
 <!-- banner -->
 	<div class="administrator">
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
-
-
-<div id = "adminbuttonset1" class = "adminbuttonset">
-<button id="callrow1id" type="submit"  class="snip1535" onclick="call_row1()">불러오기</button></form>
-<button type="submit" class="snip1535" onclick="window.open('\\adminbutton\\ingreAdd.jsp','ingreAdd','width=700,height=350,location=no,status=no,scrollbars=yes')">추가</button>
-<button type="submit" class="snip1535">수정</button>
-<button type="submit" class="snip1535" onclick="delete_row1()">삭제</button>
-</div>
-<div id = "adminbuttonset2" class = "adminbuttonset">
-<button type="submit" class="snip1535">불러오기</button>
-<button type="submit" class="snip1535" onclick="add_row2() , window.open('\\adminbutton\\foodAdd.jsp','foodAdd','width=700,height=350,location=no,status=no,scrollbars=yes')">추가</button>
-<button type="submit" class="snip1535">수정</button>
-<button type="submit" class="snip1535" onclick="delete_row2()">삭제</button>
-</div>
-<div  id = "adminbuttonset3" class = "adminbuttonset">
-<button type="submit" class="snip1535">불러오기</button>
-<button type="submit" class="snip1535" onclick="add_row3(), window.open('\\adminbutton\\marketAdd.jsp','marketAdd','width=700,height=350,location=no,status=no,scrollbars=yes')">추가</button>
-<button type="submit" class="snip1535">수정</button>
-<button type="submit" class="snip1535" onclick="delete_row3()">삭제</button>
-</div>
     		<ul class="tabs">
         	<li class="active" but="adminbuttonset1" rel="tab1">재료</li>
         	<li but = "adminbuttonset2" rel="tab2">요리</li>
         	<li but = "adminbuttonset3" rel="tab3">마트</li>
    			</ul>
     			<div class="tab_container">
-        			<div id="tab1" class="tab_content">
+
+						<form name = "adminbuttonform" method= "post">
+						<div id = "adminbuttonset1" class = "adminbuttonset">
+						<input type = "text" name = "ingrename" id = "ingrename" size = "30" value="재료이름, 제조사이름" onFocus="clearText(this)" onBlur = "clearText(this)">
+						<button type="submit" class="snip1535" onclick="btn_click('ingreAdd');">추가</button>
+						<button type="submit" class="snip1535" onclick="btn_click('ingreUpdate');">수정</button>
+						<button type="submit" class="snip1535" onclick="btn_click('ingreDelete');">삭제</button>
+						</div>
+
+						<div id = "adminbuttonset2" class = "adminbuttonset">
+						<input type = "text" name = "foodname" id = "foodname" size = "30" value="음식 이름" onFocus="clearText(this)" onBlur = "clearText(this)">
+						<button type="submit" class="snip1535" onclick="btn_click('foodAdd');">추가</button>
+						<button type="submit" class="snip1535" onclick="btn_click('foodUpdate');">수정</button>
+						<button type="submit" class="snip1535"onclick="btn_click('foodDelete');">삭제</button>
+						</div>
+
+						<div  id = "adminbuttonset3" class = "adminbuttonset">
+						<input type = "text" name = "marketname" id = "marketname" size = "30" value="마트이름, 지점명" onFocus="clearText(this)" onBlur = "clearText(this)">
+						<button type="submit" class="snip1535" onclick="btn_click('marketAdd');">추가</button>
+						<button type="submit" class="snip1535" onclick="btn_click('marketUpdate');">수정</button>
+						<button type="submit" class="snip1535" onclick="btn_click('marketDelete');">삭제</button>
+						</div>
+						</form>
+        			<!--
+							<div class="tab_container">
+								<div id="tab1" class="tab_content">
             			<table class = "type09_head">
             				<thead>
             				<tr>
@@ -378,7 +417,9 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
             				</tbody>
             			</table>
         			</div>
-        <!-- #tab1 -->
+						</div>
+
+						<div class="tab_container">
         			<div id="tab2" class="tab_content">
         			<table class = "type09_head">
             				<thead>
@@ -397,9 +438,10 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
             				<tbody  id = "tab2_tbody">
             				</tbody>
             			</table>
-
         			</div>
-        			<!-- tab3 -->
+						</div>
+
+						<div class="tab_container">
         			<div id="tab3" class="tab_content">
         			<table class = "type09_head">
             				<thead>
@@ -419,7 +461,8 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
             				</tbody>
             			</table>
         			</div>
-        <!-- #tab3 -->
+						</div>
+        -->
     			</div>
     	<!-- .tab_container -->
 		</div>

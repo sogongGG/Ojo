@@ -178,15 +178,13 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 </script>
 <body>
 <%
+	request.setCharacterEncoding("euc-kr");
 	String sessionid = "";
 	sessionid = (String)session.getAttribute("sessionid");
-	request.setCharacterEncoding("euc-kr");
-
   String name = "select * from administrator where ID =?";
 	PreparedStatement pst=myconn.prepareStatement(name);
 	pst.setString(1, sessionid);
 	ResultSet rs=pst.executeQuery();
-
 %>
 <!-- header -->
 	<div class="agileits_header">
@@ -385,11 +383,27 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 						<button type="submit" class="snip1535" onclick="btn_click('marketDelete');">삭제</button>
 						</div>
 						</form>
-            <%
-              String foodname= request.getParameter("foodname");
-            %>
-            <h1>세부 추가 항목</h1>
-            <form action = "foodAddsubmit.jsp" method = "post">
+						<%
+								ResultSet foodresult = null;
+								PreparedStatement foodselectquerypst = null;
+								String genre = null;
+								String foodpicture = null;
+								String explanation = null;
+
+								String foodname= request.getParameter("foodname");
+								String foodselectquery = "select * from food where Foodname = ?";
+								foodselectquerypst = myconn.prepareStatement(foodselectquery);
+								foodselectquerypst.setString(1, foodname);
+								foodresult = foodselectquerypst.executeQuery();
+								if(foodresult.next()){
+									foodname = foodresult.getString("Foodname");
+									genre = foodresult.getString("Genre");
+									foodpicture = foodresult.getString("foodpicture");
+									explanation = foodresult.getString("Explanation");
+								}
+						%>
+						<h1>세부 수정 항목</h1>
+            <form action = "foodUpdatesubmit.jsp" method = "post">
             <table>
               <thead>
                 <tr>
@@ -402,15 +416,15 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
               <tbody>
                 <tr>
                   <td>요리 이름</td>
-                  <td><input type = "text", name = "Foodname" value = " <%= foodname %>"></td>
+                  <td><input type = "text", name = "Foodname", value = "<%= foodname %>"></td>
                   <td>장르</td>
-                  <td><input type = "text", name = "Genre"></td>
+                  <td><input type = "text", name = "Genre", value = "<%=genre%>"></td>
                 </tr>
                 <tr>
                   <td>사진 링크</td>
-                  <td><input type = "text", name = "foodpicture"></td>
+                  <td><input type = "text", name = "foodpicture", value = "<%=foodpicture%>"></td>
                   <td>요리 설명</td>
-                  <td><input type = "text", name = "Explanation"></td>
+                  <td><input type = "text", name = "Explanation", value = "<%=explanation%>"></td>
                 </tr>
                 <tr>
                   <td>요리 시간</td>
@@ -424,81 +438,12 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
                 </tr>
               </tbody>
             </table>
-            <input type = "submit" value = "추가">
+            <input type = "submit" value = "수정">
             </form>
-        			<!--
-							<div class="tab_container">
-								<div id="tab1" class="tab_content">
-            			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>재료이름</th>
-                      <th>장르</th>
-            					<th>사진링크</th>
-            					<th>평균가격 </th>
-            					<th>보관 방법</th>
-            					<th>손질 방법</th>
-            				</tr>
-                  </thead>
-                </table>
-                <table class = "type09">
-            				<tbody id = "tab1_tbody"
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-
-						<div class="tab_container">
-        			<div id="tab2" class="tab_content">
-        			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>요리 이름</th>
-            					<th>장르</th>
-            					<th>요리 사진 링크</th>
-                      <th>요리 설명</th>
-            					<th>필요한 재료 리스트</th>
-            					<th>평점</th>
-            				</tr>
-            				</thead>
-                  </table>
-                  <table class = "type09">
-            				<tbody  id = "tab2_tbody">
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-
-						<div class="tab_container">
-        			<div id="tab3" class="tab_content">
-        			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-                      <th>마트 이름</th>
-            					<th>마트 사진 링크</th>
-            					<th>마트 전화번호</th>
-            					<th>마트 주소</th>
-            					<th>마트 좌표</th>
-            					<th>마트 재료</th>
-            				</tr>
-            				</thead>
-                  </table>
-                  <table class = "type09">
-            				<tbody  id = "tab3_tbody">
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-        -->
     			</div>
     	<!-- .tab_container -->
 		</div>
 	</div>
-
-
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>

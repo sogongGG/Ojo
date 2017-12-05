@@ -178,15 +178,13 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 </script>
 <body>
 <%
+	request.setCharacterEncoding("euc-kr");
 	String sessionid = "";
 	sessionid = (String)session.getAttribute("sessionid");
-	request.setCharacterEncoding("euc-kr");
-
   String name = "select * from administrator where ID =?";
 	PreparedStatement pst=myconn.prepareStatement(name);
 	pst.setString(1, sessionid);
 	ResultSet rs=pst.executeQuery();
-
 %>
 <!-- header -->
 	<div class="agileits_header">
@@ -385,11 +383,39 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 						<button type="submit" class="snip1535" onclick="btn_click('marketDelete');">삭제</button>
 						</div>
 						</form>
-            <%
-              String foodname= request.getParameter("foodname");
-            %>
-            <h1>세부 추가 항목</h1>
-            <form action = "foodAddsubmit.jsp" method = "post">
+						<%
+								ResultSet ingreresult = null;
+								PreparedStatement ingreselectquerypst = null;
+
+								String Ingredientname = null;
+								String Manufacturer = null;
+								String ingrepicture = null;
+                String Genre = null;
+                String Method_storage = null;
+                String Method_cook = null;
+                int Prise = 0;
+                int Salespercent = 0;
+                int Amount = 0;
+
+								Ingredientname= request.getParameter("ingrename");
+								String ingreselectquery = "select * from ingredient where Ingredientname = ?";
+								ingreselectquerypst = myconn.prepareStatement(ingreselectquery);
+								ingreselectquerypst.setString(1, Ingredientname);
+								ingreresult = ingreselectquerypst.executeQuery();
+								if(ingreresult.next()){
+									Ingredientname = ingreresult.getString("Ingredientname");
+									Manufacturer = ingreresult.getString("Manufacturer");
+									ingrepicture = ingreresult.getString("ingrepicture");
+									Genre = ingreresult.getString("Genre");
+                  Method_storage = ingreresult.getString("Method_storage");
+                  Method_cook = ingreresult.getString("Method_cook");
+                  Prise = ingreresult.getInt("Prise");
+                  Salespercent = ingreresult.getInt("Salespercent");
+                  Amount = ingreresult.getInt("Amount");
+								}
+						%>
+            <h1>세부 수정 항목</h1>
+            <form action = "ingreUpdatesubmit.jsp" method = "post">
             <table>
               <thead>
                 <tr>
@@ -401,104 +427,41 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
               </thead>
               <tbody>
                 <tr>
-                  <td>요리 이름</td>
-                  <td><input type = "text", name = "Foodname" value = " <%= foodname %>"></td>
+                  <td>재료이름</td>
+                  <td><input type = "text", name = "Ingredientname", value = "<%=Ingredientname%>"></td>
+                  <td>제조사</td>
+                  <td><input type = "text", name = "Manufacturer", value = "<%=Manufacturer%>"></td>
+                </tr>
+                <tr>
+                  <td>사진링크</td>
+                  <td><input type = "text", name = "ingrepicture", value = "<%=ingrepicture%>"></td>
                   <td>장르</td>
-                  <td><input type = "text", name = "Genre"></td>
+                  <td><input type = "text", name = "Genre", value = "<%=Genre%>"></td>
                 </tr>
                 <tr>
-                  <td>사진 링크</td>
-                  <td><input type = "text", name = "foodpicture"></td>
-                  <td>요리 설명</td>
-                  <td><input type = "text", name = "Explanation"></td>
+                  <td>보관방법</td>
+                  <td><input type = "text", name = "Method_storage", value = "<%=Method_storage%>"></td>
+                  <td>손질방법</td>
+                  <td><input type = "text", name = "Method_cook", value = "<%=Method_cook%>"></td>
                 </tr>
                 <tr>
-                  <td>요리 시간</td>
-                  <td><input type = "text", name = "Expectedtime" value="ex)00:00:00" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
-                  <td>필요한 재료 리스트</td>
-                  <td><input type = "text", name = "Needingredients" value="ex)a,b,c,d,e,f" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
+                  <td>평균가격</td>
+                  <td><input type = "text", name = "Prise" value="<%=Prise%>" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
+                  <td>할인율</td>
+                  <td><input type = "text", name = "Salespercent" value="<%=Salespercent%>" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                 </tr>
                 <tr>
-                  <td>평점</td>
-                  <td><input type = "text", name = "Point" value="ex)5" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
+                  <td>수량</td>
+                  <td><input type = "text", name = "amount" value="<%=Amount%>" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                 </tr>
               </tbody>
             </table>
-            <input type = "submit" value = "추가">
+            <input type = "submit" value = "수정">
             </form>
-        			<!--
-							<div class="tab_container">
-								<div id="tab1" class="tab_content">
-            			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>재료이름</th>
-                      <th>장르</th>
-            					<th>사진링크</th>
-            					<th>평균가격 </th>
-            					<th>보관 방법</th>
-            					<th>손질 방법</th>
-            				</tr>
-                  </thead>
-                </table>
-                <table class = "type09">
-            				<tbody id = "tab1_tbody"
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-
-						<div class="tab_container">
-        			<div id="tab2" class="tab_content">
-        			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>요리 이름</th>
-            					<th>장르</th>
-            					<th>요리 사진 링크</th>
-                      <th>요리 설명</th>
-            					<th>필요한 재료 리스트</th>
-            					<th>평점</th>
-            				</tr>
-            				</thead>
-                  </table>
-                  <table class = "type09">
-            				<tbody  id = "tab2_tbody">
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-
-						<div class="tab_container">
-        			<div id="tab3" class="tab_content">
-        			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-                      <th>마트 이름</th>
-            					<th>마트 사진 링크</th>
-            					<th>마트 전화번호</th>
-            					<th>마트 주소</th>
-            					<th>마트 좌표</th>
-            					<th>마트 재료</th>
-            				</tr>
-            				</thead>
-                  </table>
-                  <table class = "type09">
-            				<tbody  id = "tab3_tbody">
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-        -->
     			</div>
     	<!-- .tab_container -->
 		</div>
 	</div>
-
-
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>

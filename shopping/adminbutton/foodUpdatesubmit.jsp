@@ -11,7 +11,6 @@
 <body>
 <%
 request.setCharacterEncoding("euc-kr");
-String food_ingrearr[] = new String[100];
 
 String Foodname=request.getParameter("Foodname");
 String Genre=request.getParameter("Genre");
@@ -23,22 +22,18 @@ String Needingredients=request.getParameter("Needingredients");
 int Point=Integer.parseInt((String)request.getParameter("Point"));
 
 
-request.setCharacterEncoding("euc-kr");
-
-String q1 = "insert into food values(?,?,?,?,?)";
-
-
+String q1 = "update food set Genre = ?, foodpicture = ?, Explanation = ?, Expectedtime = ? where Foodname = ?";
 PreparedStatement pst=myconn.prepareStatement(q1);
-pst.setString(1, Foodname);
-pst.setString(2, Genre);
-pst.setString(3, foodpicture);
-pst.setString(4, Explanation);
-pst.setString(5, Expectedtime);
+pst.setString(1, Genre);
+pst.setString(2, foodpicture);
+pst.setString(3, Explanation);
+pst.setString(4, Expectedtime);
+pst.setString(5, Foodname);
 
 pst.executeUpdate();
 %>
 <script>
-alert('입력한 내용이 추가되었습니다');
+alert('입력한 내용으로 수정되었습니다');
 location.href="../admin.jsp";
 </script>
 
