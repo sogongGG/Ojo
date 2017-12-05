@@ -72,7 +72,7 @@ public String Get_search_string()
 
 
 <%
-Class.forName("com.mysql.jdbc.Driver");
+/*Class.forName("com.mysql.jdbc.Driver");
 String searchKey = request.getParameter("searchKey");
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall", "root", "admin");
 Statement stmt = conn.createStatement();
@@ -90,7 +90,7 @@ else{
   rs = stmt.executeQuery(search);
   rs.next();
 }
-
+*/
 %>
 
 <body>
@@ -107,8 +107,8 @@ function keyword_check(){
   <div class="w3l_search" style="margin-top: 10px;">
     <form action="#" method="post" onsubmit="return keyword_check()">
       <input type="text" name="searchKey" value="물품 검색" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '물품 검색';}" required="">
-      <input type="hidden" name="latitude_post" value=now_address_lat>
-      <input type="hidden" name="longitude_post" value=now_address_lng>
+      <input type="hidden" name="latitude_post" >
+      <input type="hidden" name="longitude_post" >
       <input type="submit" value=" ">
     </form>
   </div>
@@ -293,7 +293,7 @@ $(document).ready(function() {
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
 											<a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
-											<p> <%=rs.getString(1)%> </p>
+
 											<h4>$10.0</h4>
 										</div>
 										<div class="snipcart-details">
@@ -321,24 +321,17 @@ $(document).ready(function() {
             <div class="agile_top_brand_left_grid1" style="backgroud: white;">
           	   <h3 class=title style="font-size: small;"> 요리설명 </h3>
                <p style="width: -webkit-fill-available; height: 170px; overflow: scroll;">
-                 <%=rs.getString(3)
-                 %>
+
                </p>
                <h3 class=title style="font-size: small;"> 필요재료 </h3>
-                <%=rs.getString(5)%>
+
           	</div>
           </div>
           <div class="col-md-3 w3ls_w31_banner_left_reviews" style="width: 20%">
             <div class="agile_top_brand_left_grid1" style="background: white;">
               <h3 class=title style="font-size: small;"> 네티즌 후기 </h3>
               <div class="list-group list-group-alternate" style="margin-bottom: 0px;">
-               <%
-              //    String[] sArray2 = rs.getString(3).split(",");
-              //    for (int i = 0; i < 5; i++){
-              //      String plz = "<a href=" + '"' + '#' + '"' + "class=" + '"' + "list-group-item" + '"' + ">" + sArray2[i] + "</a>";
-            //        out.println(plz);
-            //      }
-               %>
+
               </div>
 					  </div>
           </div>
@@ -352,33 +345,54 @@ $(document).ready(function() {
             </a>
             <div id="map" style="width: 120%; height:350px; background-color: grey;"> </div>
 
-            <%/*
-            //    <input type="hidden" name="latitude_post" value=now_address_lat>
+            <%
             PreparedStatement pstmt = null;
-          	ResultSet rs = null;
-          	boolean result = false;
-            String now_lat=request.getParameter("latitude_post");
-            String now_lng=request.getParameter("longitude_post");
-          	try{
-          		String sql = "select * from Market where (latitude between =? AND =?) AND (longitude between =? AND =?)";
-          		pstmt = myconn.prepareStatement(sql);
-          		pstmt.setString(1,now_lat-0.001);
-              pstmt.setString(2,now_lat+0.001);
-              pstmt.setString(3,now_lng-0.001);
-              pstmt.setString(4,now_lng+0.001);
-          		rs = pstmt.executeQuery();
-          		if(rs.next()){
-          			result = true;
-          		}
-          	}
-          	catch(SQLException se){
-          		System.out.println(se.getMessage());
-          	}
-          	finally{
-          		rs.close();
-          		pstmt.close();
-          		myconn.close();
-          	}*/
+            ResultSet rs1 = null;
+            boolean result = false;
+            Double now_lat,now_lat_low,now_lat_high;
+            Double now_lng,now_lng_low,now_lng_high;
+            String test_post;
+            String martname1[] = new String[100];
+            String martname2[] = new String[100];
+            Double martlat[]  = new Double[100];
+            Double martlng[]  = new Double[100];
+            int count_i = 0;
+            if(request.getParameter("latitude_post")!=null){
+              try{
+                now_lat = Double.valueOf(request.getParameter("latitude_post")).doubleValue();
+                now_lng = Double.valueOf(request.getParameter("longitude_post")).doubleValue();
+                now_lat_low = now_lat - 1;
+                now_lat_high = now_lat + 1;
+                now_lng_low = now_lng - 1;
+                now_lng_high = now_lng + 1;
+              String sql = "select * from market where (latitude between ? AND ?) AND (longitude between ? AND ?)";
+                pstmt = myconn.prepareStatement(sql);
+                pstmt.setDouble(1,now_lat_low);
+                pstmt.setDouble(2,now_lat_high);
+                pstmt.setDouble(3,now_lng_low);
+                pstmt.setDouble(4,now_lng_high);
+                rs1 = pstmt.executeQuery();
+                count_i =0;
+              while(rs1.next() && count_i < 90){
+                martname1[count_i] = rs1.getString(1);
+                martname2[count_i] = rs1.getString(2);
+                martlat[count_i] = rs1.getDouble(3);
+                martlng[count_i] = rs1.getDouble(4);
+                count_i++;
+              }
+
+            }
+            catch(SQLException se){
+              System.out.println(se.getMessage());
+            }
+            finally{
+              rs1.close();
+              pstmt.close();
+              myconn.close();
+              }
+            }
+            else{
+            }
             %>
 
             <!-- address에 검색값 input !!!!-->
@@ -393,8 +407,16 @@ $(document).ready(function() {
              });
              var geocoder = new google.maps.Geocoder();
             ////////////address에 검색값 input!!!!
-             var address =get_search_string_js;
-             geocodeAddress(address,geocoder, map);
+             var address;
+             if(get_search_string_js=="null"){
+               alert("검색어를 넣어주세요")
+               address ="ㅃ";
+              geocodeAddress(address,geocoder, map);
+               }
+               else{
+                 address =get_search_string_js;
+                geocodeAddress(address,geocoder, map);
+               }
             }
 
              function geocodeAddress(address,geocoder, resultsMap) {
@@ -407,12 +429,44 @@ $(document).ready(function() {
                   makemarker("검색위치","./images/cheering_minions.gif",input_content,resultsMap,
                   results[0].geometry.location.lat(), results[0].geometry.location.lng())
 
+                  document.getElementsByName("latitude_post")[0].value = now_address_lat;
+                  document.getElementsByName("longitude_post")[0].value = now_address_lng;
+
+                  makemarker("<%=martname1[0]%>","./images/cheering_minions.gif",
+                  "<p>테스트0</p>",resultsMap,<%=martlat[0]%>, <%=martlng[0]%>);
+                  alert("<%=martname1[0]%>" + " " +"<%=martlat[0]%>" +" <%=martlng[0]%> ");
+
+                  makemarker("<%=martname1[1]%>","./images/cheering_minions.gif",
+                  "<p>테스트1</p>",resultsMap,<%=martlat[1]%>, <%=martlng[1]%>);
+                  alert("<%=martname1[1]%>" +" " + "<%=martlat[1]%>" +" <%=martlng[1]%> ");
+
+                  makemarker("<%=martname1[2]%>","./images/cheering_minions.gif",
+                  "<p>테스트2</p>",resultsMap,<%=martlat[2]%>, <%=martlng[2]%>);
+                  alert("<%=martname1[2]%>" + " " +"<%=martlat[2]%>" +" <%=martlng[2]%> ");
+
+                  makemarker("<%=martname1[3]%>","./images/cheering_minions.gif",
+                  "<p>테스트3</p>",resultsMap,<%=martlat[3]%>, <%=martlng[3]%>);
+                  alert("<%=martname1[3]%>" + " " +"<%=martlat[3]%>" +" <%=martlng[3]%> ");
+
+                  makemarker("<%=martname1[4]%>","./images/cheering_minions.gif",
+                  "<p>테스트4</p>",resultsMap,<%=martlat[4]%>, <%=martlng[4]%>);
+                  alert("<%=martname1[4]%>"  + " "+ "<%=martlat[4]%>" +" <%=martlng[4]%> ");
+
+                  makemarker("<%=martname1[5]%>","./images/cheering_minions.gif",
+                  "<p>테스트5</p>",resultsMap,<%=martlat[5]%>, <%=martlng[5]%>);
+                  alert("<%=martname1[5]%>"  + " "+ "<%=martlat[5]%>" +" <%=martlng[5]%> ");
+
+                  makemarker("<%=martname1[6]%>","./images/cheering_minions.gif",
+                  "<p>테스트6</p>",resultsMap,<%=martlat[6]%>, <%=martlng[6]%>);
+                  alert("<%=martname1[6]%>"  + " "+ "<%=martlat[6]%>" +" <%=martlng[6]%> ");
                    //  qurry( resultsMap,lat(),lng()) -> makemarker
                  } else {
                  //  alert('위치검색이 안되서 "동국대"로 보여드릴게요!');
                    resultsMap.setCenter({lat:37.5575367,lng:127.0007751});
                    now_address_lat  = 37.5575367;
                     now_address_lng =  127.0007751;
+                    document.getElementsByName("latitude_post")[0].value = now_address_lat;
+                    document.getElementsByName("longitude_post")[0].value = now_address_lng;
                    input_content =  '<p>학생들의 건강을 고려해 언덕에 지어졌죠.<br>'+
                                    '컴공과 학생들이 가끔 아픈건 안 비밀</p>'+
                                    'ps.아..컴공과는 엘레베이터타고 다니죠..';
@@ -485,7 +539,7 @@ $(document).ready(function() {
    									<div class="snipcart-item block">
    										<div class="snipcart-thumb">
    											<a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
-   											<p><%=rs.getString(1)%></p>
+
    											<h4>$10.0</h4>
    										</div>
    										<div class="snipcart-details">
@@ -513,7 +567,7 @@ $(document).ready(function() {
               <div class="agile_top_brand_left_grid1" style="backgroud: white;">
             	   <h3 class=title style="font-size: small;"> 요리설명 </h3>
                  <p style="width: -webkit-fill-available; height: 170px; overflow: scroll;">
-                   <%=rs.getString(3) %>
+
                  </p>
             	</div>
             </div>
@@ -521,15 +575,8 @@ $(document).ready(function() {
               <div class="hover14 column"></div>
               <div class="agile_top_brand_left_grid1" style="background: white;">
                 <h3 class=title style="font-size: small;"> 필요재료 </h3>
-                <%=rs.getString(5)
-                  //    String[] sArray1 = rs.getString(5).split(",");
-                      //for (int i = 0; i < 5; i++){
-                      //  String plzs1 = "<li>" + sArray1[i] + "</li>";
-                      //  String plz = "<li style=" + '"' + "display: inline;" + '"' + ">" + sArray1[i] + "</li>";
-                      //  String plzs = "<li>" + sArray1[i] + "</li>";
-                      //  out.println(plz);
-                      //}
-                %>
+
+
                 <div class="snipcart-details">
                   <form action="#" method="post">
                     <fieldset>
