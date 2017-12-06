@@ -420,7 +420,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
                 </tr>
                 <tr>
                   <td>평점</td>
-                  <td><input type = "text", name = "Point" value="ex)5" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
+                  <td><input type = "text", name = "Point" value="0" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                 </tr>
               </tbody>
             </table>

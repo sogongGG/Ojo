@@ -25,6 +25,7 @@ String Marketname=request.getParameter("Marketname");
 String Marketbranch=request.getParameter("Marketbranch");
 String Marketcoordinate=request.getParameter("Marketcoordinate");
 String marketpicture=request.getParameter("marketpicture");
+String Explanation=request.getParameter("Market_explanation");
 
 StringTokenizer sttoken = new StringTokenizer(Marketcoordinate, ",");
 while(sttoken.hasMoreTokens()){
@@ -34,12 +35,11 @@ while(sttoken.hasMoreTokens()){
 latitude = Double.parseDouble(coordinate[0]);
 longitude = Double.parseDouble(coordinate[1]);
 
-
 String Marketaddress=request.getParameter("Marketaddress");
 String Marketphonenum=request.getParameter("Marketphonenum");
 String Market_ingredient=request.getParameter("Market_ingredient");
 
-String q1 = "insert into Market values(?,?,?,?,?)";
+String q1 = "insert into Market values(?,?,?,?,?,?)";
 PreparedStatement pst=myconn.prepareStatement(q1);
 
 pst.setString(1, Marketname);
@@ -47,6 +47,7 @@ pst.setString(2, Marketbranch);
 pst.setDouble(3, latitude);
 pst.setDouble(4, longitude);
 pst.setString(5, marketpicture);
+pst.setString(6, Explanation);
 pst.executeUpdate();
 %>
 <script>

@@ -37,18 +37,20 @@ String Marketaddress=request.getParameter("Marketaddress");
 String marketpicture=request.getParameter("marketpicture");
 String Marketphonenum=request.getParameter("Marketphonenum");
 String Market_ingredient=request.getParameter("Market_ingredient");
+String Market_explanation=request.getParameter("Market_explanation");
 
 
 
 request.setCharacterEncoding("euc-kr");
 
-String q1 = "update Market set latitude=?, longitude=?, marketpicture=? where (Marketname=? && Marketbranch=?)";
+String q1 = "update Market set latitude=?, longitude=?, marketpicture=?, Explanation=? where (Marketname=? && Marketbranch=?)";
 PreparedStatement pst=myconn.prepareStatement(q1);
 pst.setDouble(1, latitude);
 pst.setDouble(2, longitude);
 pst.setString(3, marketpicture);
-pst.setString(4, Marketname);
-pst.setString(5, Marketbranch);
+pst.setString(4, Market_explanation);
+pst.setString(5, Marketname);
+pst.setString(6, Marketbranch);
 pst.executeUpdate();
 %>
 

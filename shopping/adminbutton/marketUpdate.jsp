@@ -393,6 +393,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 								String marketpicture = null;
                 String marketphone = null;
                 String marketaddress = null;
+								String marketexplanation = null;
 
                 String marketcoordinate = null;
                 String strmarketlongitude = null;
@@ -413,6 +414,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
                   marketlongitude = marketresult.getDouble(3);
                   marketlatitude = marketresult.getDouble(4);
 									marketpicture = marketresult.getString(5);
+									marketexplanation = marketresult.getString(6);
 									//marketphone = ingreresult.getString("Genre");
                   //Method_storage = ingreresult.getString("Method_storage");
                   //Method_cook = ingreresult.getString("Method_cook");
@@ -438,7 +440,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
               <tbody>
                 <tr>
                   <td>마트 이름</td>
-                  <td><input type = "text", name = "Marketname", value = " <%=marketname %> "></td>
+                  <td><input type = "text", name = "Marketname", value = "<%=marketname%>"></td>
                   <td>마트 지점</td>
                   <td><input type = "text", name = "Marketbranch", value = "<%=marketbranch%>"></td>
                 </tr>
@@ -456,7 +458,9 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
                 </tr>
                 <tr>
                   <td>마트 재료</td>
-                  <td><input type = "text", name = "Market_ingredient", value = "<%=marketingredient %>"></td>
+                  <td><input type = "text", name = "Market_ingredient", value = "<%=marketingredient%>"></td>
+									<td>마트 설명</td>
+                  <td><input type = "text", name = "Market_explanation", value = "<%=marketexplanation%>"></td>
                 </tr>
               </tbody>
             </table>

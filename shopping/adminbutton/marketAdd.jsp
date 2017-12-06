@@ -421,7 +421,9 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
                 <tr>
                   <td>마트 재료</td>
                   <td><input type = "text", name = "Market_ingredient" value="ex)a,b,c,d,e" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
-                </tr>
+									<td>마트 설명</td>
+									<td><input type = "text", name = "Market_explanation" value="ex)explain" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
+								</tr>
               </tbody>
             </table>
             <input type = "submit" value = "추가">
