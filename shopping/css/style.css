@@ -3087,7 +3087,7 @@ ul.tabs li.active {
 }
 .grid_mypage .title{
   text-align:center;
-  font-size: 40px;
+  font-size: 35px;
   margin-left:auto;
   margin-right:auto;
   width: 400px;
@@ -3110,5 +3110,5 @@ ul.tabs li.active {
 }
 .textbackbox{
   margin: 10px,10px,10px,10px;
-  
+
 }

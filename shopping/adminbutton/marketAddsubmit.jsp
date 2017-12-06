@@ -42,13 +42,13 @@ String Market_ingredient=request.getParameter("Market_ingredient");
 
 request.setCharacterEncoding("euc-kr");
 
-String q1 = "insert into market values(?,?,?,?)";
+String q1 = "insert into market values(?,?,?,?,?)";
 PreparedStatement pst=myconn.prepareStatement(q1);
 pst.setString(1, Marketname);
 pst.setString(2, Marketbranch);
 pst.setFloat(3, latitude);
 pst.setFloat(4, longitude);
-
+pst.setString(5, marketpicture);
 pst.executeUpdate();
 %>
 <script>
