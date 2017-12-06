@@ -70,8 +70,7 @@
 			<div class="form">
    			<fieldset>
 				<form action='#' method="post">
-				<div class ="indexlogin"><a href="login.jsp">Login</a>
-				</div>
+				<div class ="indexlogin"><a href="login.jsp">Login</a></div>
 				</form>
       		</fieldset>
 		</div>
@@ -87,7 +86,7 @@
           <a href="My_Page.jsp">MyPage</a>
         </li>
         <li style="display: inline-block; padding-right: 25px;">
-          <input type="submit" value = "로그아웃">
+          <input type="submit" value = "로그아웃"><a href="erdiagram.jsp">ERD</a>
         </li>
     </div>
     </form>
