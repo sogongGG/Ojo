@@ -29,8 +29,7 @@ String Expectedtime=request.getParameter("Expectedtime");
 String Needingredients=request.getParameter("Needingredients");
 int Point=Integer.parseInt((String)request.getParameter("Point"));
 
-String intofood_ingre = "insert into ingredient_food values(?,?,?)";
-
+/*String intofood_ingre = "insert into Ingredient_food values(?,?,?)";
 PreparedStatement food_ingre = myconn.prepareStatement(intofood_ingre);
 
 StringTokenizer strtoken = new StringTokenizer(Needingredients," ");
@@ -49,7 +48,7 @@ for(j=0; j<i; j++){
   food_ingre.setString(2,ingrename[0]);
   food_ingre.setString(3,ingrename[1]);
   food_ingre.executeUpdate();
-}
+}*/
 
 
 String q1 = "insert into Food values(?,?,?,?,?)";
