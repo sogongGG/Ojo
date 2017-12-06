@@ -191,6 +191,17 @@
 	</div>
 <!-- //header -->
 <!-- banner -->
+<script language="javascript">
+  var str;
+	function btn_click(str){
+		if(str =="modify"){
+			userbutton.action = "usermodify.jsp";
+		}
+		else if(str == "deleteuser"){
+			userbutton.action = "userdelete.jsp";
+		}
+  }
+</script>
 <%
 String searchKey = sessionid;
 Statement stmt = myconn.createStatement();
@@ -201,7 +212,7 @@ if(rs.next()){
 }
 %>
 	<div class="grid_mypage" style="padding-bottom: 10px; margin-top:0px;">
-		<p class = "title"> 나의 페이지 <p>
+		<p class = "title"> 나의 페이지</p>
     <div class="mypagebacksquare">
       <div class="myinfo">
         <p class="myinfop">
@@ -210,7 +221,7 @@ if(rs.next()){
         </p>
       </div>
       <div class="mypagemain">
-        <form id="update" action = "usermodify.jsp" style="margin-bottom: 5px;">
+        <form name = "userbutton" id="update" style="margin-bottom: 5px;">
         <table border="0" width="600px">
             <tr>
               <td align="center">아이디</td>
@@ -249,10 +260,8 @@ if(rs.next()){
                <td> <input name="userBirthYear" value="<%=rs.getString(9) %>" style="width: 25%; margin-bottom: 10px;"> </td>
              </tr>
         </table>
-          <input type="submit" value="회원정보 수정" style="margin-top: 10px; float: center;">
-        </form>
-        <form id="delete" action="userdelete.jsp">
-          <input type="submit" value="회원탈퇴" style="float: center;">
+          <button type="submit" onclick="btn_click('modify');">회원정보수정</button>
+          <button type="submit" onclick="btn_click('deleteuser');">회원탈퇴</button>
         </form>
       </div>
     </div>
@@ -261,7 +270,6 @@ if(rs.next()){
   <script>
   document.getElementsByName("latitude_post")[0].value = 37.5575367;
   document.getElementsByName("longitude_post")[0].value = 127.0007751;
-
   </script>
 
   <script async defer

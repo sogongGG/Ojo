@@ -11,6 +11,7 @@
 <body>
 <%
 request.setCharacterEncoding("euc-kr");
+PreparedStatement pst = null;
 
 String userId=request.getParameter("userId");
 //String Genre=request.getParameter("Genre");
@@ -21,17 +22,19 @@ String userId=request.getParameter("userId");
 //int Point=Integer.parseInt((String)request.getParameter("Point"));
 
 
-String q1 = "delete from user where ID = ?";
-PreparedStatement pst=myconn.prepareStatement(q1);
+String q1 = "delete from User where ID=?";
+pst=myconn.prepareStatement(q1);
 pst.setString(1, userId);
 
 pst.executeUpdate();
 %>
 <script>
 alert('삭제되었습니다');
-location.href="./My_Page.jsp";
+//location.href="index.jsp";
 </script>
-
+<%
+session.invalidate();
+response.sendRedirect("login.jsp");%>
 
 </body>
 </html>
