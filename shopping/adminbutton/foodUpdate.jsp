@@ -189,7 +189,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers" style="margin-top: 8px;">
-			<a href="products.jsp">5조 쇼핑몰</a>
+			<a href="../index.jsp">5조 쇼핑몰</a>
 		</div>
 		<div class="w3l_search" style="margin-top: 10px;">
 			<form action="#" method="post">
@@ -262,10 +262,10 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
-					<li><a href="../events.jsp">모든 상품</a><i>/</i></li>
-					<li><a href="../about.jsp">요리</a><i>/</i></li>
-					<li><a href="../products.jsp">재료</a><i>/</i></li>
-					<li><a href="../services.jsp">마트</a></li>
+					<li><a href="../search-integrate.jsp">모든 상품</a><i>/</i></li>
+					<li><a href="../search-integrate.jsp">요리</a><i>/</i></li>
+					<li><a href="../search-integrate.jsp">재료</a><i>/</i></li>
+					<li><a href="../search-integrate.jsp">마트</a></li>
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">
