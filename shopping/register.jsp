@@ -67,12 +67,12 @@
 
 
     <%
-			sessionid = (String)session.getAttribute("sessionid");
+			String sessionid = (String)session.getAttribute("sessionid");
 			if(sessionid == null || sessionid.equals("")){%>
 			<div class="form">
    			<fieldset>
 				<form action='#' method="post">
-				<div class ="indexlogin"><a href="../login.jsp">Login</a></div>
+				<div class ="indexlogin"><a href="login.jsp">Login</a></div>
 				</form>
       		</fieldset>
 		</div>
@@ -216,9 +216,10 @@ String Firstname=request.getParameter("Firstname");
 String year=request.getParameter("year");
 String month=request.getParameter("month");
 String day=request.getParameter("day");
-String Email=request.getParameter("Email");
-String Home=request.getParameter("Homenum");
 String Phone=request.getParameter("Phonenum");
+String Email=request.getParameter("Email");
+
+String Home=request.getParameter("Homenum");
 int Homenum = Integer.parseInt(Home);
 int Phonenum = Integer.parseInt(Phone);
 String Postnum = request.getParameter("post1") + request.getParameter("post2");
@@ -245,7 +246,7 @@ usertb.setString(9, year);
 //st.executeUpdate(q1);
 usertb.executeUpdate();
 
-String q2="insert into destination values(?,?,?,?,?,?)";
+String q2="insert into Destination values(?,?,?,?,?,?)";
 PreparedStatement destinationtb=myconn.prepareStatement(q2);
 destinationtb.setString(1, ID);
 destinationtb.setInt(2, Homenum);
@@ -257,6 +258,9 @@ destinationtb.executeUpdate();
 
 
 %>
+<script>
+location.href="index.jsp";
+</script>
 		</div>
 		<div class="clearfix"></div>
 	</div>

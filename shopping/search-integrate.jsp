@@ -784,7 +784,6 @@ $(document).ready(function() {
 
 
             <%
-
             PreparedStatement pstmt_1 = null;
             ResultSet rs_1 = null;
             boolean result_1 = false;
