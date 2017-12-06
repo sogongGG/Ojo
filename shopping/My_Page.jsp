@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
-
+<%@ page import = "java.sql.*" %>
+<%@ include file = "sqllogininfo.jsp" %>
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
@@ -182,7 +183,7 @@
 				<ul class="phone_email">
           <a class="btn" href="#">
 					<li><i class="fa fa-map-marker" aria-hidden="true" id="now_location" onclick="getLocation()">&nbsp;&nbsp;&nbsp;현재위치 확인</i></li></a>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><a href="http://cse.dongguk.edu">문의사항</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -190,18 +191,75 @@
 	</div>
 <!-- //header -->
 <!-- banner -->
-<!-- banner -->
+<%
+String searchKey = sessionid;
+Statement stmt = myconn.createStatement();
+String search = "select * from user where ID ='"+searchKey+"';";
+ResultSet rs = stmt.executeQuery(search);
+
+if(rs.next()){
+
+}
+%>
+
+
 	<div class="grid_mypage" style="padding-bottom: 10px; margin-top:0px;">
 		<p class = "title"> 나의 페이지 <p>
     <div class="mypagebacksquare">
       <div class="myinfo">
-        <p class="myinfop">나의 정보</p>
+        <p class="myinfop">
+          나의 정보
+          <a href="index.jsp"  style="float: right;"> <input type="submit" value="로그인 화면으로 이동" style="margin-top: 10px;"> </a>
+        </p>
       </div>
       <div class="mypagemain">
-        <div class="textbackbox">
-          아이디 : <input type = "text"/>
-          
-        </div>
+
+        <table border="0" width="600px">
+            <tr>
+              <td align="center">아이디</td>
+              <td> <input name="userId" value=<%=rs.getString(1) %> style="width: 40%; margin-bottom: 10px;"> </td>
+            </tr>
+            <tr>
+              <td align="center">암호</td>
+              <td> <input name="userPWD" value=<%=rs.getString(2) %> style="width: 40%; margin-bottom: 10px;"> </td>
+            </tr>
+            <tr>
+              <td align="center">성</td>
+              <td> <input name="userFName" value=<%=rs.getString(3) %> style="width: 25%; margin-bottom: 10px;"> </td>
+            </tr>
+            <tr>
+              <td align="center">이름</td>
+              <td> <input name="userLName" value=<%=rs.getString(4) %> style="width: 25%; margin-bottom: 10px;"> </td>
+            </tr>
+            <tr>
+              <td align="center">전화번호</td>
+              <td> <input name="userPhoneNum" value=<%=rs.getString(5) %> style="width: 50%; margin-bottom: 10px;"> </td>
+            </tr>
+            <tr>
+              <td align="center">이메일</td>
+              <td> <input name="userEmail" value=<%=rs.getString(6) %> style="width: 50%; margin-bottom: 10px;"> </td>
+             </tr>
+             <tr>
+               <td align="center">생일</td>
+               <td> <input name="userBirthDay" value=<%=rs.getString(7) %> style="width: 25%; margin-bottom: 10px;"> </td>
+             </tr>
+             <tr>
+               <td align="center">생월</td>
+               <td> <input name="userBirthMonth" value=<%=rs.getString(8) %> style="width: 25%; margin-bottom: 10px;"> </td>
+             </tr>
+             <tr>
+               <td align="center">생년</td>
+               <td> <input name="userBirthYear" value=<%=rs.getString(9) %> style="width: 25%; margin-bottom: 10px;"> </td>
+             </tr>
+        </table>
+        <form id="update">
+          <input type="submit" value="회원정보 수정" style="margin-top: 10px; float: center;">
+        </form>
+
+        <%
+
+        %>
+
       </div>
     </div>
 	</div>
