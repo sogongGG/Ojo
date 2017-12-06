@@ -210,7 +210,7 @@ if(rs.next()){
         </p>
       </div>
       <div class="mypagemain">
-        <form id="update" action = "usermodify.jsp">
+        <form id="update" action = "usermodify.jsp" style="margin-bottom: 5px;">
         <table border="0" width="600px">
             <tr>
               <td align="center">아이디</td>
@@ -250,6 +250,9 @@ if(rs.next()){
              </tr>
         </table>
           <input type="submit" value="회원정보 수정" style="margin-top: 10px; float: center;">
+        </form>
+        <form id="delete" action="userdelete.jsp">
+          <input type="submit" value="회원탈퇴" style="float: center;">
         </form>
       </div>
     </div>
