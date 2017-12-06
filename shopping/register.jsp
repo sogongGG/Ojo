@@ -6,25 +6,25 @@
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
-<!-- for-mobile-apps -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="동국대학교 소프트웨어공학 지역기반 온라인 홈쿡 사이트" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link rel="icon" type="image/png"  href="/images/sg.ico"/>
-<!-- //for-mobile-apps -->
+
 <link href="css/bootstrap.css?ver=2" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css?ver=2" rel="stylesheet" type="text/css" media="all" />
-<!-- font-awesome icons -->
+
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //font-awesome icons -->
-<!-- js -->
+
+
 <script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
+
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- start-smoth-scrolling -->
+
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
@@ -35,14 +35,14 @@
 		});
 	});
 </script>
-<!-- start-smoth-scrolling -->
+
 </head>
 
 <script src = "http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src = "js/findaddress.js" language = "javascript">openDaumPostcode();</script>
 
 <body>
-<!-- header -->
+
 	<div class="agileits_header">
 		<div class="w3l_offers" style="padding: 8px;">
 			<a href="index.jsp">5조 쇼핑몰</a>
@@ -97,7 +97,7 @@
 
 		<div class="clearfix"> </div>
 	</div>
-<!-- script-for sticky-nav -->
+
 	<script>
 	$(document).ready(function() {
 		 var navoffeset=$(".agileits_header").offset().top;
@@ -112,7 +112,7 @@
 
 	});
 	</script>
-<!-- //script-for sticky-nav -->
+
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
@@ -135,8 +135,7 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //header -->
-<!-- products-breadcrumb -->
+
 	<div class="products-breadcrumb">
 		<div class="container">
 			<ul>
@@ -145,12 +144,11 @@
 			</ul>
 		</div>
 	</div>
-<!-- //products-breadcrumb -->
-<!-- banner -->
+
 	<div class="banner">
 		<div class="w3l_banner_nav_left">
 		<nav class="navbar nav_bottom">
-			 <!-- Brand and toggle get grouped for better mobile display -->
+
 			  <div class="navbar-header nav_2">
 				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
 					<span class="sr-only">Toggle navigation</span>
@@ -159,7 +157,7 @@
 					<span class="icon-bar"></span>
 				  </button>
 			   </div>
-			   <!-- Collect the nav links, forms, and other content for toggling -->
+
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav nav_1">
 						<li><a href="products.jsp">Branded Foods</a></li>
@@ -202,7 +200,7 @@
 						</li>
 						<li><a href="bread.jsp">Bread & Bakery</a></li>
 					</ul>
-				 </div><!-- /.navbar-collapse -->
+				 </div>
 			</nav>
 		</div>
 		<div class="w3l_banner_nav_right">
@@ -264,8 +262,7 @@ location.href="index.jsp";
 		</div>
 		<div class="clearfix"></div>
 	</div>
-<!-- //banner -->
-<!-- newsletter-top-serv-btm -->
+
 	<div class="newsletter-top-serv-btm">
 		<div class="container">
 			<div class="col-md-4 wthree_news_top_serv_btm_grid">
@@ -295,8 +292,7 @@ location.href="index.jsp";
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //newsletter-top-serv-btm -->
-<!-- newsletter -->
+
 	<div class="newsletter">
 		<div class="container">
 			<div class="w3agile_newsletter_left">
@@ -311,8 +307,7 @@ location.href="index.jsp";
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //newsletter -->
-<!-- footer -->
+
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-3 w3_footer_grid">
@@ -381,8 +376,7 @@ location.href="index.jsp";
 			</div>
 		</div>
 	</div>
-<!-- //footer -->
-<!-- Bootstrap Core JavaScript -->
+
 <script src="js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -398,23 +392,16 @@ $(document).ready(function(){
     );
 });
 </script>
-<!-- here stars scrolling icon -->
+
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
+
 
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
 			});
 	</script>
-<!-- //here ends scrolling icon -->
+
 <script src="js/minicart.js?version=1" charset="utf-8"></script>
 <script>
 		paypal.minicart.render();

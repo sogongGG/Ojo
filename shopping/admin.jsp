@@ -4,26 +4,26 @@
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
-<!-- for-mobile-apps -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="동국대학교 소프트웨어공학 지역기반 온라인 홈쿡 사이트" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link rel="icon" type="image/png"  href="/images/sg.ico"/>
-<!-- //for-mobile-apps -->
+
 <link href="css/bootstrap.css?ver=1" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css?ver=1" rel="stylesheet" type="text/css" media="all" />
-<!-- font-awesome icons -->
+
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //font-awesome icons -->
-<!-- js -->
+
+
 <script src="http://code.jquery.com/jquery-1.12.1.js"></script>
 
-<!-- //js -->
+
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- start-smoth-scrolling -->
+
 <script type="text/javascript"> var google_apikey="AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo"</script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
@@ -36,7 +36,7 @@
 		});
 	});
 </script>
-<!-- start-smoth-scrolling -->
+
 </head>
 <script type="text/javascript">
 		function clearText(field){
@@ -196,7 +196,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	<%
 	}
 %>
-<!-- header -->
+
 	<div class="agileits_header">
 		<div class="w3l_offers" style="margin-top: 8px;">
 			<a href="index.jsp">5조 쇼핑몰</a>
@@ -235,7 +235,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
         <li style="display: inline-block; padding-right: 25px;  padding-left: 25px;"><%=sessionid %>님 환영합니다.</li>
         <li style="display: inline-block; padding-right: 25px;">
           <i class="fa fa-user" aria-hidden="true"> </i>
-          <!--<a href="My_Page.jsp">MyPage</a>-->
+
         </li>
         <li style="display: inline-block; padding-right: 25px;">
           <input type="submit" value = "로그아웃"><a href="erdiagram.jsp">ERD</a>
@@ -247,7 +247,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 
 		<div class="clearfix"> </div>
 	</div>
-<!-- script-for sticky-nav -->
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 		 var navoffeset=$(".agileits_header").offset().top;
@@ -262,7 +262,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 
 	});
 	</script>
-<!-- //script-for sticky-nav -->
+
 	<div class="logo_products" style="padding-top: 80px;">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
@@ -327,7 +327,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
         </script>
 
-        <!-- -->
+
 				<ul class="phone_email">
           <a class="btn" href="#">
 					<li><i class="fa fa-map-marker" aria-hidden="true" id="now_location" onclick="getLocation()">&nbsp;&nbsp;&nbsp;현재위치 확인</i></li></a>
@@ -337,8 +337,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //header -->
-<!-- banner -->
+
 
 <script language="javascript">
 	function btn_click(str){
@@ -371,7 +370,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		}
 	}
 </script>
-<!-- banner -->
+
 	<div class="administrator">
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
@@ -404,80 +403,10 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 						<button type="submit" class="snip1535" onclick="btn_click('marketDelete');">삭제</button>
 						</div>
 						</form>
-        			<!--
-							<div class="tab_container">
-								<div id="tab1" class="tab_content">
-            			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>재료이름</th>
-                      <th>장르</th>
-            					<th>사진링크</th>
-            					<th>평균가격 </th>
-            					<th>보관 방법</th>
-            					<th>손질 방법</th>
-            				</tr>
-                  </thead>
-                </table>
-                <table class = "type09">
-            				<tbody id = "tab1_tbody"
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-
-						<div class="tab_container">
-        			<div id="tab2" class="tab_content">
-        			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>요리 이름</th>
-            					<th>장르</th>
-            					<th>요리 사진 링크</th>
-                      <th>요리 설명</th>
-            					<th>필요한 재료 리스트</th>
-            					<th>평점</th>
-            				</tr>
-            				</thead>
-                  </table>
-                  <table class = "type09">
-            				<tbody  id = "tab2_tbody">
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-
-						<div class="tab_container">
-        			<div id="tab3" class="tab_content">
-        			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-                      <th>마트 이름</th>
-            					<th>마트 사진 링크</th>
-            					<th>마트 전화번호</th>
-            					<th>마트 주소</th>
-            					<th>마트 좌표</th>
-            					<th>마트 재료</th>
-            				</tr>
-            				</thead>
-                  </table>
-                  <table class = "type09">
-            				<tbody  id = "tab3_tbody">
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-        -->
     			</div>
-    	<!-- .tab_container -->
 		</div>
 	</div>
 
-
-<!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -493,7 +422,6 @@ $(document).ready(function(){
     );
 });
 </script>
-<!-- here stars scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			/*
@@ -509,7 +437,7 @@ $(document).ready(function(){
 
 			});
 	</script>
-<!-- //here ends scrolling icon -->
+
 <script src="js/minicart.js"></script>
 <script>
 		paypal.minicart.render();
