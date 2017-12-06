@@ -11,16 +11,7 @@
 <body>
 <%
 request.setCharacterEncoding("euc-kr");
-
 String Foodname=request.getParameter("Foodname");
-//String Genre=request.getParameter("Genre");
-//String foodpicture=request.getParameter("foodpicture");
-//String Explanation=request.getParameter("Explanation");
-//String Expectedtime=request.getParameter("Expectedtime");
-//String Needingredients=request.getParameter("Needingredients");
-//int Point=Integer.parseInt((String)request.getParameter("Point"));
-
-
 String q1 = "delete from Food where Foodname = ?";
 PreparedStatement pst=myconn.prepareStatement(q1);
 pst.setString(1, Foodname);

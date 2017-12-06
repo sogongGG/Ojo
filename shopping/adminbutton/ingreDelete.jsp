@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
-<!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="동국대학교 소프트웨어공학 지역기반 온라인 홈쿡 사이트" />
@@ -13,20 +12,13 @@
 
 
 <link rel="icon" type="image/png"  href="../images/sg.ico"/>
-<!-- //for-mobile-apps -->
 <link href="../css/bootstrap.css?ver=1" rel="stylesheet" type="text/css" media="all" />
 <link href="../css/style.css?ver=1" rel="stylesheet" type="text/css" media="all" />
-<!-- font-awesome icons -->
 <link href="../css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //font-awesome icons -->
-<!-- js -->
-<script src="http://code.jquery.com/jquery-1.12.1.js"></script>
 
-<!-- //js -->
+<script src="http://code.jquery.com/jquery-1.12.1.js"></script>
 <link href='..//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='..//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-
-<!-- start-smoth-scrolling -->
 <script type="text/javascript"> var google_apikey="AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo"</script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
@@ -272,15 +264,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
         <!-- 역 지오 코딩-->
 
           <script type="text/javascript" charset="utf-8">
-        /*
-          navigator.geolocation.getCurrentPosition(
-          function initMap(position) {
-              console.log('location load');
-            var uluru = {lat: position.coords.latitude, lng:position.coords.longitude};
-            var geocoder = new google.maps.Geocoder;
-            geocodeLatLng(geocoder,uluru);
-          });
-          */
+
           function initMap() {
         }
           function getLocation() {
@@ -490,20 +474,12 @@ $(document).ready(function(){
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
 
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
 			});
 	</script>
-<!-- //here ends scrolling icon -->
+
 <script src="js/minicart.js"></script>
 <script>
 		paypal.minicart.render();
@@ -513,8 +489,6 @@ $(document).ready(function(){
 				len = items.length,
 				total = 0,
 				i;
-
-			// Count the number of each item in the cart
 			for (i = 0; i < len; i++) {
 				total += items[i].get('quantity');
 			}

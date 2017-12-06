@@ -23,31 +23,12 @@ double longitude=0;
 int index=0;
 String Marketname=request.getParameter("Marketname");
 String Marketbranch=request.getParameter("Marketbranch");
-//String Marketcoordinate=request.getParameter("Marketcoordinate");
-
-//StringTokenizer sttoken = new StringTokenizer(Marketcoordinate, ",");
-//while(sttoken.hasMoreTokens()){
-//  coordinate[index] = sttoken.nextToken();
-//  index++;
-//}
-//latitude = Double.parseDouble(coordinate[0]);
-//longitude = Double.parseDouble(coordinate[1]);
-
-//String Marketaddress=request.getParameter("Marketaddress");
-//String marketpicture=request.getParameter("marketpicture");
-//String Marketphonenum=request.getParameter("Marketphonenum");
-//String Market_ingredient=request.getParameter("Market_ingredient");
-
-
-
 request.setCharacterEncoding("euc-kr");
 
 String q1 = "delete from Market where (Marketname=? && Marketbranch=?)";
 PreparedStatement pst=myconn.prepareStatement(q1);
 pst.setString(1, Marketname);
 pst.setString(2, Marketbranch);
-//pst.setDouble(1, longitude);
-//pst.setDouble(2, latitude);
 pst.executeUpdate();
 %>
 

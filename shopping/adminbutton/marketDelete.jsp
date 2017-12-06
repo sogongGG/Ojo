@@ -273,15 +273,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
         <!-- 역 지오 코딩-->
 
           <script type="text/javascript" charset="utf-8">
-        /*
-          navigator.geolocation.getCurrentPosition(
-          function initMap(position) {
-              console.log('location load');
-            var uluru = {lat: position.coords.latitude, lng:position.coords.longitude};
-            var geocoder = new google.maps.Geocoder;
-            geocodeLatLng(geocoder,uluru);
-          });
-          */
+
           function initMap() {
         }
           function getLocation() {
@@ -421,13 +413,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 									marketbranch = marketresult.getString(2);
                   marketlongitude = marketresult.getDouble(3);
                   marketlatitude = marketresult.getDouble(4);
-									//marketpicture = ingreresult.getString(3);
-									//marketphone = ingreresult.getString("Genre");
-                  //Method_storage = ingreresult.getString("Method_storage");
-                  //Method_cook = ingreresult.getString("Method_cook");
-                  //Prise = ingreresult.getInt("Prise");
-                  //Salespercent = ingreresult.getInt("Salespercent");
-                  //Amount = ingreresult.getInt("Amount");
+
 								}
                 strmarketlongitude = Double.toString(marketlongitude);
                 strmarketlatitude = Double.toString(marketlatitude);
@@ -494,14 +480,7 @@ $(document).ready(function(){
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
+
 
 			$().UItoTop({ easingType: 'easeOutQuart' });
 

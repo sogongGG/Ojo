@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
-<!-- for-mobile-apps -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="동국대학교 소프트웨어공학 지역기반 온라인 홈쿡 사이트" />
@@ -273,15 +273,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
         <!-- 역 지오 코딩-->
 
           <script type="text/javascript" charset="utf-8">
-        /*
-          navigator.geolocation.getCurrentPosition(
-          function initMap(position) {
-              console.log('location load');
-            var uluru = {lat: position.coords.latitude, lng:position.coords.longitude};
-            var geocoder = new google.maps.Geocoder;
-            geocodeLatLng(geocoder,uluru);
-          });
-          */
+
           function initMap() {
         }
           function getLocation() {
@@ -424,12 +416,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
                   marketlatitude = marketresult.getDouble(4);
 									marketpicture = marketresult.getString(5);
 									marketexplanation = marketresult.getString(6);
-									//marketphone = ingreresult.getString("Genre");
-                  //Method_storage = ingreresult.getString("Method_storage");
-                  //Method_cook = ingreresult.getString("Method_cook");
-                  //Prise = ingreresult.getInt("Prise");
-                  //Salespercent = ingreresult.getInt("Salespercent");
-                  //Amount = ingreresult.getInt("Amount");
+
 								}
                 strmarketlongitude = Double.toString(marketlongitude);
                 strmarketlatitude = Double.toString(marketlatitude);
@@ -498,14 +485,6 @@ $(document).ready(function(){
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
 
 			$().UItoTop({ easingType: 'easeOutQuart' });
 

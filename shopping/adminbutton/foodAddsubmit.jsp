@@ -25,31 +25,8 @@ String Genre=request.getParameter("Genre");
 String foodpicture=request.getParameter("foodpicture");
 String Explanation=request.getParameter("Explanation");
 String Expectedtime=request.getParameter("Expectedtime");
-
 String Needingredients=request.getParameter("Needingredients");
 int Point=Integer.parseInt((String)request.getParameter("Point"));
-
-/*String intofood_ingre = "insert into Ingredient_food values(?,?,?)";
-PreparedStatement food_ingre = myconn.prepareStatement(intofood_ingre);
-
-StringTokenizer strtoken = new StringTokenizer(Needingredients," ");
-while(strtoken.hasMoreTokens()){
-  ingreAndManuf[i] = strtoken.nextToken();
-  i++;
-}
-for(j=0; j<i; j++){
-  StringTokenizer ingre_manuToken = new StringTokenizer(ingreAndManuf[j],",");
-  index = 0;
-  while(ingre_manuToken.hasMoreTokens()){
-    ingrename[index] = ingre_manuToken.nextToken();
-    index++;
-  }
-  food_ingre.setString(1,Foodname);
-  food_ingre.setString(2,ingrename[0]);
-  food_ingre.setString(3,ingrename[1]);
-  food_ingre.executeUpdate();
-}*/
-
 
 String q1 = "insert into Food values(?,?,?,?,?)";
 PreparedStatement pst=myconn.prepareStatement(q1);
@@ -65,7 +42,6 @@ pst.executeUpdate();
 alert('입력한 내용이 추가되었습니다');
 location.href="../admin.jsp";
 </script>
-
 
 </body>
 </html>

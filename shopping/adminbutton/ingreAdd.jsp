@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
-<!-- for-mobile-apps -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="동국대학교 소프트웨어공학 지역기반 온라인 홈쿡 사이트" />
@@ -66,8 +66,6 @@ $(document).ready(function($){
       url:"call_row1.jsp",
       success: function(t){
           alert('연결성공');
-          //alert($(t).text());
-          //$("<h1></h1>").text($(t).text()).appendTo("body");
         },
         error: function(){
           alert('연결실패');
@@ -269,15 +267,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
         <!-- 역 지오 코딩-->
 
           <script type="text/javascript" charset="utf-8">
-        /*
-          navigator.geolocation.getCurrentPosition(
-          function initMap(position) {
-              console.log('location load');
-            var uluru = {lat: position.coords.latitude, lng:position.coords.longitude};
-            var geocoder = new google.maps.Geocoder;
-            geocodeLatLng(geocoder,uluru);
-          });
-          */
           function initMap() {
         }
           function getLocation() {
@@ -313,7 +302,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
         </script>
 
-        <!-- -->
 				<ul class="phone_email">
           <a class="btn" href="#">
 					<li><i class="fa fa-map-marker" aria-hidden="true" id="now_location" onclick="getLocation()">&nbsp;&nbsp;&nbsp;현재위치 확인</i></li></a>
@@ -323,9 +311,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //header -->
-<!-- banner -->
-
 <script language="javascript">
 	function btn_click(str){
 		if(str=="ingreAdd"){
@@ -437,29 +422,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
             </table>
             <input type = "submit" value = "추가">
             </form>
-        			<!--
-							<div class="tab_container">
-								<div id="tab1" class="tab_content">
-            			<table class = "type09_head">
-            				<thead>
-            				<tr>
-            					<th> <input type="checkbox" id="allCheck"/>전체선택 </th>
-            					<th>재료이름</th>
-                      <th>장르</th>
-            					<th>사진링크</th>
-            					<th>평균가격 </th>
-            					<th>보관 방법</th>
-            					<th>손질 방법</th>
-            				</tr>
-                  </thead>
-                </table>
-                <table class = "type09">
-            				<tbody id = "tab1_tbody"
-            				</tbody>
-            			</table>
-        			</div>
-						</div>
-
 						<div class="tab_container">
         			<div id="tab2" class="tab_content">
         			<table class = "type09_head">
@@ -526,23 +488,15 @@ $(document).ready(function(){
     );
 });
 </script>
-<!-- here stars scrolling icon -->
+
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
 
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
 			});
 	</script>
-<!-- //here ends scrolling icon -->
+
 <script src="js/minicart.js"></script>
 <script>
 		paypal.minicart.render();
@@ -553,7 +507,6 @@ $(document).ready(function(){
 				total = 0,
 				i;
 
-			// Count the number of each item in the cart
 			for (i = 0; i < len; i++) {
 				total += items[i].get('quantity');
 			}

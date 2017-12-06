@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>소공 5조-강산,치종,정훈</title>
-<!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="동국대학교 소프트웨어공학 지역기반 온라인 홈쿡 사이트" />
@@ -13,24 +12,15 @@
 
 
 <link rel="icon" type="image/png"  href="../images/sg.ico"/>
-<!-- //for-mobile-apps -->
 <link href="../css/bootstrap.css?ver=1" rel="stylesheet" type="text/css" media="all" />
 <link href="../css/style.css?ver=1" rel="stylesheet" type="text/css" media="all" />
-<!-- font-awesome icons -->
 <link href="../css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //font-awesome icons -->
-<!-- js -->
 <script src="http://code.jquery.com/jquery-1.12.1.js"></script>
-
-<!-- //js -->
 <link href='..//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='..//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-
-<!-- start-smoth-scrolling -->
 <script type="text/javascript"> var google_apikey="AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo"</script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-
 <script type="text/javascript">
 	$(document).ready(function($) {
 		$(".scroll").click(function(event){
@@ -39,7 +29,6 @@
 		});
 	});
 </script>
-<!-- start-smoth-scrolling -->
 </head>
 <script type="text/javascript">
 		function clearText(field){
@@ -47,16 +36,12 @@
 			else if (field.value == '') field.value = field.defaultValue;
 		}
 </script>
-
-
-
 <script type="text/javascript">
 function call_row1(){
   var i = 0;
   add_row1();
 }
 </script>
-
 <script type="text/javascript">
 $(document).ready(function($){
   $("#callrow1id").on('click',function(){
@@ -66,8 +51,6 @@ $(document).ready(function($){
       url:"call_row1.jsp",
       success: function(t){
           alert('연결성공');
-          //alert($(t).text());
-          //$("<h1></h1>").text($(t).text()).appendTo("body");
         },
         error: function(){
           alert('연결실패');
@@ -78,14 +61,12 @@ $(document).ready(function($){
 </script>
 
 <script src="http://code.jquery.com/jquery-1.12.1.js"></script>
-
 <script>
 			$("snip1535.hover").mouseleave(function() {
    				 $(this).removeClass("hover");
   					}
 			);
 </script>
-
 <script type="text/javascript">
 	$(document).ready(function() {
     	$(".tab_content").hide();
@@ -186,7 +167,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	pst.setString(1, sessionid);
 	ResultSet rs=pst.executeQuery();
 %>
-<!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers" style="margin-top: 8px;">
 			<a href="../index.jsp">5조 쇼핑몰</a>
@@ -236,7 +216,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 
 		<div class="clearfix"> </div>
 	</div>
-<!-- script-for sticky-nav -->
 	<script type="text/javascript">
 	$(document).ready(function() {
 		 var navoffeset=$(".agileits_header").offset().top;
@@ -251,7 +230,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 
 	});
 	</script>
-<!-- //script-for sticky-nav -->
 	<div class="logo_products" style="padding-top: 80px;">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
@@ -270,17 +248,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 			</div>
 			<div class="w3ls_logo_products_left1">
         <!-- 역 지오 코딩-->
-
           <script type="text/javascript" charset="utf-8">
-        /*
-          navigator.geolocation.getCurrentPosition(
-          function initMap(position) {
-              console.log('location load');
-            var uluru = {lat: position.coords.latitude, lng:position.coords.longitude};
-            var geocoder = new google.maps.Geocoder;
-            geocodeLatLng(geocoder,uluru);
-          });
-          */
           function initMap() {
         }
           function getLocation() {
@@ -316,7 +284,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8pFXpSHYIpak8pbU4x-ntfmvRnaemTHo&callback=initMap">
         </script>
 
-        <!-- -->
 				<ul class="phone_email">
           <a class="btn" href="#">
 					<li><i class="fa fa-map-marker" aria-hidden="true" id="now_location" onclick="getLocation()">&nbsp;&nbsp;&nbsp;현재위치 확인</i></li></a>
@@ -326,8 +293,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //header -->
-<!-- banner -->
 
 <script language="javascript">
 	function btn_click(str){
@@ -360,7 +325,6 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		}
 	}
 </script>
-<!-- banner -->
 	<div class="administrator">
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
@@ -450,10 +414,8 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
             <input type = "submit" value = "수정">
             </form>
     			</div>
-    	<!-- .tab_container -->
 		</div>
 	</div>
-<!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -469,34 +431,19 @@ $(document).ready(function(){
     );
 });
 </script>
-<!-- here stars scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
-
 			$().UItoTop({ easingType: 'easeOutQuart' });
-
 			});
 	</script>
-<!-- //here ends scrolling icon -->
 <script src="js/minicart.js"></script>
 <script>
 		paypal.minicart.render();
-
 		paypal.minicart.cart.on('checkout', function (evt) {
 			var items = this.items(),
 				len = items.length,
 				total = 0,
 				i;
-
-			// Count the number of each item in the cart
 			for (i = 0; i < len; i++) {
 				total += items[i].get('quantity');
 			}
