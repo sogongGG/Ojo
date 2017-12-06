@@ -1,9 +1,4 @@
-/*
- * OKZoom by OKFocus v1.2
- * http://okfoc.us // @okfocus
- * Copyright 2012 OKFocus
- * Licensed under the MIT License
-**/
+
 
 $(function($){
 
@@ -75,7 +70,7 @@ $(function($){
       base.$el.data("okzoom", base);
 
       base.options = options;
-      
+
       if (is_mobile) {
         base.$el.bind('touchstart', (function(b) {
           return function(e) {

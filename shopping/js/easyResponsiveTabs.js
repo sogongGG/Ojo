@@ -1,5 +1,4 @@
-// Easy Responsive Tabs Plugin
-// Author: Samson.Onna <Email : samson3d@gmail.com> 
+
 (function ($) {
     $.fn.extend({
         easyResponsiveTabs: function (options) {
@@ -213,7 +212,7 @@
 
                 });
 
-                //Window resize function                   
+                //Window resize function
                 $(window).resize(function () {
                     $respTabs.find('.resp-accordion-closed').removeAttr('style');
                 });
@@ -221,4 +220,3 @@
         }
     });
 })(jQuery);
-
