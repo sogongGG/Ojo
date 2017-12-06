@@ -391,7 +391,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
               String ingrename= request.getParameter("ingrename");
             %>
             <form action = "ingreAddsubmit.jsp" method = "post">
-            <table>
+            <table class = "type09">
               <thead>
                 <tr>
                   <th>항목</th>
@@ -403,7 +403,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
               <tbody>
                 <tr>
                   <td>재료이름</td>
-                  <td><input type = "text", name = "Ingredientname" value = "<%=ingrename %>" required = ""></td>
+                  <td><input type = "text", name = "Ingredientname" value = "<%=ingrename %>" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                   <td>제조사</td>
                   <td><input type = "text", name = "Manufacturer"></td>
                 </tr>

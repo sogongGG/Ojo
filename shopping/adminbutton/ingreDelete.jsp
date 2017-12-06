@@ -416,7 +416,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 						%>
             <h1>삭제 항목이 맞습니까?</h1>
             <form action = "ingreDeletesubmit.jsp" method = "post">
-            <table>
+            <table class = "type09">
               <thead>
                 <tr>
                   <th>항목</th>

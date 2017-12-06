@@ -2854,11 +2854,12 @@ input.checkbox:checked:after {
     font-size: 10px;
 }
 ul.tabs {
-    margin-left: 43em;
+    margin-left: auto;
+    margin-right:auto;
     padding: 0;
     float: left;
     list-style: none;
-    height: 32px;
+    height: 45px;
     border-bottom: 1px solid #de1111;
     border-left: 1px solid #eee;
     font-family:"dotum";
@@ -2868,9 +2869,9 @@ ul.tabs li {
     float: left;
     text-align:center;
     cursor: pointer;
-    width:82px;
-    height: 31px;
-    line-height: 31px;
+    width:150px;
+    height: 44px;
+    line-height: 44px;
     border: 1px solid #eee;
     border-left: none;
     font-weight: bold;
@@ -2890,7 +2891,7 @@ ul.tabs li.active {
     clear: both;
     float: left;
     width: 1279px;
-    height: 25em;
+    height: 31em;
     background: #FFFFFF;
 }
 .tab_content {
@@ -2918,7 +2919,7 @@ ul.tabs li.active {
 
 .administrator{
 	margin:6em 0 0 0;
-	padding-bottom : 30em;
+	padding-bottom : 35em;
 	background: #FBFCB6
 
 }
@@ -2972,7 +2973,7 @@ ul.tabs li.active {
 .type09 {
   counter-reset: rowNumber;
   width: 1243px;
-  margin-top : 45px;
+  margin-top : 25px;
 	border : 1px solid black;
     border-collapse: collapse;
     text-align: left;

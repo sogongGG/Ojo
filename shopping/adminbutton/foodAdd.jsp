@@ -182,7 +182,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	sessionid = (String)session.getAttribute("sessionid");
 	request.setCharacterEncoding("euc-kr");
 
-  String name = "select * from administrator where ID =?";
+  String name = "select * from Administrator where ID =?";
 	PreparedStatement pst=myconn.prepareStatement(name);
 	pst.setString(1, sessionid);
 	ResultSet rs=pst.executeQuery();
@@ -358,8 +358,8 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
     		<ul class="tabs">
-        	<li class="active" but="adminbuttonset1" rel="tab1">재료</li>
-        	<li but = "adminbuttonset2" rel="tab2">요리</li>
+        	<li but="adminbuttonset1" rel="tab1">재료</li>
+        	<li class="active" but = "adminbuttonset2" rel="tab2">요리</li>
         	<li but = "adminbuttonset3" rel="tab3">마트</li>
    			</ul>
     			<div class="tab_container">
@@ -390,7 +390,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
             %>
             <h1>세부 추가 항목</h1>
             <form action = "foodAddsubmit.jsp" method = "post">
-            <table>
+            <table class = "type09">
               <thead>
                 <tr>
                   <th>항목</th>
@@ -402,7 +402,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
               <tbody>
                 <tr>
                   <td>요리 이름</td>
-                  <td><input type = "text", name = "Foodname" value = " <%= foodname %>"></td>
+                  <td><input type = "text", name = "Foodname" value = " <%= foodname %>" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                   <td>장르</td>
                   <td><input type = "text", name = "Genre"></td>
                 </tr>

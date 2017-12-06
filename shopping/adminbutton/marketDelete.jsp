@@ -357,9 +357,9 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
     		<ul class="tabs">
-        	<li class="active" but="adminbuttonset1" rel="tab1">재료</li>
+        	<li but="adminbuttonset1" rel="tab1">재료</li>
         	<li but = "adminbuttonset2" rel="tab2">요리</li>
-        	<li but = "adminbuttonset3" rel="tab3">마트</li>
+        	<li class="active" but = "adminbuttonset3" rel="tab3">마트</li>
    			</ul>
     			<div class="tab_container">
             <form name = "adminbuttonform" method= "post">
@@ -426,7 +426,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 						%>
             <h1>삭제항목이 맞습니까?</h1>
             <form action = "marketDeletesubmit.jsp" method = "post">
-            <table>
+            <table class = "type09">
               <thead>
                 <tr>
                   <th>항목</th>

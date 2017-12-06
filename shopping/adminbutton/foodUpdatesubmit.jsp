@@ -22,7 +22,7 @@ String Needingredients=request.getParameter("Needingredients");
 int Point=Integer.parseInt((String)request.getParameter("Point"));
 
 
-String q1 = "update food set Genre = ?, foodpicture = ?, Explanation = ?, Expectedtime = ? where Foodname = ?";
+String q1 = "update Food set Genre = ?, foodpicture = ?, Explanation = ?, Expectedtime = ? where Foodname = ?";
 PreparedStatement pst=myconn.prepareStatement(q1);
 pst.setString(1, Genre);
 pst.setString(2, foodpicture);

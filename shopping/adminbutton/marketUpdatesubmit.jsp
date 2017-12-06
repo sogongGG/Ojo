@@ -42,12 +42,13 @@ String Market_ingredient=request.getParameter("Market_ingredient");
 
 request.setCharacterEncoding("euc-kr");
 
-String q1 = "update market set longitude=?, latitude=? where (Marketname=? && Marketbranch=?)";
+String q1 = "update Market set latitude=?, longitude=?, marketpicture=? where (Marketname=? && Marketbranch=?)";
 PreparedStatement pst=myconn.prepareStatement(q1);
-pst.setString(3, Marketname);
-pst.setString(4, Marketbranch);
-pst.setDouble(1, longitude);
-pst.setDouble(2, latitude);
+pst.setDouble(1, latitude);
+pst.setDouble(2, longitude);
+pst.setString(3, marketpicture);
+pst.setString(4, Marketname);
+pst.setString(5, Marketbranch);
 pst.executeUpdate();
 %>
 

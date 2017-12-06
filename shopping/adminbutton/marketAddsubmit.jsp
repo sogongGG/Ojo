@@ -17,37 +17,35 @@ request.setCharacterEncoding("euc-kr");
 String market_phonearr[] = new String[100];
 String market_ingrearr[] = new String[100];
 String coordinate[] = new String[2];
-float latitude=0;
-float longitude=0;
+double latitude=0;
+double longitude=0;
 
 int index=0;
 String Marketname=request.getParameter("Marketname");
 String Marketbranch=request.getParameter("Marketbranch");
 String Marketcoordinate=request.getParameter("Marketcoordinate");
+String marketpicture=request.getParameter("marketpicture");
 
 StringTokenizer sttoken = new StringTokenizer(Marketcoordinate, ",");
 while(sttoken.hasMoreTokens()){
   coordinate[index] = sttoken.nextToken();
   index++;
 }
-latitude = Float.parseFloat(coordinate[0]);
-longitude = Float.parseFloat(coordinate[1]);
+latitude = Double.parseDouble(coordinate[0]);
+longitude = Double.parseDouble(coordinate[1]);
+
 
 String Marketaddress=request.getParameter("Marketaddress");
-String marketpicture=request.getParameter("marketpicture");
 String Marketphonenum=request.getParameter("Marketphonenum");
 String Market_ingredient=request.getParameter("Market_ingredient");
 
-
-
-request.setCharacterEncoding("euc-kr");
-
-String q1 = "insert into market values(?,?,?,?,?)";
+String q1 = "insert into Market values(?,?,?,?,?)";
 PreparedStatement pst=myconn.prepareStatement(q1);
+
 pst.setString(1, Marketname);
 pst.setString(2, Marketbranch);
-pst.setFloat(3, latitude);
-pst.setFloat(4, longitude);
+pst.setDouble(3, latitude);
+pst.setDouble(4, longitude);
 pst.setString(5, marketpicture);
 pst.executeUpdate();
 %>
