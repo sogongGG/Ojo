@@ -16,7 +16,7 @@ String LoginPassword=request.getParameter("LoginPassword");
 request.setCharacterEncoding("euc-kr");
 
 
-String name = "select * from administrator where ID =? && Password=?";
+String name = "select * from Administrator where ID =? && Password=?";
 
 
 PreparedStatement pst=myconn.prepareStatement(name);
@@ -30,7 +30,7 @@ if(rs.next()){
 	response.sendRedirect("admin.jsp");
 }
 else{
-	name = "select * from user where ID =? && Password=?";
+	name = "select * from User where ID =? && Password=?";
 	pst=myconn.prepareStatement(name);
 	pst.setString(1, LoginUsername);
 	pst.setString(2, LoginPassword);
