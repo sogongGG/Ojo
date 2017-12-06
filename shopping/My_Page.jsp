@@ -196,13 +196,10 @@ String searchKey = sessionid;
 Statement stmt = myconn.createStatement();
 String search = "select * from user where ID ='"+searchKey+"';";
 ResultSet rs = stmt.executeQuery(search);
-
 if(rs.next()){
 
 }
 %>
-
-
 	<div class="grid_mypage" style="padding-bottom: 10px; margin-top:0px;">
 		<p class = "title"> 나의 페이지 <p>
     <div class="mypagebacksquare">
@@ -213,53 +210,47 @@ if(rs.next()){
         </p>
       </div>
       <div class="mypagemain">
-
+        <form id="update" action = "usermodify.jsp">
         <table border="0" width="600px">
             <tr>
               <td align="center">아이디</td>
-              <td> <input name="userId" value=<%=rs.getString(1) %> style="width: 40%; margin-bottom: 10px;"> </td>
+              <td> <input name="userId" value="<%=rs.getString(1) %>" style="width: 40%; margin-bottom: 10px;"> </td>
             </tr>
             <tr>
               <td align="center">암호</td>
-              <td> <input name="userPWD" value=<%=rs.getString(2) %> style="width: 40%; margin-bottom: 10px;"> </td>
+              <td> <input name="userPWD" value="<%=rs.getString(2) %>" style="width: 40%; margin-bottom: 10px;"> </td>
             </tr>
             <tr>
               <td align="center">성</td>
-              <td> <input name="userFName" value=<%=rs.getString(3) %> style="width: 25%; margin-bottom: 10px;"> </td>
+              <td> <input name="userFName" value="<%=rs.getString(3) %>" style="width: 25%; margin-bottom: 10px;"> </td>
             </tr>
             <tr>
               <td align="center">이름</td>
-              <td> <input name="userLName" value=<%=rs.getString(4) %> style="width: 25%; margin-bottom: 10px;"> </td>
+              <td> <input name="userLName" value="<%=rs.getString(4) %>" style="width: 25%; margin-bottom: 10px;"> </td>
             </tr>
             <tr>
               <td align="center">전화번호</td>
-              <td> <input name="userPhoneNum" value=<%=rs.getString(5) %> style="width: 50%; margin-bottom: 10px;"> </td>
+              <td> <input name="userPhoneNum" value="<%=rs.getString(5) %>" style="width: 50%; margin-bottom: 10px;"> </td>
             </tr>
             <tr>
               <td align="center">이메일</td>
-              <td> <input name="userEmail" value=<%=rs.getString(6) %> style="width: 50%; margin-bottom: 10px;"> </td>
+              <td> <input name="userEmail" value="<%=rs.getString(6) %>" style="width: 50%; margin-bottom: 10px;"> </td>
              </tr>
              <tr>
                <td align="center">생일</td>
-               <td> <input name="userBirthDay" value=<%=rs.getString(7) %> style="width: 25%; margin-bottom: 10px;"> </td>
+               <td> <input name="userBirthDay" value="<%=rs.getString(7) %>" style="width: 25%; margin-bottom: 10px;"> </td>
              </tr>
              <tr>
                <td align="center">생월</td>
-               <td> <input name="userBirthMonth" value=<%=rs.getString(8) %> style="width: 25%; margin-bottom: 10px;"> </td>
+               <td> <input name="userBirthMonth" value="<%=rs.getString(8) %>" style="width: 25%; margin-bottom: 10px;"> </td>
              </tr>
              <tr>
                <td align="center">생년</td>
-               <td> <input name="userBirthYear" value=<%=rs.getString(9) %> style="width: 25%; margin-bottom: 10px;"> </td>
+               <td> <input name="userBirthYear" value="<%=rs.getString(9) %>" style="width: 25%; margin-bottom: 10px;"> </td>
              </tr>
         </table>
-        <form id="update">
           <input type="submit" value="회원정보 수정" style="margin-top: 10px; float: center;">
         </form>
-
-        <%
-
-        %>
-
       </div>
     </div>
 	</div>
