@@ -42,7 +42,7 @@
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers" style="margin-top: 8px;">
-			<a href="products.jsp">5조 쇼핑몰</a>
+			<a href="index.jsp">5조 쇼핑몰</a>
 		</div>
 		<div class="w3l_search" style="margin-top: 10px;">
       <form action="search-integrate.jsp" method="post" onsubmit="return initMap2()">
@@ -217,7 +217,7 @@ if(rs.next()){
       <div class="myinfo">
         <p class="myinfop">
           나의 정보
-          <a href="index.jsp"  style="float: right;"> <input type="submit" value="로그인 화면으로 이동" style="margin-top: 10px;"> </a>
+          <a href="index.jsp"  style="float: right;"> <input type="submit" value="메인 화면으로 이동" style="margin-top: 10px;"> </a>
         </p>
       </div>
       <div class="mypagemain">
