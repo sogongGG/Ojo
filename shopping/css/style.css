@@ -581,7 +581,7 @@ ul.dropdown-menu.drp-mnu li a i {
 }
 .indexlogin{
 	background: #fff0aa;
-    width: 100px;
+    width: 60px;
     text-decoration: none;
     padding : 8px 0px 14px 0px;
     margin : 10px 2px 8px 6px;
@@ -2854,8 +2854,7 @@ input.checkbox:checked:after {
     font-size: 10px;
 }
 ul.tabs {
-    margin-left: auto;
-    margin-right:auto;
+    margin-left: 38em;
     padding: 0;
     float: left;
     list-style: none;
@@ -3112,4 +3111,8 @@ ul.tabs li.active {
 .textbackbox{
   margin: 10px,10px,10px,10px;
 
+}
+.erdiagram{
+  background-image: url("../images/sogongERdiagram.png");
+  background-size:contain;
 }
