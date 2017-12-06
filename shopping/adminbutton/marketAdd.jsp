@@ -182,7 +182,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	sessionid = (String)session.getAttribute("sessionid");
 	request.setCharacterEncoding("euc-kr");
 
-  String name = "select * from administrator where ID =?";
+  String name = "select * from Administrator where ID =?";
 	PreparedStatement pst=myconn.prepareStatement(name);
 	pst.setString(1, sessionid);
 	ResultSet rs=pst.executeQuery();
@@ -208,23 +208,32 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		</div>
 
 		<%
-
+			sessionid = (String)session.getAttribute("sessionid");
 			if(sessionid == null || sessionid.equals("")){%>
 			<div class="form">
    			<fieldset>
 				<form action='#' method="post">
-				<div class ="indexlogin"><a href="../login.jsp">Login</a>
-				</div>
+				<div class ="indexlogin"><a href="../login.jsp">Login</a></div>
 				</form>
       		</fieldset>
 		</div>
-	    <%
-			}else{%>
-			<div><%=sessionid %>님 환영합니다.</div>
-			<form action = "logout.jsp" method = "post">
-			<div><input type="submit" value = "로그아웃" ></div>
-			</form>
-		<%}%>
+    <%
+    }else{%>
+    <div></div>
+    <form action = "../logout.jsp" method = "post">
+    <div style="padding-top: 20px;">
+      <ul>
+        <li style="display: inline-block; padding-right: 25px;  padding-left: 25px;"><%=sessionid %>님 환영합니다.</li>
+        <li style="display: inline-block; padding-right: 25px;">
+          <i class="fa fa-user" aria-hidden="true"> </i>
+          <a href="../My_Page.jsp">MyPage</a>
+        </li>
+        <li style="display: inline-block; padding-right: 25px;">
+          <input type="submit" value = "로그아웃"><a href="../erdiagram.jsp">ERD</a>
+        </li>
+    </div>
+    </form>
+  <%}%>
 
 
 		<div class="clearfix"> </div>
