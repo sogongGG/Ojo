@@ -531,6 +531,36 @@ $(document).ready(function() {
                   makemarker("<%=martname1[7]%>","./"+"<%=martpicture2[7]%>",
                   "<h4><%=martname2[7]%></h4>"+
                   "<p><%=martexplanation1[7]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
+
+                  makemarker("<%=martname1[8]%>","./"+"<%=martpicture2[7]%>",
+                  "<h4><%=martname2[8]%></h4>"+
+                  "<p><%=martexplanation1[8]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
+
+                  makemarker("<%=martname1[9]%>","./"+"<%=martpicture2[7]%>",
+                  "<h4><%=martname2[9]%></h4>"+
+                  "<p><%=martexplanation1[9]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
+
+                  makemarker("<%=martname1[10]%>","./"+"<%=martpicture2[7]%>",
+                  "<h4><%=martname2[10]%></h4>"+
+                  "<p><%=martexplanation1[10]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
+
+
+                  makemarker("<%=martname1[11]%>","./"+"<%=martpicture2[7]%>",
+                  "<h4><%=martname2[11]%></h4>"+
+                  "<p><%=martexplanation1[11]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
+
+                  makemarker("<%=martname1[12]%>","./"+"<%=martpicture2[7]%>",
+                  "<h4><%=martname2[12]%></h4>"+
+                  "<p><%=martexplanation1[12]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
+
+                  makemarker("<%=martname1[13]%>","./"+"<%=martpicture2[7]%>",
+                  "<h4><%=martname2[13]%></h4>"+
+                  "<p><%=martexplanation1[13]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
+
+                  makemarker("<%=martname1[14]%>","./"+"<%=martpicture2[7]%>",
+                  "<h4><%=martname2[14]%></h4>"+
+                  "<p><%=martexplanation1[14]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
+
                    //  qurry( resultsMap,lat(),lng()) -> makemarker
                  } else {
                  //  alert('위치검색이 안되서 "동국대"로 보여드릴게요!');
