@@ -181,7 +181,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	request.setCharacterEncoding("euc-kr");
 	String sessionid = "";
 	sessionid = (String)session.getAttribute("sessionid");
-  String name = "select * from administrator where ID =?";
+  String name = "select * from Administrator where ID =?";
 	PreparedStatement pst=myconn.prepareStatement(name);
 	pst.setString(1, sessionid);
 	ResultSet rs=pst.executeQuery();
@@ -356,8 +356,8 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
     		<ul class="tabs">
-        	<li class="active" but="adminbuttonset1" rel="tab1">재료</li>
-        	<li but = "adminbuttonset2" rel="tab2">요리</li>
+        	<li but="adminbuttonset1" rel="tab1">재료</li>
+        	<li class="active" but = "adminbuttonset2" rel="tab2">요리</li>
         	<li but = "adminbuttonset3" rel="tab3">마트</li>
    			</ul>
     			<div class="tab_container">
@@ -391,7 +391,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 								String explanation = null;
 
 								String foodname= request.getParameter("foodname");
-								String foodselectquery = "select * from food where Foodname = ?";
+								String foodselectquery = "select * from Food where Foodname = ?";
 								foodselectquerypst = myconn.prepareStatement(foodselectquery);
 								foodselectquerypst.setString(1, foodname);
 								foodresult = foodselectquerypst.executeQuery();
@@ -404,7 +404,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 						%>
 						<h1>세부 수정 항목</h1>
             <form action = "foodUpdatesubmit.jsp" method = "post">
-            <table>
+            <table class = "type09">
               <thead>
                 <tr>
                   <th>항목</th>

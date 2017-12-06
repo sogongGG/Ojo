@@ -24,7 +24,7 @@ String Manufacturer=request.getParameter("Manufacturer");
 
 request.setCharacterEncoding("euc-kr");
 
-String q1 = "delete from ingredient where (Ingredientname=? && Manufacturer=?)";
+String q1 = "delete from Ingredient where (Ingredientname=? && Manufacturer=?)";
 
 PreparedStatement pst=myconn.prepareStatement(q1);
 //pst.setString(1, ingrepicture);

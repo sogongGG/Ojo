@@ -22,10 +22,7 @@ String Expectedtime=request.getParameter("Expectedtime");
 String Needingredients=request.getParameter("Needingredients");
 int Point=Integer.parseInt((String)request.getParameter("Point"));
 
-
-request.setCharacterEncoding("euc-kr");
-
-String q1 = "insert into food values(?,?,?,?,?)";
+String q1 = "insert into Food values(?,?,?,?,?)";
 
 
 PreparedStatement pst=myconn.prepareStatement(q1);

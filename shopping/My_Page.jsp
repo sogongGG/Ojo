@@ -199,7 +199,8 @@
       </div>
       <div class="mypagemain">
         <div class="textbackbox">
-          <input type = "text"/>
+          아이디 : <input type = "text"/>
+          
         </div>
       </div>
     </div>

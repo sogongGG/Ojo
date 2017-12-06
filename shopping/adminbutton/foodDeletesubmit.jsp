@@ -21,7 +21,7 @@ String Foodname=request.getParameter("Foodname");
 //int Point=Integer.parseInt((String)request.getParameter("Point"));
 
 
-String q1 = "delete from food where Foodname = ?";
+String q1 = "delete from Food where Foodname = ?";
 PreparedStatement pst=myconn.prepareStatement(q1);
 pst.setString(1, Foodname);
 

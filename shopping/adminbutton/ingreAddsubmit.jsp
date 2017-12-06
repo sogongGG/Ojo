@@ -25,7 +25,7 @@ int Amount=Integer.parseInt((String)request.getParameter("amount"));
 
 request.setCharacterEncoding("euc-kr");
 
-String q1 = "insert into ingredient values(?,?,?,?,?,?,?,?,?)";
+String q1 = "insert into Ingredient values(?,?,?,?,?,?,?,?,?)";
 
 
 PreparedStatement pst=myconn.prepareStatement(q1);

@@ -358,9 +358,9 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
     		<ul class="tabs">
-        	<li class="active" but="adminbuttonset1" rel="tab1">재료</li>
+        	<li but="adminbuttonset1" rel="tab1">재료</li>
         	<li but = "adminbuttonset2" rel="tab2">요리</li>
-        	<li but = "adminbuttonset3" rel="tab3">마트</li>
+        	<li class="active" but = "adminbuttonset3" rel="tab3">마트</li>
    			</ul>
     			<div class="tab_container">
             <%
@@ -390,7 +390,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 						</form>
             <h1>세부 추가 항목</h1>
             <form action = "marketAddsubmit.jsp" method = "post">
-            <table>
+            <table class = "type09">
               <thead>
                 <tr>
                   <th>항목</th>
@@ -402,25 +402,25 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
               <tbody>
                 <tr>
                   <td>마트 이름</td>
-                  <td><input type = "text", name = "Marketname", value = " <%= marketname %> "></td>
-                  <td>마트 지점</td>
+                  <td><input type = "text", name = "Marketname", value = "<%= marketname %>", onFocus="clearText(this)" onBlur = "clearText(this)"></td>
+									<td>마트 지점</td>
                   <td><input type = "text", name = "Marketbranch"></td>
                 </tr>
                 <tr>
                   <td>사진링크</td>
                   <td><input type = "text", name = "marketpicture"></td>
                   <td>마트 번호</td>
-                  <td><input type = "text", name = "Marketphonenum"  value="00)-0000-0000" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
+                  <td><input type = "text", name = "Marketphonenum"  value="ex)000)-0000-0000,000)-0000-0000" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                 </tr>
                 <tr>
                   <td>마트 주소</td>
-                  <td><input type = "text", name = "Marketaddress"></td>
+                  <td><input type = "text", name = "Marketaddress" value="ex)aaaa,aaaa" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                   <td>마트 좌표</td>
-                  <td><input type = "text", name = "Marketcoordinate"></td>
+                  <td><input type = "text", name = "Marketcoordinate" value="ex)123.45,67.890" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                 </tr>
                 <tr>
                   <td>마트 재료</td>
-                  <td><input type = "text", name = "Market_ingredient"></td>
+                  <td><input type = "text", name = "Market_ingredient" value="ex)a,b,c,d,e" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                 </tr>
               </tbody>
             </table>

@@ -357,9 +357,9 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 		<h4>관리자 페이지 입니다!</h4>
 		<div id="container">
     		<ul class="tabs">
-        	<li class="active" but="adminbuttonset1" rel="tab1">재료</li>
+        	<li but="adminbuttonset1" rel="tab1">재료</li>
         	<li but = "adminbuttonset2" rel="tab2">요리</li>
-        	<li but = "adminbuttonset3" rel="tab3">마트</li>
+        	<li class="active" but = "adminbuttonset3" rel="tab3">마트</li>
    			</ul>
     			<div class="tab_container">
             <form name = "adminbuttonform" method= "post">
@@ -412,7 +412,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 									marketbranch = marketresult.getString(2);
                   marketlongitude = marketresult.getDouble(3);
                   marketlatitude = marketresult.getDouble(4);
-									//marketpicture = ingreresult.getString(3);
+									marketpicture = marketresult.getString(5);
 									//marketphone = ingreresult.getString("Genre");
                   //Method_storage = ingreresult.getString("Method_storage");
                   //Method_cook = ingreresult.getString("Method_cook");
@@ -426,7 +426,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 						%>
             <h1>세부 수정 항목</h1>
             <form action = "marketUpdatesubmit.jsp" method = "post">
-            <table>
+            <table class = "type09">
               <thead>
                 <tr>
                   <th>항목</th>
@@ -438,15 +438,15 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
               <tbody>
                 <tr>
                   <td>마트 이름</td>
-                  <td><input type = "text", name = "Marketname", value = " <%= marketname %> "></td>
+                  <td><input type = "text", name = "Marketname", value = " <%=marketname %> "></td>
                   <td>마트 지점</td>
-                  <td><input type = "text", name = "Marketbranch", value = "<%= marketbranch%>"></td>
+                  <td><input type = "text", name = "Marketbranch", value = "<%=marketbranch%>"></td>
                 </tr>
                 <tr>
                   <td>사진링크</td>
-                  <td><input type = "text", name = "marketpicture", value = "<%= marketpicture%>"></td>
+                  <td><input type = "text", name = "marketpicture", value = "<%=marketpicture%>"></td>
                   <td>마트 번호</td>
-                  <td><input type = "text", name = "Marketphonenum" , value="<%= marketphone%>" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
+                  <td><input type = "text", name = "Marketphonenum" , value="<%=marketphone%>" onFocus="clearText(this)" onBlur = "clearText(this)"></td>
                 </tr>
                 <tr>
                   <td>마트 주소</td>
@@ -456,7 +456,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
                 </tr>
                 <tr>
                   <td>마트 재료</td>
-                  <td><input type = "text", name = "Market_ingredient", value = "<%= marketingredient %>"></td>
+                  <td><input type = "text", name = "Market_ingredient", value = "<%=marketingredient %>"></td>
                 </tr>
               </tbody>
             </table>

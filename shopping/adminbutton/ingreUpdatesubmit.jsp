@@ -24,7 +24,7 @@ int Amount=Integer.parseInt((String)request.getParameter("amount"));
 
 request.setCharacterEncoding("euc-kr");
 
-String q1 = "update ingredient set ingrepicture=?, Genre=?, Method_storage=?, Method_cook=?, Prise=?, Salespercent=?, Amount=? where (Ingredientname=? && Manufacturer=?)";
+String q1 = "update Ingredient set ingrepicture=?, Genre=?, Method_storage=?, Method_cook=?, Prise=?, Salespercent=?, Amount=? where (Ingredientname=? && Manufacturer=?)";
 
 PreparedStatement pst=myconn.prepareStatement(q1);
 pst.setString(1, ingrepicture);

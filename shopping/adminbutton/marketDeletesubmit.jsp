@@ -42,7 +42,7 @@ String Marketbranch=request.getParameter("Marketbranch");
 
 request.setCharacterEncoding("euc-kr");
 
-String q1 = "delete from market where (Marketname=? && Marketbranch=?)";
+String q1 = "delete from Market where (Marketname=? && Marketbranch=?)";
 PreparedStatement pst=myconn.prepareStatement(q1);
 pst.setString(1, Marketname);
 pst.setString(2, Marketbranch);
