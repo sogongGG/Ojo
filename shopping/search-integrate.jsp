@@ -421,6 +421,8 @@ $(document).ready(function() {
             String test_post;
             String martname1[] = new String[100];
             String martname2[] = new String[100];
+            String martexplanation1[] = new String[100];
+            String martpicture2[] = new String[100];
             Double martlat[]  = new Double[100];
             Double martlng[]  = new Double[100];
             int count_i = 0;
@@ -441,10 +443,14 @@ $(document).ready(function() {
                 rs1 = pstmt.executeQuery();
                 count_i =0;
               while(rs1.next() && count_i < 90){
-                martname1[count_i] = rs1.getString(1);
-                martname2[count_i] = rs1.getString(2);
-                martlat[count_i] = rs1.getDouble(3);
-                martlng[count_i] = rs1.getDouble(4);
+
+                martname1[count_i] = rs1.getString("Marketname");
+                martname2[count_i] = rs1.getString("Marketbranch");
+                martlat[count_i] = rs1.getDouble("latitude");
+                martlng[count_i] = rs1.getDouble("longitude");
+                martpicture2[count_i] =  rs1.getString("marketpicture");
+                martexplanation1[count_i] =  rs1.getString("Explanation");
+
                 count_i++;
               }
 
@@ -493,29 +499,45 @@ $(document).ready(function() {
                   now_address_lng =  results[0].geometry.location.lng();
                   makemarker("검색위치","./images/cheering_minions.gif",input_content,resultsMap,
                   results[0].geometry.location.lat(), results[0].geometry.location.lng())
+/*
+                  martname1[count_i] = rs1.getString("Marketname");
+                  martname2[count_i] = rs1.getString("Marketbranch");
+                  martlat[count_i] = rs1.getDouble("latitude");
+                  martlng[count_i] = rs1.getDouble("longitude");
+                  martpicture2[count_i] =  rs1.getString("marketpicture");
+                  martexplanation1[count_i] =  rs1.getString("Explanation");
+*/
+                  makemarker("<%=martname1[0]%>","./"+"<%=martpicture2[0]%>",
+                  "<h4><%=martname2[0]%></h4>"+
+                  "<p><%=martexplanation1[0]%></p>",resultsMap,<%=martlat[0]%>, <%=martlng[0]%>);
 
+                  makemarker("<%=martname1[1]%>","./"+"<%=martpicture2[1]%>",
+                  "<h4><%=martname2[1]%></h4>"+
+                  "<p><%=martexplanation1[1]%></p>",resultsMap,<%=martlat[1]%>, <%=martlng[1]%>);
 
-                  makemarker("<%=martname1[0]%>","./images/cheering_minions.gif",
-                  "<p>테스트0</p>",resultsMap,<%=martlat[0]%>, <%=martlng[0]%>);
+                  makemarker("<%=martname1[2]%>","./"+"<%=martpicture2[2]%>",
+                  "<h4><%=martname2[2]%></h4>"+
+                  "<p><%=martexplanation1[2]%></p>",resultsMap,<%=martlat[2]%>, <%=martlng[2]%>);
 
-                  makemarker("<%=martname1[1]%>","./images/cheering_minions.gif",
-                  "<p>테스트1</p>",resultsMap,<%=martlat[1]%>, <%=martlng[1]%>);
+                  makemarker("<%=martname1[3]%>","./"+"<%=martpicture2[3]%>",
+                  "<h4><%=martname2[3]%></h4>"+
+                  "<p><%=martexplanation1[3]%></p>",resultsMap,<%=martlat[3]%>, <%=martlng[3]%>);
 
-                  makemarker("<%=martname1[2]%>","./images/cheering_minions.gif",
-                  "<p>테스트2</p>",resultsMap,<%=martlat[2]%>, <%=martlng[2]%>);
+                  makemarker("<%=martname1[4]%>","./"+"<%=martpicture2[4]%>",
+                  "<h4><%=martname2[4]%></h4>"+
+                  "<p><%=martexplanation1[4]%></p>",resultsMap,<%=martlat[4]%>, <%=martlng[4]%>);
 
-                  makemarker("<%=martname1[3]%>","./images/cheering_minions.gif",
-                  "<p>테스트3</p>",resultsMap,<%=martlat[3]%>, <%=martlng[3]%>);
+                  makemarker("<%=martname1[5]%>","./"+"<%=martpicture2[5]%>",
+                  "<h4><%=martname2[5]%></h4>"+
+                  "<p><%=martexplanation1[5]%></p>",resultsMap,<%=martlat[5]%>, <%=martlng[5]%>);
 
-                  makemarker("<%=martname1[4]%>","./images/cheering_minions.gif",
-                  "<p>테스트4</p>",resultsMap,<%=martlat[4]%>, <%=martlng[4]%>);
+                  makemarker("<%=martname1[6]%>","./"+"<%=martpicture2[6]%>",
+                  "<h4><%=martname2[6]%></h4>"+
+                  "<p><%=martexplanation1[6]%></p>",resultsMap,<%=martlat[6]%>, <%=martlng[6]%>);
 
-                  makemarker("<%=martname1[5]%>","./images/cheering_minions.gif",
-                  "<p>테스트5</p>",resultsMap,<%=martlat[5]%>, <%=martlng[5]%>);
-
-                  makemarker("<%=martname1[6]%>","./images/cheering_minions.gif",
-                  "<p>테스트6</p>",resultsMap,<%=martlat[6]%>, <%=martlng[6]%>);
-
+                  makemarker("<%=martname1[7]%>","./"+"<%=martpicture2[7]%>",
+                  "<h4><%=martname2[7]%></h4>"+
+                  "<p><%=martexplanation1[7]%></p>",resultsMap,<%=martlat[7]%>, <%=martlng[7]%>);
                    //  qurry( resultsMap,lat(),lng()) -> makemarker
                  } else {
                  //  alert('위치검색이 안되서 "동국대"로 보여드릴게요!');
@@ -760,6 +782,65 @@ $(document).ready(function() {
        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven" aria-expanded="false" style="height: 0px;">
           <div class="panel-body panel_text">
 
+
+            <%
+
+            PreparedStatement pstmt_1 = null;
+            ResultSet rs_1 = null;
+            boolean result_1 = false;
+            String test_post_1 = search_String +"%";
+            String martname1_1[] = new String[100];
+            String martname2_1[] = new String[100];
+            String martpicture_1[] = new String[100];
+            String martexplanation_1[] = new String[100];
+
+            Double martlat_1[]  = new Double[100];
+            Double martlng_1[]  = new Double[100];
+            int count_i_1 = 0;
+            if(request.getParameter("latitude_post")!=null){
+              try{
+              String sql_1 = "select * from market where Marketname like ?";
+                pstmt_1 = myconn.prepareStatement(sql_1);
+                pstmt_1.setString(1, test_post_1);
+                rs_1 = pstmt_1.executeQuery();
+                count_i_1=0;
+              while(rs_1.next() && count_i_1 < 3 ){
+                martname1_1[count_i_1] = rs_1.getString("Marketname");
+                martname2_1[count_i_1] = rs_1.getString("Marketbranch");
+                martlat_1[count_i_1] = rs_1.getDouble("latitude");
+                martlng_1[count_i_1] = rs_1.getDouble("longitude");
+                martpicture_1[count_i_1] =  rs_1.getString("marketpicture");
+                martexplanation_1[count_i_1] =  rs_1.getString("Explanation");
+                count_i_1++;
+              }
+            }
+            catch(SQLException se){
+              System.out.println(se.getMessage());
+            }
+            finally{
+              //정훈
+              stmt.close();
+              rs.close();
+              //강산 - gps
+                rs1.close();
+                pstmt.close();
+              //강산 - 마지막꺼
+              rs_1.close();
+              pstmt_1.close();
+              myconn.close();
+              }
+            }
+            else{
+
+            }
+
+
+            %>
+
+            <%
+            for(int i=0;i<count_i_1;i++){
+            %>
+
             <div class="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left" style="padding-left: 0px; padding-right: 0px;">
               <div class="hover14 column"></div>
                 <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
@@ -767,9 +848,9 @@ $(document).ready(function() {
                   <figure>
                     <div class="snipcart-item block">
                       <div class="snipcart-thumb">
-                        <a href="#"><img src="images/64.png" alt=" " class="img-responsive" style="max-width: 100%; max-height: 150px;"></a>
-                        <p> hello </p>
-                        <h4>가격 :
+                        <a href="#"><img src="<%=martpicture_1[i]%>" alt=" " class="img-responsive" style="max-width: 100%; max-height: 150px;"></a>
+                        <p> <%=martname1_1[i]%> </p>
+                        <h4><%=martexplanation_1[i]%>
 
                        </h4>
                       </div>
@@ -779,6 +860,9 @@ $(document).ready(function() {
               </div>
             </div>
 
+            <%
+          }
+            %>
 
 		</div>
   </div>
@@ -843,58 +927,6 @@ $(document).ready(function(){
     }
   </script>
 
-  <%
 
-  PreparedStatement pstmt_1 = null;
-  ResultSet rs_1 = null;
-  boolean result_1 = false;
-  String test_post_1 = search_String +"%";
-  String martname1_1[] = new String[100];
-  String martname2_1[] = new String[100];
-  Double martlat_1[]  = new Double[100];
-  Double martlng_1[]  = new Double[100];
-  int count_i_1 = 0;
-  if(request.getParameter("latitude_post")!=null){
-    try{
-    String sql_1 = "select * from market where Marketname like ?";
-      pstmt_1 = myconn.prepareStatement(sql_1);
-      pstmt_1.setString(1, test_post_1);
-      rs_1 = pstmt_1.executeQuery();
-      count_i_1=0;
-    while(rs_1.next() && count_i_1 < 3 ){
-      martname1_1[count_i_1] = rs_1.getString("Marketname");
-      martname2_1[count_i_1] = rs_1.getString("Marketbranch");
-      martlat_1[count_i_1] = rs_1.getDouble("latitude");
-      martlng_1[count_i_1] = rs_1.getDouble("longitude");
-      count_i_1++;
-    }
-  }
-  catch(SQLException se){
-    System.out.println(se.getMessage());
-  }
-  finally{
-    //정훈
-    stmt.close();
-    rs.close();
-    //강산 - gps
-      rs1.close();
-      pstmt.close();
-    //강산 - 마지막꺼
-    rs_1.close();
-    pstmt_1.close();
-    myconn.close();
-    }
-  }
-  else{
-
-  }
-  for(int i_1=0; i_1<count_i_1 ;i_1++){
-  out.println(martname1_1[i_1]);
-  out.println(martname2_1[i_1]);
-  out.println(martlat_1[i_1]);
-  out.println(martlng_1[i_1]);
-  }
-
-  %>
 </body>
 </html>
