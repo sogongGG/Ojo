@@ -84,9 +84,9 @@ String searchKey = request.getParameter("searchKey");
 Statement stmt = myconn.createStatement();
 String search = "select * from food where Foodname ='"+searchKey+"';";
 ResultSet rs = stmt.executeQuery(search);
-String[] sArray1 = new String[4]; //food info
+String[] sArray1 = new String[5]; //food info
 String[] sArray2 = new String[10]; //ingredient_food (name only) info
-String[] sArray3 = new String[80]; //ingredient info
+String[] sArray3 = new String[90]; //ingredient info
 String[] sArrayMart = new String[20]; //market info
 
 if(rs.next()) {
@@ -118,7 +118,7 @@ while(count < tmp){
   search = "select * from ingredient where Ingredientname = '"+searchKey+"';";
   rs = stmt.executeQuery(search);
   if (rs.next()){
-    for (int i = 0; i < 8; i++){
+    for (int i = 0; i < 9; i++){
       sArray3[tmp2++] = rs.getString(i+1);
     }
   }
@@ -341,8 +341,8 @@ $(document).ready(function() {
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
-											<p> <% out.println(sArray1[0]);%> </p>
+											<a href="#"><img src=<% out.println(sArray1[2]); %> alt=" " class="img-responsive" style="max-width: 100%; max-height: 150px;"></a>
+											<p> <%=sArray1[0] %> </p>
                       <%
                     //  searchKey = rs.getString(1);
                     //  search = "select * from ingredient_food where Foodname = '"+searchKey+"';";
@@ -362,7 +362,7 @@ $(document).ready(function() {
                         <%
                           int sum = 0;
                           for (int k = 0; sArray2[k] != null; k++){
-                              sum += Integer.parseInt(sArray3[5 + (k * 8)]);
+                              sum += Integer.parseInt(sArray3[6 + (k * 9)]);
                             }
                           out.println(sum);
                         %>
@@ -375,8 +375,8 @@ $(document).ready(function() {
 													<input type="hidden" name="add" value="1">
 													<input type="hidden" name="business" value=" ">
 													<input type="hidden" name="item_name" value=<%=sArray2[0] %>>
-													<input type="hidden" name="amount" value=<%=sArray3[5] %>>
-													<input type="hidden" name="discount_rate" value=<%=sArray3[6] %>>
+													<input type="hidden" name="amount" value=<%=sArray3[6] %>>
+													<input type="hidden" name="discount_rate" value=<%=sArray3[7] %>>
 													<input type="hidden" name="currency_code" value="KRW">
 													<input type="hidden" name="return" value=" ">
 													<input type="hidden" name="cancel_return" value=" ">
@@ -393,7 +393,7 @@ $(document).ready(function() {
             <div class="agile_top_brand_left_grid1" style="backgroud: white;">
           	   <h3 class=title style="font-size: small;"> 요리설명 </h3>
                <p style="width: -webkit-fill-available; height: 170px; overflow: scroll;">
-                 <% out.println(sArray1[2]);
+                 <% out.println(sArray1[3]);
                  %>
                </p>
                <h3 class=title style="font-size: small;"> 필요재료 </h3>
@@ -593,13 +593,13 @@ $(document).ready(function() {
    								<figure>
    									<div class="snipcart-item block">
    										<div class="snipcart-thumb">
-   											<a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
+   											<a href="#"><img src=<% out.println(sArray1[2]); %> alt=" " class="img-responsive" style="max-width: 100%; max-height: 150px;"></a>
    											<p><% out.println(sArray1[0]);%></p>
    											<h4>예상가격 :
                           <%
                             sum = 0;
                             for (int k = 0; sArray2[k] != null; k++){
-                                sum += Integer.parseInt(sArray3[5 + (k * 8)]);
+                                sum += Integer.parseInt(sArray3[6 + (k * 9)]);
                               }
                             out.println(sum);
                           %>
@@ -612,8 +612,8 @@ $(document).ready(function() {
    													<input type="hidden" name="add" value="1">
    													<input type="hidden" name="business" value=" ">
                             <input type="hidden" name="item_name" value=<%=sArray2[0] %>>
-    												<input type="hidden" name="amount" value=<%=sArray3[5] %>>
-    												<input type="hidden" name="discount_rate" value=<%=sArray3[6] %>>
+    												<input type="hidden" name="amount" value=<%=sArray3[6] %>>
+    												<input type="hidden" name="discount_rate" value=<%=sArray3[7] %>>
     												<input type="hidden" name="currency_code" value="KRW">
    													<input type="hidden" name="return" value=" ">
    													<input type="hidden" name="cancel_return" value=" ">
@@ -631,7 +631,7 @@ $(document).ready(function() {
             	   <h3 class=title style="font-size: small;"> 요리설명 </h3>
                  <p style="width: -webkit-fill-available; height: 170px; overflow: scroll;">
                    <%
-                   out.println(sArray1[2]);
+                   out.println(sArray1[3]);
                    %>
                  </p>
             	</div>
@@ -649,7 +649,7 @@ $(document).ready(function() {
                     //    out.println(plzs);
                     //  }
                     for (int i = 0; sArray2[i] != null; i++){
-                      String plz = "<li>" + sArray2[i]+ "\t" + sArray3[5 + (i * 8)] + "원" +"</li>";
+                      String plz = "<li>" + sArray2[i]+ "\t" + sArray3[6 + (i * 9)] + "원" +"</li>";
                       out.println(plz);
                     }
                 %>
@@ -671,7 +671,7 @@ $(document).ready(function() {
                       <input type="hidden" name="item_name" value=<%=sArray2[1] %>>
                       <input type="hidden" name="amount" value="10.00">
                       <input type="hidden" name="discount_rate" value="1.00">
-                      <input type="hidden" name="currency_code" value="USD">
+                      <input type="hidden" name="currency_code" value="KRW">
                       <input type="hidden" name="return" value=" ">
                       <input type="hidden" name="cancel_return" value=" ">
 
@@ -714,11 +714,11 @@ $(document).ready(function() {
                    <figure>
                      <div class="snipcart-item block">
                        <div class="snipcart-thumb">
-                         <a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
+                         <a href="#"><img src=<% out.println(sArray3[2 + (i * 9)]); %> alt=" " class="img-responsive" style="max-width: 100%; max-height: 150px;"></a>
                          <p><% out.println(sArray2[i]);%></p>
                          <h4>가격 :
                           <%
-                            out.println(sArray3[5 + (i * 8)]);
+                            out.println(sArray3[6 + (i * 9)]);
                           %>
                         원</h4>
                        </div>
@@ -729,8 +729,8 @@ $(document).ready(function() {
                              <input type="hidden" name="add" value="1">
                              <input type="hidden" name="business" value=" ">
                              <input type="hidden" name="item_name" value=<%=sArray2[i] %>>
-                             <input type="hidden" name="amount" value=<%=sArray3[5 + (i*8)] %>>
-                             <input type="hidden" name="discount_rate" value=<%=sArray3[6 + (i*8)] %>>
+                             <input type="hidden" name="amount" value=<%=sArray3[6 + (i*9)] %>>
+                             <input type="hidden" name="discount_rate" value=<%=sArray3[7 + (i*9)] %>>
                              <input type="hidden" name="currency_code" value="KRW">
                              <input type="hidden" name="return" value=" ">
                              <input type="hidden" name="cancel_return" value=" ">
@@ -767,7 +767,7 @@ $(document).ready(function() {
                   <figure>
                     <div class="snipcart-item block">
                       <div class="snipcart-thumb">
-                        <a href="single.jsp"><img src="images/64.png" alt=" " class="img-responsive"></a>
+                        <a href="#"><img src="images/64.png" alt=" " class="img-responsive" style="max-width: 100%; max-height: 150px;"></a>
                         <p> hello </p>
                         <h4>가격 :
 
