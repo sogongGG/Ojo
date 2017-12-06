@@ -120,10 +120,10 @@
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
-					<li><a href="events.jsp">Events</a><i>/</i></li>
-					<li><a href="about.jsp">About Us</a><i>/</i></li>
-					<li><a href="products.jsp">Best Deals</a><i>/</i></li>
-					<li><a href="services.jsp">Services</a></li>
+					<li><a href="search-integrate.jsp">Events</a><i>/</i></li>
+					<li><a href="search-integrate.jsp">About Us</a><i>/</i></li>
+					<li><a href="search-integrate.jsp">Best Deals</a><i>/</i></li>
+					<li><a href="search-integrate.jsp">Services</a></li>
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">

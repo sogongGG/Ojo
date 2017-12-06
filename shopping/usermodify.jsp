@@ -38,7 +38,7 @@ pst.executeUpdate();
 %>
 <script>
 alert('입력한 내용으로 수정되었습니다');
-location.href="My_Page.jsp";
+location.href="./My_Page.jsp";
 </script>
 
 
