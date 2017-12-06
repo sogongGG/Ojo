@@ -12,7 +12,7 @@
 <%
     PreparedStatement pstmt = null;
     ResultSet rs = null;
-    String callrow = "select Ingredientname, Genre, ingrepicture, Prise, Method_storage, Method_cook from ingredient";
+    String callrow = "select Ingredientname, Genre, ingrepicture, Prise, Method_storage, Method_cook from Ingredient";
     pstm = myconn.prepareStatement(callrow);
     rs = pstmt.executeQuery();
     while(rs.next()){

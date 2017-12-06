@@ -205,7 +205,7 @@
 <%
 String searchKey = sessionid;
 Statement stmt = myconn.createStatement();
-String search = "select * from user where ID ='"+searchKey+"';";
+String search = "select * from User where ID ='"+searchKey+"';";
 ResultSet rs = stmt.executeQuery(search);
 if(rs.next()){
 

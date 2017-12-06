@@ -82,7 +82,7 @@ public String Get_search_string()
 <%
 String searchKey = request.getParameter("searchKey");
 Statement stmt = myconn.createStatement();
-String search = "select * from food where Foodname ='"+searchKey+"';";
+String search = "select * from Food where Foodname ='"+searchKey+"';";
 ResultSet rs = stmt.executeQuery(search);
 String[] sArray1 = new String[5]; //food info
 String[] sArray2 = new String[10]; //ingredient_food (name only) info
@@ -96,7 +96,7 @@ if(rs.next()) {
 }
 else{
   searchKey = "Recommended";
-  search = "select * from food where Foodname ='"+searchKey+"';";
+  search = "select * from Food where Foodname ='"+searchKey+"';";
   rs = stmt.executeQuery(search);
   if(rs.next()){
     for (int i = 0; i < sArray1.length; i++){
@@ -104,7 +104,7 @@ else{
     }
   }
 }
-search = "select * from ingredient_food where Foodname = '"+searchKey+"';";
+search = "select * from Ingredient_food where Foodname = '"+searchKey+"';";
 rs = stmt.executeQuery(search);
 int tmp = 0;
 while (rs.next()){
@@ -115,7 +115,7 @@ int count = 0;
 int tmp2 = 0;
 while(count < tmp){
   searchKey = sArray2[count];
-  search = "select * from ingredient where Ingredientname = '"+searchKey+"';";
+  search = "select * from Ingredient where Ingredientname = '"+searchKey+"';";
   rs = stmt.executeQuery(search);
   if (rs.next()){
     for (int i = 0; i < 9; i++){
@@ -434,7 +434,7 @@ $(document).ready(function() {
                 now_lat_high = now_lat + 1;
                 now_lng_low = now_lng - 1;
                 now_lng_high = now_lng + 1;
-              String sql = "select * from market where (latitude between ? AND ?) AND (longitude between ? AND ?)";
+              String sql = "select * from Market where (latitude between ? AND ?) AND (longitude between ? AND ?)";
                 pstmt = myconn.prepareStatement(sql);
                 pstmt.setDouble(1,now_lat_low);
                 pstmt.setDouble(2,now_lat_high);
@@ -799,7 +799,7 @@ $(document).ready(function() {
             int count_i_1 = 0;
             if(request.getParameter("latitude_post")!=null){
               try{
-              String sql_1 = "select * from market where Marketname like ?";
+              String sql_1 = "select * from Market where Marketname like ?";
                 pstmt_1 = myconn.prepareStatement(sql_1);
                 pstmt_1.setString(1, test_post_1);
                 rs_1 = pstmt_1.executeQuery();

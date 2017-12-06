@@ -177,7 +177,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 	sessionid = (String)session.getAttribute("sessionid");
 	request.setCharacterEncoding("euc-kr");
 
-  String name = "select * from administrator where ID =?";
+  String name = "select * from Administrator where ID =?";
 	PreparedStatement pst=myconn.prepareStatement(name);
 	pst.setString(1, sessionid);
 	ResultSet rs=pst.executeQuery();

@@ -400,7 +400,7 @@ table.deleteRow( table.rows.length-1 ); // 하단부터 삭제
 								String explanation = null;
 
 								String foodname= request.getParameter("foodname");
-								String foodselectquery = "select * from food where Foodname = ?";
+								String foodselectquery = "select * from Food where Foodname = ?";
 								foodselectquerypst = myconn.prepareStatement(foodselectquery);
 								foodselectquerypst.setString(1, foodname);
 								foodresult = foodselectquerypst.executeQuery();
